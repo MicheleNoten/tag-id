@@ -1,0 +1,2 @@
+class Fabric < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class Sdg < ApplicationRecord
+end
