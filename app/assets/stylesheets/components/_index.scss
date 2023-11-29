@@ -6,7 +6,7 @@
 @import "scan";
 
 // desktop only visibility
-@media screen and (min-width: 430px) {
+@media screen and (min-width: 431px) {
   .mobile-only {
     display: none;
   }
@@ -16,7 +16,7 @@
 }
 
 // mobile only visibility
-@media screen and (max-width: 429px) {
+@media screen and (max-width: 430px) {
   .mobile-only {
     display: block;
   }
