@@ -1,0 +1,40 @@
+.button {
+  display: flex;
+  height: 50px;
+  width: 147px;
+  padding: 18px 69px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 25px;
+  text-decoration: none;
+  margin: 5px 10px;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+
+.button-green {
+  background: #A4BE7B;
+  color: white;
+
+  &:hover {
+    background: white;
+    color: #A4BE7B;
+  }
+
+  input {
+    color: white;
+  }
+}
+
+.button-beige {
+  background: #F4EDCA;
+  color: #015F3F;
+}
+
+.full-width-button {
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
