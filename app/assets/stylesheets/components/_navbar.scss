@@ -10,3 +10,20 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar-brand {
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin-left: 10px;
+}
+
+.nav-link {
+  min-width: 170px;
+}
+
+.login-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

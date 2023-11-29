@@ -1,6 +1,10 @@
 puts "Destroying entries..."
 Wardrobe.destroy_all
 Bookmark.destroy_all
+Sdg.destroy_all
+SdgFabric.destroy_all
+ProductFabric.destroy_all
+Fabric.destroy_all
 Product.destroy_all
 Category.destroy_all
 Scan.destroy_all
@@ -96,6 +100,52 @@ Product.create!(
   comments: "Great for yoga",
   description: "New yoga shorts",
   score: 1,
+)
+
+puts Fabric.create!(
+  name: "Cotton",
+  weighted_average_performance: 84,
+  weighted_average_score: 3
+)
+
+Fabric.create!(
+  name: "Polyester",
+  weighted_average_performance: 34,
+  weighted_average_score: 1
+)
+
+puts ProductFabric.create!(
+  fabric: Fabric.first,
+  product: Product.first,
+  fabric_percent: 100
+)
+
+ProductFabric.create!(
+  fabric: Fabric.last,
+  product: Product.last,
+  fabric_percent: 80
+)
+
+puts Sdg.create!(
+  name: "Water",
+  description: "This indicator measures the adaptive monitoring of water resources related to withdrawal. Monitoring will focus on pressures degrading water resources, the state of water resources, and the effectiveness of monitoring-based actions. Together, these create the Pressure, State, Response (PSR) framework. Within this framework, the indicators are linked such that a change in pressure with regard to water will result in a corresponding move with the state of the water resources.",
+  score: 3
+)
+
+Sdg.create!(
+  name: "Climate",
+  description: "This indicator evaluates the implementation of long term climate resiliency methods to protect against extreme weather events. Climate resiliency is measured through the adoption of actions to prevent and minimize climate change disruption. This indicator focuses on establishing a programs adopted onsite practices, technology adoptions, and financial support.",
+  score: 2
+)
+
+puts SdgFabric.create!(
+  sdg: Sdg.first,
+  fabric: Fabric.first
+)
+
+SdgFabric.create!(
+  sdg: Sdg.first,
+  fabric: Fabric.first
 )
 
 puts Bookmark.create!(
