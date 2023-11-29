@@ -8,8 +8,8 @@ export default class extends Controller {
 
   connect() {
     console.log("Hello from StimulusJS");
-    // this.canvas = document.createElement('canvas'); // Create a canvas element
-    // this.initScan();
+    this.canvas = document.createElement('canvas'); // Create a canvas element
+    this.initScan();
   }
 
   initScan() {
