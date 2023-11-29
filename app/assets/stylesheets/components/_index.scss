@@ -3,3 +3,24 @@
 @import "avatar";
 @import "form_legend_clear";
 @import "navbar";
+@import "scan";
+
+// desktop only visibility
+@media screen and (min-width: 430px) {
+  .mobile-only {
+    display: none;
+  }
+  .desktop-only {
+    display: block;
+  }
+}
+
+// mobile only visibility
+@media screen and (max-width: 429px) {
+  .mobile-only {
+    display: block;
+  }
+  .desktop-only {
+    display: none;
+  }
+}
