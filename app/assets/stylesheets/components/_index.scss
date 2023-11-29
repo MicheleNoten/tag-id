@@ -26,3 +26,11 @@
     display: none;
   }
 }
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 60px; /* Margin bottom by footer height */
+}
