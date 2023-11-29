@@ -2,6 +2,31 @@
  <div class="circle circle--large circle--large-1">1</div>
 */
 
+$inner-cricrle-large: radial-gradient(150px circle at 50% 50%, #fff 50%, transparent 50%);
+$inner-cricrle-medium: radial-gradient(83px circle at 50% 50%, #fff 50%, transparent 50%);
+$inner-cricrle-small: radial-gradient(41px circle at 50% 50%, #fff 50%, transparent 50%);
+
+
+$text-0: #484C52;
+$circle-outer-0: #BDBDBD;
+$circle-inner-0: #BDBDBD;
+
+$text-1: #5F0C01;
+$circle-outer-1: #FEDADA;
+$circle-inner-1: #FC5D5D;
+
+$text-2: #5F2E01;
+$circle-outer-2: #FEF4DA;
+$circle-inner-2: #FCA05D;
+
+$text-3: #5D5F01;
+$circle-outer-3: #FEF4DA;
+$circle-inner-3: #FCD95D;
+
+$text-4: #015F3F;
+$circle-outer-4: #B2E4A1;
+$circle-inner-4: #5DB075;
+
 .circle {
  /* Example height, should be the same as width for a perfect circle */
   border-radius: 50%;
@@ -22,28 +47,28 @@
 }
 
 .circle--large-0 {
-  color: #484C52;
-  background: radial-gradient(150px circle at 50% 50%, #fff 50%, transparent 50%), conic-gradient(#BDBDBD 100%, #BDBDBD 0%);
+  color: $text-0;
+  background: $inner-cricrle-large, conic-gradient($circle-outer-0 100%, $circle-outer-0 0%);
 }
 
 .circle--large-1 {
-  color: #5F0C01;
-  background: radial-gradient(150px circle at 50% 50%, #fff 50%, transparent 50%), conic-gradient(#FEDADA 75%, #FC5D5D 25%);
+  color: $text-1;
+  background: $inner-cricrle-large, conic-gradient($circle-outer-1 75%, $circle-inner-1 25%);
 }
 
 .circle--large-2 {
-  color: #5F2E01;
-  background: radial-gradient(150px circle at 50% 50%, #fff 50%, transparent 50%), conic-gradient(#FEF4DA 50%, #FCA05D 50%);
+  color: $text-2;
+  background: $inner-cricrle-large, conic-gradient($circle-inner-2 50%, $circle-outer-2 50%);
 }
 
 .circle--large-3 {
-  color: #5D5F01;
-  background: radial-gradient(150px circle at 50% 50%, #fff 50%, transparent 50%), conic-gradient(#FEF4DA 25%, #FCD95D 75%);
+  color: $text-3;
+  background: $inner-cricrle-large, conic-gradient($circle-inner-3 25%, $circle-outer-3 75%);
 }
 
 .circle--large-4 {
-  color: #015F3F;
-  background: radial-gradient(150px circle at 50% 50%, #fff 50%, transparent 50%), conic-gradient(#B2E4A1 0%, #5DB075 100%);
+  color: $text-4;
+  background: $inner-cricrle-large, conic-gradient($circle-inner-4 0%, $circle-outer-4 100%);
 }
 
 /* ===***** Circle Medium *****==== */
@@ -52,33 +77,32 @@
 .circle--medium {
   width: 100px;
   height: 100px;
-  background: radial-gradient(83px circle at 50% 50%, #fff 50%, transparent 50%), conic-gradient(#A4BE7B 80%, #015F3F 20%);
   font-size: 48px;
 }
 
 .circle--medium-0 {
-  color: #484C52;
-  background: radial-gradient(83px circle at 50% 50%, #fff 50%, transparent 50%), conic-gradient(#BDBDBD 100%, #BDBDBD 0%);
+  color: $text-0;
+  background: $inner-cricrle-medium, conic-gradient($circle-outer-0 100%, $circle-outer-0 0%);
 }
 
 .circle--medium-1 {
-  color: #5F0C01;
-  background: radial-gradient(83px circle at 50% 50%, #fff 50%, transparent 50%), conic-gradient(#FEDADA 75%, #FC5D5D 25%);
+  color: $text-1;
+  background: $inner-cricrle-medium, conic-gradient($circle-inner-1 75%, $circle-outer-1 25%);
 }
 
 .circle--medium-2 {
-  color: #5F2E01;
-  background: radial-gradient(83px circle at 50% 50%, #fff 50%, transparent 50%), conic-gradient(#FEF4DA 50%, #FCA05D 50%);
+  color: $text-2;
+  background: $inner-cricrle-medium, conic-gradient($circle-inner-2 50%, $circle-outer-2 50%);
 }
 
 .circle--medium-3 {
-  color: #5D5F01;
-  background: radial-gradient(83px circle at 50% 50%, #fff 50%, transparent 50%), conic-gradient(#FEF4DA 25%, #FCD95D 75%);
+  color: $text-3;
+  background: $inner-cricrle-medium, conic-gradient($circle-inner-3 25%, $circle-outer-3 75%);
 }
 
 .circle--medium-4 {
-  color: #015F3F;
-  background: radial-gradient(83px circle at 50% 50%, #fff 50%, transparent 50%), conic-gradient(#B2E4A1 0%, #5DB075 100%);
+  color: $text-4;
+  background: $inner-cricrle-medium, conic-gradient($circle-inner-4 0%, $circle-outer-4 100%);
 }
 
 /* ===***** Circle Small *****==== */
@@ -87,31 +111,30 @@
 .circle--small {
   width: 50px;
   height: 50px;
-  background: radial-gradient(41px circle at 50% 50%, #fff 50%, transparent 50%), conic-gradient(#A4BE7B 80%, #015F3F 20%);
   font-size: 28px;
 }
 
 .circle--small-0 {
-  color: #484C52;
-  background: radial-gradient(41px circle at 50% 50%, #fff 50%, transparent 50%), conic-gradient(#BDBDBD 100%, #BDBDBD 0%);
+  color: $text-0;
+  background: $inner-cricrle-small, conic-gradient($circle-outer-0 100%, $circle-outer-0 0%);
 }
 
 .circle--small-1 {
-  color: #5F0C01;
-  background: radial-gradient(41px circle at 50% 50%, #fff 50%, transparent 50%), conic-gradient(#FEDADA 75%, #FC5D5D 25%);
+  color: $text-1;
+  background: $inner-cricrle-small, conic-gradient($circle-inner-1 75%, $circle-outer-1 25%);
 }
 
 .circle--small-2 {
-  color: #5F2E01;
-  background: radial-gradient(41px circle at 50% 50%, #fff 50%, transparent 50%), conic-gradient(#FEF4DA 50%, #FCA05D 50%);
+  color: $text-2;
+  background: $inner-cricrle-small, conic-gradient($circle-inner-2 50%, $circle-outer-2 50%);
 }
 
 .circle--small-3 {
-  color: #5D5F01;
-  background: radial-gradient(41px circle at 50% 50%, #fff 50%, transparent 50%), conic-gradient(#FEF4DA 25%, #FCD95D 75%);
+  color: $text-3;
+  background: $inner-cricrle-small, conic-gradient($circle-inner-3 25%, $circle-outer-3 75%);
 }
 
 .circle--small-4 {
-  color: #015F3F;
-  background: radial-gradient(41px circle at 50% 50%, #fff 50%, transparent 50%), conic-gradient(#B2E4A1 0%, #5DB075 100%);
+  color: $text-4;
+  background: $inner-cricrle-small, conic-gradient($circle-inner-4 0%, $circle-outer-4 100%);
 }
