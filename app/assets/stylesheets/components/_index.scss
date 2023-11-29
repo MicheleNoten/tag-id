@@ -1,5 +1,28 @@
-// Import your components CSS files here.
 @import "alert";
 @import "avatar";
 @import "form_legend_clear";
 @import "navbar";
+@import "scan";
+@import "button";
+@import "typography";
+@import "circle";
+
+// desktop only visibility
+@media screen and (min-width: 431px) {
+  .mobile-only {
+    display: none;
+  }
+  .desktop-only {
+    display: block;
+  }
+}
+
+// mobile only visibility
+@media screen and (max-width: 430px) {
+  .mobile-only {
+    display: block;
+  }
+  .desktop-only {
+    display: none;
+  }
+}
