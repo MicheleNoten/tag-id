@@ -118,5 +118,4 @@ Wardrobe.create!(
   product: Product.last
 )
 
-
 puts "Finished!"
