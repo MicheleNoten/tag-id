@@ -1,0 +1,43 @@
+.card--fabric {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.card--fabric-info {
+  width: 20vw;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .info-circle {
+    width: 55px;
+    height: 55px;
+    font-size: 18px;
+    border-radius: 100%;
+    background: #EFEEEE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.card--fabric-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 60vw;
+}
+
+.card--fabric-sdg {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto 0;
+  width: 20vw;
+}
