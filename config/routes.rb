@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :scans, only: [:new, :create, :destroy]
 
-  resources :products, only: [:new, :edit, :show, :update] do
+  resources :products, only: [:new, :edit, :show, :update, :create] do
     resources :bookmarks, only: [:create]
     resources :wardrobes, only: [:create]
   end

@@ -6,6 +6,8 @@
 @import "button";
 @import "typography";
 @import "circle";
+@import "form";
+@import "image_slider";
 
 // desktop only visibility
 @media screen and (min-width: 431px) {
@@ -25,4 +27,12 @@
   .desktop-only {
     display: none;
   }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 60px; /* Margin bottom by footer height */
 }

@@ -1,0 +1,16 @@
+/* Use the below HTML to generate Circle
+ <div class="circle">1</div>
+*/
+
+.circle {
+  width: 100px; /* Example width */
+  height: 100px; /* Example height, should be the same as width for a perfect circle */
+  background: radial-gradient(83q circle at 53q 53q, #fff 50%, transparent 50%), conic-gradient(#A4BE7B 80%, #015F3F 20%);
+  border-radius: 50%;
+  margin: 50px 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 38px;
+  font-weight: 700;
+}
