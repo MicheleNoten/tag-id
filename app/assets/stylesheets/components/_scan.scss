@@ -1,0 +1,18 @@
+.scan-container {
+  position: relative;
+  text-align: center;
+}
+.scan-video {
+  width: 100%;
+}
+.scan-startbutton {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 48px;
+  margin: 0;
+  text-shadow: 0 0 8px rgba(255,255,255,0.7);
+  cursor: pointer;
+}
