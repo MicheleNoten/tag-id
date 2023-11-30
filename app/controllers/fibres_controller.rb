@@ -1,0 +1,2 @@
+class FibresController < ApplicationController
+end

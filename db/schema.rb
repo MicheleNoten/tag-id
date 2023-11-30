@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_29_043124) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_30_044433) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,6 +63,24 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_043124) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+  end
+
+  create_table "fibres", force: :cascade do |t|
+    t.string "material"
+    t.string "material_standard"
+    t.string "material_standard_combined"
+    t.string "scoring_type"
+    t.integer "climate"
+    t.integer "water"
+    t.integer "chemistry"
+    t.integer "land"
+    t.integer "biodiversity"
+    t.integer "resource_use_and_waste"
+    t.integer "human_rights"
+    t.integer "animal_welfare"
+    t.integer "integrity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "product_fabrics", force: :cascade do |t|

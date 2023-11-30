@@ -15,5 +15,7 @@ Rails.application.routes.draw do
 
   get "profile" => "pages#profile", as: :profile
 
+  get 'fibres/seed', to: 'fibres#seed'
+
   get "up" => "rails/health#show", as: :rails_health_check
 end

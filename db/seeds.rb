@@ -1,14 +1,38 @@
+require 'csv'
+
 puts "Destroying entries..."
 Wardrobe.destroy_all
 Bookmark.destroy_all
-Sdg.destroy_all
 SdgFabric.destroy_all
+Sdg.destroy_all
 ProductFabric.destroy_all
 Fabric.destroy_all
 Product.destroy_all
 Category.destroy_all
 Scan.destroy_all
 User.destroy_all
+Fibre.destroy_all
+
+csv_path = Rails.root.join('db', 'fibres.csv')
+CSV.foreach(csv_path, headers: true) do |row|
+  p row
+  new = Fibre.create! do |fibre|
+    fibre.material = row['material']
+    fibre.material_standard = row['material_standard']
+    fibre.material_standard_combined = row['material_standard_combined']
+    fibre.scoring_type = row['scoring_type']
+    fibre.climate = row['climate']
+    fibre.water = row['water']
+    fibre.chemistry = row['chemistry']
+    fibre.land = row['land']
+    fibre.biodiversity = row['biodiversity']
+    fibre.resource_use_and_waste = row['resource_use_and_waste']
+    fibre.human_rights = row['human_rights']
+    fibre.animal_welfare = row['animal_welfare']
+    fibre.integrity = row['integrity']
+  end
+  p new
+end
 
 puts "Creating entries..."
 
