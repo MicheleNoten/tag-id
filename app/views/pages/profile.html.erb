@@ -1,13 +1,75 @@
-<h3>Profile</h3>
-<p>Back</p>
-<a href="#" class="avatar">
-  <% if current_user.avatar.attached? %>
-    <%= cl_image_tag current_user.avatar.key, class: "avatar"%>
-  <% else %>
-    <%= image_tag "dummy_avatar.jpg", class: "avatar-large"%>
-  <% end %>
-</a>
-<h6>Natalia Jackson</h6>
-<a>
-
-<%= render "shared/footer" %>
+<div>
+  <h3>Profile</h3>
+  <div>
+    <%= link_to root_path do %>
+      <p>Back</p>
+    <% end %>
+  </div>
+  <div>
+    <a href="#" class="avatar">
+      <% if current_user.avatar.attached? %>
+        <%= cl_image_tag current_user.avatar.key, class: "avatar"%>
+      <% else %>
+        <%= image_tag "dummy_avatar.jpg", class: "avatar-large"%>
+      <% end %>
+    </a>
+  </div>
+  <div>
+    <h6><%= "#{current_user.first_name} #{current_user.last_name}" %></h6>
+  </div>
+  <div class="profile-actions">
+    <%= link_to edit_user_registration_path do %>
+      <div class="profile-action">
+        <div class="profile-image">
+          <%= image_tag "blackuser.svg", alt: "text" %>
+        </div>
+        <div class="profile-content">
+          <p>EDIT MY PROFILE</p>
+        </div>
+        <div class="svg-icon">
+          <%= image_tag "Arrow.svg", alt: "text" %>
+        </div>
+      </div>
+    <% end %>
+    <%= link_to wardrobes_path do %>
+      <div class="profile-action">
+        <div class="profile-image">
+          <%= image_tag "Star.svg", alt: "text" %>
+        </div>
+        <div class="profile-content">
+          <p>MY WARDROBE</p>
+        </div>
+        <div class="svg-icon">
+          <%= image_tag "Arrow.svg", alt: "text" %>
+        </div>
+      </div>
+    <% end %>
+    <%= link_to bookmarks_path do %>
+      <div class="profile-action">
+        <div class="profile-image">
+          <%= image_tag "bookmarks.svg", alt: "text" %>
+        </div>
+        <div class="profile-content">
+          <p>MY BOOKMARKS</p>
+        </div>
+        <div class="svg-icon">
+          <%= image_tag "Arrow.svg", alt: "text" %>
+        </div>
+      </div>
+    <% end %>
+    <%= link_to new_user_session_path do %>
+      <div class="profile-action">
+        <div class="profile-image">
+          <%= image_tag "setting.svg", alt: "text" %>
+        </div>
+        <div class="profile-content">
+          <p>LOG OUT</p>
+        </div>
+        <div class="svg-icon">
+          <%= image_tag "Arrow.svg", alt: "text" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= render "shared/footer" %>
+</div>
