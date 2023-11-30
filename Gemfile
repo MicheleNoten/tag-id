@@ -58,6 +58,7 @@ gem "devise"
 gem "rails-ujs", git: "https://github.com/rails-lts/rails-ujs", branch: "lts"
 gem "importmap-rails"
 
+gem "csv"
 
 group :development, :test do
   gem "dotenv-rails"
