@@ -2,9 +2,10 @@
   <% if @product.photos.attached? %>
     <div class="slider-container">
       <div class="slider-wrapper">
-      <%# TODO: add an each with to ensure the first one is 'active' %>
-        <% @product.photos.each do |photo| %>
-          <div class="slide"><%= cl_image_tag photo.key, class: "w-100", alt: "Slide" %></div>
+        <% @product.photos.each_with_index do |photo, index| %>
+          <div class="slide <%= 'active' if index.zero? %>">
+            <%= cl_image_tag photo.key, class: "w-100", alt: "Slide" %>
+          </div>
         <% end %>
       </div>
     </div>
@@ -119,4 +120,6 @@
     </div>
   </div>
   <% end %>
+  <%= link_to "Add to Wardrobe", wardrobes_path(product_id: @product.id), class: "button-green" %>
+  <%= link_to "Delete", root_path %>
 </div>
