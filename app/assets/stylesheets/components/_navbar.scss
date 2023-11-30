@@ -1,6 +1,14 @@
 .navbar-lewagon {
-  justify-content: space-between;
+  justify-content: flex-start;
   background: white;
+}
+
+.navbar > .container-fluid{
+  display: flex;
+  flex-wrap: inherit;
+  align-items: center;
+  justify-content: flex-end;
+  // flex-shrink: 0;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -26,4 +34,3 @@
   align-items: center;
   justify-content: center;
 }
-
