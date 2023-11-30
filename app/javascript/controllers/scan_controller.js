@@ -13,28 +13,40 @@ export default class extends Controller {
   }
 
   initScan() {
-    let width = 400;
-    let height = 0;
-    let streaming = false;
+    // Select the element with the class 'scan-container'
+    const scanContainer = document.querySelector('.camera-wrapper');
+    // Get the width and height of the scan-container
+    let containerWidth = scanContainer.clientWidth;
+    let containerHeight = scanContainer.clientHeight;
 
-    navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-      .then((stream) => {
-        this.stream = stream;
-        this.videoTarget.srcObject = stream;
-        this.videoTarget.play();
-      })
-      .catch((err) => {
-        console.log("An error occurred: " + err);
-      });
+    const constraints = {
+      video: {
+        facingMode: "user", //{ exact: "environment" },
+        width: {ideal: containerHeight},
+        height: {ideal: containerWidth}
+      },
+      audio: false
+    }
 
-    this.videoTarget.addEventListener('canplay', (ev) => {
-      if (!streaming) {
-        height = this.videoTarget.videoHeight / (this.videoTarget.videoWidth / width);
-        this.videoTarget.setAttribute('width', width);
-        this.videoTarget.setAttribute('height', height);
-        streaming = true;
-      }
-    }, false);
+    navigator.mediaDevices.getUserMedia(constraints)
+    .then((stream) => {
+      this.stream = stream;
+      this.videoTarget.srcObject = stream;
+    })
+    .catch((err) => {
+      console.log("An error occurred: " + err);
+    });
+
+
+
+    this.videoTarget.addEventListener('canplay', () => {
+      console.log("Video can start, but not sure it will play through.");
+      // Set the width and height of the video to match the scan-container
+      this.videoTarget.setAttribute('width', containerWidth);
+      this.videoTarget.setAttribute('height', containerHeight);
+      this.videoTarget.play();
+    });
+
   }
 
   takePicture() {
