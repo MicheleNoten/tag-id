@@ -1,17 +1,122 @@
 <div class="image-container">
   <% if @product.photos.attached? %>
-  <% if @product.photos.length > 1 %>
     <div class="slider-container">
       <div class="slider-wrapper">
+      <%# TODO: add an each with to ensure the first one is 'active' %>
         <% @product.photos.each do |photo| %>
           <div class="slide"><%= cl_image_tag photo.key, class: "w-100", alt: "Slide" %></div>
         <% end %>
       </div>
     </div>
   <% else %>
-    <%= cl_image_tag @product.photos.first.key, class: "w-100" %>
+    <%= image_tag "blank_image.png", class: "w-100" %>
   <% end %>
-<% else %>
-  <%= image_tag "blank_image.png", class: "w-100" %>
-<% end %>
+</div>
+<div class="container">
+<div class="col-12 mx-auto">
+  <div class="card--score">
+    <div class="card--score-sdg">
+      <div class="circle circle--medium circle--medium-3">3</div>
+    </div>
+    <div class="card--score-content py-3">
+      <h6 class="bold">Not-good-enough</h6>
+      <p class="small">Pre-defined message based on score.</p>
+    </div>
+    </div>
+</div>
+<h4><%= "#{@product.item_name}" %></h4>
+<%= link_to "Edit", edit_product_path(@product) %>
+<% @product.product_fabrics.each do |product_fabric| %>
+    <div class="col-12 mx-auto">
+      <div class="card--item">
+        <div class="card--item-info">
+          <div class="info-circle">
+          <p><%=product_fabric.fabric_percent%><span class="xs">%</span></p>
+          </div>
+          </div>
+          <div class="card--item-content py-3 no-border">
+          <h3><%=product_fabric.fabric.name%></h3>
+          <p>XXX Land is a place where you can build your own world.</p>
+          </div>
+        <div class="card--item-sdg">
+        <div class="circle circle--small circle--small-3">3</div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <% if @product.made_in.present? %>
+  <div class="col-12 mx-auto">
+    <div class="card--item">
+      <div class="card--item-info">
+        <div class="info-circle">
+          <p><%="flag"%><span class="xs"></span></p>
+        </div>
+      </div>
+      <div class="card--item-content no-border py-3">
+        <h4><%=@product.made_in%></h4>
+        <p>Land is a place where you can build your own world.</p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <% if @product.brand.present? %>
+    <div class="col-12 mx-auto">
+    <div class="card--item">
+      <div class="card--item-info">
+        <div class="info-circle">
+          <p><%="brand"%><span class="xs"></span></p>
+        </div>
+      </div>
+      <div class="card--item-content no-border py-3">
+        <h4><%=@product.brand%></h4>
+        <p>Land is a place where you can build your own world.</p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <% if @product.category.present?%>
+    <div class="col-12 mx-auto">
+    <div class="card--item">
+      <div class="card--item-info">
+        <div class="info-circle">
+          <p><%=" "%><span class="xs"></span></p>
+        </div>
+      </div>
+      <div class="card--item-content no-border py-3">
+        <h4><%=@product.category.name%></h4>
+        <p>Land is a place where you can build your own world.</p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <% if @product.purchased_in.present?%>
+    <div class="col-12 mx-auto">
+    <div class="card--item">
+      <div class="card--item-info">
+        <div class="info-circle">
+          <p><%=" "%><span class="xs"></span></p>
+        </div>
+      </div>
+      <div class="card--item-content no-border py-3">
+        <h4><%=@product.purchased_in%></h4>
+        <p>Land is a place where you can build your own world.</p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <% if @product.certification_label.present?%>
+    <div class="col-12 mx-auto">
+    <div class="card--item">
+      <div class="card--item-info">
+        <div class="info-circle">
+          <p><%=" "%><span class="xs"></span></p>
+        </div>
+      </div>
+      <div class="card--item-content no-border py-3">
+        <h4><%=@product.certification_label%></h4>
+        <p>Land is a place where you can build your own world.</p>
+      </div>
+    </div>
+  </div>
+  <% end %>
 </div>

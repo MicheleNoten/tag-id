@@ -18,10 +18,6 @@
     </div>
 </div>
  ----------------------------------------- */
-//  Use class no-border to remove the left border
-.no-border {
-  border: 0;
-}
 
 .card--item {
   width: 100%;
@@ -148,4 +144,9 @@
   .icon {
     margin: 4px;
   }
+}
+
+//  Use class no-border to remove the left border
+.no-border {
+  border: 0;
 }
