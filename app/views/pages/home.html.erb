@@ -9,22 +9,76 @@
       <h5 class="text-center">Heading 5</h5>
       <h6 class="text-center">Heading 6</h6>
       <p class="text-center">Paragraph</p>
-      <div class="col-12 mx-auto mt-5">
-        <div class="card--fabric">
-          <div class="card--fabric-info">
+      <h1 class="text-center my-3">Cards</h1>
+      <%# Card Score Starts here %>
+      <div class="col-12 mx-auto">
+        <div class="card--score">
+          <div class="card--score-sdg">
+            <div class="circle circle--medium circle--medium-3">3</div>
+          </div>
+          <div class="card--score-content py-3">
+            <h6 class="bold">Not-good-enough</h6>
+            <p class="small">Pre-defined message based on score.</p>
+          </div>
+         </div>
+      </div>
+      <%# Card Score Ends here %>
+
+      <%# Card Product Starts here %>
+      <div class="col-12 mx-auto">
+        <div class="card--product">
+          <div class="avatar">
+            <%= image_tag "dummy_avatar.jpg", class: "avatar" %>
+          </div>
+          <div class="card--product-content">
+            <p class="small bold">product.item_name</p>
+            <p class="xs">Score: product.avg_sc </p>
+          </div>
+          <div class="card--product-icon">
+            <%= image_tag "hanger.svg", class: "icon", alt: "add to wardrobe" %>
+            <%= image_tag "pencil.svg", class: "icon", alt: "edit" %>
+            <%= image_tag "trash.svg", class: "icon", alt: "delete" %>
+          </div>
+         </div>
+      </div>
+      <%# Card Product Ends here %>
+
+      <%# Card Item code starts here %>
+      <div class="col-12 mx-auto">
+        <div class="card--item">
+          <div class="card--item-info">
             <div class="info-circle">
-              <p>91%</p>
+              <p>91<span class="xs">%</span></p>
             </div>
           </div>
-          <div class="card--fabric-content">
-            <h3>Land</h3>
+          <div class="card--item-content py-3">
+            <h3>Nylon</h3>
             <p>Land is a place where you can build your own world.</p>
           </div>
-          <div class="card--fabric-sdg">
+          <div class="card--item-sdg">
             <div class="circle circle--small circle--small-3">3</div>
           </div>
          </div>
       </div>
+      <div class="col-12 mx-auto">
+        <div class="card--item">
+          <div class="card--item-info">
+            <div class="info-circle">
+              <p>19<span class="xs">%</span></p>
+            </div>
+          </div>
+          <div class="card--item-content py-3">
+            <h3>Lycra</h3>
+            <p>Water is essential for life. Save water</p>
+          </div>
+          <div class="card--item-sdg">
+            <div class="circle circle--small circle--small-4">4</div>
+          </div>
+         </div>
+      </div>
+      <%# Card Item code ends here %>
+
+       <h1 class="text-center my-3">Circles</h1>
       <div class="col-12 mx-auto d-flex justify-content-center">
         <div class="circle circle--large circle--large-1">1</div>
         </div>

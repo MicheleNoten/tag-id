@@ -1,14 +1,42 @@
-.card--fabric {
+/* -------*** Card Item  *** -----------
+-------------------------------------------
+------------HTML code for card-------------
+<div class="col-12 mx-auto">
+  <div class="card--item">
+    <div class="card--item-info">
+      <div class="info-circle">
+        <p>91<span class="xs">%</span></p>
+      </div>
+    </div>
+    <div class="card--item-content py-3">
+      <h3>Nylon</h3>
+      <p>Land is a place where you can build your own world.</p>
+    </div>
+    <div class="card--item-sdg">
+      <div class="circle circle--small circle--small-3">3</div>
+    </div>
+    </div>
+</div>
+ ----------------------------------------- */
+//  Use class no-border to remove the left border
+.no-border {
+  border: 0;
+}
+
+.card--item {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
-.card--fabric-info {
+.card--item-info {
   width: 20vw;
   height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: absolute;
+  top: -15%;
 
   .info-circle {
     width: 55px;
@@ -26,18 +54,98 @@
   }
 }
 
-.card--fabric-content {
+.card--item-content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
   width: 60vw;
+  border-left: 1px solid grey;
+  padding-left: 14vw;
+  margin-left: 6vw;
 }
 
-.card--fabric-sdg {
+.card--item-sdg {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: auto 0;
   width: 20vw;
+}
+
+/* -------*** Card Score  *** -----------
+-------------------------------------------
+------------HTML code for card-------------
+<div class="col-12 mx-auto">
+  <div class="card--score">
+    <div class="card--score-sdg">
+      <div class="circle circle--medium circle--medium-3">3</div>
+    </div>
+    <div class="card--score-content py-3">
+      <h6 class="bold">Not-good-enough</h6>
+      <p class="small">Pre-defined message based on score.</p>
+    </div>
+    </div>
+</div>
+ ----------------------------------------- */
+.card--score {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 20px;
+  border-radius: 18px;
+  background: rgba(248, 247, 247, 0.69);
+  padding: 20px 10px;
+}
+
+.card--score-content {
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+
+  h6 {
+    margin-bottom: 18px;
+  }
+}
+
+/* -------*** Card Product  *** -----------
+-------------------------------------------
+------------HTML code for card-------------
+
+
+
+ ----------------------------------------- */
+
+.card--product {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background: #fff;
+  padding: 20px 10px;
+  border-radius: 10px;
+  /* Shadow/shadow-sm */
+  box-shadow: 0px 1px 3px 0px rgba(50, 50, 71, 0.10), 0px 0px 1px 0px rgba(12, 26, 75, 0.20);
+}
+
+.card--product-content {
+  display: flex;
+  flex-direction: column;
+  width: 55vw;
+  padding: 0px 20px;
+}
+
+.card--product-icon {
+  width: 25vw;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .icon {
+    margin: 4px;
+  }
 }
