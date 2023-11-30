@@ -1,0 +1,21 @@
+<h1>Editing scan</h1>
+
+<%= simple_form_for(@scan) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :photo, as: :file %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+
+<br>
+
+<div>
+  <%= link_to "Show this scan", @scan %> |
+  <%= link_to "Back to scans", scans_path %>
+</div>

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  resources :scans, only: [:new, :create, :destroy]
+  resources :scans, only: [:index, :new, :create, :show, :edit, :update, :destroy]
 
   resources :products, only: [:new, :edit, :show, :update, :create] do
     resources :bookmarks, only: [:create]
