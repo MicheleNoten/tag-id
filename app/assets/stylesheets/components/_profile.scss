@@ -1,0 +1,33 @@
+.profile-action {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.svg-icon {
+  width: 20vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-image {
+  width: 20vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-content {
+  width: 60vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+// .profile-actions {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+// }
