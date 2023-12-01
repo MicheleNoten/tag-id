@@ -143,7 +143,7 @@ GEM
       multipart-post (~> 2)
     faraday-net_http (3.0.2)
     ffi (1.16.3)
-    font-awesome-sass (6.4.2)
+    font-awesome-sass (6.5.1)
       sassc (~> 2.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -163,8 +163,6 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    jsbundling-rails (1.2.1)
-      railties (>= 6.0.0)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -183,7 +181,7 @@ GEM
     msgpack (1.7.2)
     multipart-post (2.3.0)
     mutex_m (0.2.0)
-    net-imap (0.4.6)
+    net-imap (0.4.7)
       date
       net-protocol
     net-pop (0.1.2)
@@ -193,14 +191,8 @@ GEM
     net-smtp (0.4.0)
       net-protocol
     netrc (0.11.0)
-    nio4r (2.6.1)
-    nokogiri (1.15.5-aarch64-linux)
-      racc (~> 1.4)
+    nio4r (2.7.0)
     nokogiri (1.15.5-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.15.5-x86_64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.15.5-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.5.4)
@@ -252,7 +244,7 @@ GEM
     rdoc (6.6.0)
       psych (>= 4.0.0)
     regexp_parser (2.8.2)
-    reline (0.4.0)
+    reline (0.4.1)
       io-console (~> 0.5)
     responders (3.1.1)
       actionpack (>= 5.2)
@@ -293,7 +285,7 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.3.0)
       railties (>= 6.0.0)
-    stringio (3.0.9)
+    stringio (3.1.0)
     thor (1.3.0)
     tilt (2.3.0)
     timeout (0.4.1)
@@ -320,10 +312,7 @@ GEM
     zeitwerk (2.6.12)
 
 PLATFORMS
-  aarch64-linux
   arm64-darwin-22
-  x86_64-darwin-21
-  x86_64-linux
 
 DEPENDENCIES
   autoprefixer-rails
@@ -339,7 +328,6 @@ DEPENDENCIES
   font-awesome-sass (~> 6.1)
   importmap-rails
   jbuilder
-  jsbundling-rails
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.2)
