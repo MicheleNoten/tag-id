@@ -69,17 +69,21 @@ export default class extends Controller {
       if (blob) {
         const formData = new FormData();
         formData.append('scan[photo]', blob, 'scan.png');
+
         // formData.append('scan[title]', `Picture taken on ${(new Date).toString()}`);
 
         this.startbuttonTarget.innerText = "✅";
         this.startbuttonTarget.dataset.action = "click->scan#restartCamera";
         this.videoTarget.pause();
 
+        console.log("Sending form data", formData);
         Rails.ajax({
           url: "/scans",
           type: "post",
           data: formData
         });
+
+        console.log("Form data sent");
       } else {
         console.error('Failed to create blob');
       }

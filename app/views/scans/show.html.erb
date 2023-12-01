@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<% if @scan.photo.attached? %>
+  <%= cl_image_tag @scan.photo.key , alt: "tag scan", style: "width: 100px" %>
+<% end %>
+
+<div>
+  <%= link_to "Edit this scan", edit_scan_path(@scan) %> |
+  <%= link_to "Back to scans", scans_path %>
+
+  <%= button_to "Destroy this scan", @scan, method: :delete %>
+</div>
