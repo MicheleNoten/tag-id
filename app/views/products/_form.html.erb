@@ -2,22 +2,23 @@
 <%= f.input :item_name%>
 <div data-controller-target="fabric-list">
   <div data-controller-target="fabric">
-    <input type="text" name="fabric-type-1">
-    <input type="text" name="fabric-composition-1">
+    <input type="text" name="fabric_type_1">
+    <input type="text" name="fabric_composition_1">
   </div>
   <div data-controller-target="fabric">
-    <input type="text" name="fabric-type-2">
-    <input type="text" name="fabric-composition-2">
+    <input type="text" name="fabric_type_2">
+    <input type="text" name="fabric_composition_2">
   </div>
   <button data-action="click->controller#addFabric">Add</button>
 </div>
 <%= f.input :made_in%>
 <%= f.input :brand%>
-<%= f.input :category%>
+<%= f.association :category%>
 <%= f.input :purchased_in%>
 <%= f.input :certification_label%>
-<%= f.input :more_images, as: :file, input_html: { multiple: true } %>
+<%= f.input :photos, as: :file, input_html: { multiple: true } %>
 <%= f.input :comments%>
 <%= f.submit class: 'btn btn-primary'%>
 <%= link_to "Delete", root_path %>
+<%# need to update the delete button to actually delete this input %>
 <% end %>

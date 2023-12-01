@@ -1,6 +1,7 @@
 class WardrobesController < ApplicationController
 
-  def index
-    raise
+  def index_products
+    @products = Product.all
   end
+  
 end
