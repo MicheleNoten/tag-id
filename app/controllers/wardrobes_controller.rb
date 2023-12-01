@@ -1,6 +1,5 @@
 class WardrobesController < ApplicationController
-
   def index
-    raise
+    @wardrobes = Wardrobe.all
   end
 end
