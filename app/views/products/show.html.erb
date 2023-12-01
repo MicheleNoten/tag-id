@@ -27,6 +27,8 @@
 </div>
 <h4><%= "#{@product.item_name}" %></h4>
 <%= link_to "Edit", edit_product_path(@product) %>
+
+
 <% @product.product_fabrics.each do |product_fabric| %>
     <div class="col-12 mx-auto">
       <div class="card--item">
@@ -36,11 +38,11 @@
           </div>
           </div>
           <div class="card--item-content py-3 no-border">
-          <h3><%=product_fabric.fabric.name%></h3>
+          <h5><%=product_fabric.fabric.name%></h5>
           <p>XXX Land is a place where you can build your own world.</p>
           </div>
         <div class="card--item-sdg">
-        <div class="circle circle--small circle--small-3">3</div>
+        <div class="circle circle--small circle--small-3"><%= product_fabric.fabric.weighted_average_score %></div>
       </div>
     </div>
   </div>
@@ -54,7 +56,7 @@
         </div>
       </div>
       <div class="card--item-content no-border py-3">
-        <h4><%=@product.made_in%></h4>
+        <h5><%=@product.made_in%></h5>
         <p>Land is a place where you can build your own world.</p>
       </div>
     </div>
@@ -69,7 +71,7 @@
         </div>
       </div>
       <div class="card--item-content no-border py-3">
-        <h4><%=@product.brand%></h4>
+        <h5><%=@product.brand%></h5>
         <p>Land is a place where you can build your own world.</p>
       </div>
     </div>
@@ -84,7 +86,7 @@
         </div>
       </div>
       <div class="card--item-content no-border py-3">
-        <h4><%=@product.category.name%></h4>
+        <h5><%=@product.category.name%></h5>
         <p>Land is a place where you can build your own world.</p>
       </div>
     </div>
@@ -99,7 +101,7 @@
         </div>
       </div>
       <div class="card--item-content no-border py-3">
-        <h4><%=@product.purchased_in%></h4>
+        <h5><%=@product.purchased_in%></h5>
         <p>Land is a place where you can build your own world.</p>
       </div>
     </div>
@@ -114,7 +116,7 @@
         </div>
       </div>
       <div class="card--item-content no-border py-3">
-        <h4><%=@product.certification_label%></h4>
+        <h5><%=@product.certification_label%></h5>
         <p>Land is a place where you can build your own world.</p>
       </div>
     </div>

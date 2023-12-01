@@ -10,6 +10,7 @@ class ScansController < ApplicationController
   end
 
   def show
+    @scan.set_gpt_response if @scan.photo.attached? && @scan.response_chatgpt.nil?
   end
 
   def edit
@@ -22,7 +23,7 @@ class ScansController < ApplicationController
 
     respond_to do |format|
       if @scan.save
-        format.html { redirect_to scan_url(@scan), notice: "Scan was successfully created." }
+        format.html { redirect_to scans_path, notice: "Scan was successfully created." }
         format.json { render :show, status: :created, location: @scan }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -35,7 +36,7 @@ class ScansController < ApplicationController
   def update
     respond_to do |format|
       if @scan.update(video_params)
-        format.html { redirect_to scan_url(@scan), notice: "Scan was successfully updated." }
+        format.html { redirect_to scan_path(@scan), notice: "Scan was successfully updated." }
         format.json { render :show, status: :ok, location: @scan }
       else
         format.html { render :edit, status: :unprocessable_entity }
