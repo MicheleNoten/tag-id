@@ -82,7 +82,7 @@ export default class extends Controller {
           type: "post",
           data: formData
         });
-
+        location.replace("/scans")
         console.log("Form data sent");
       } else {
         console.error('Failed to create blob');
