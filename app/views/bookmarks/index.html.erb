@@ -4,34 +4,3 @@
   </div>
   <h3 class="text-center">Bookmarks</h3>
 </div>
-<% @bookmarks.each do |bookmark| %>
-  <% product = bookmark.product %>
-  <div class="col-12 mx-auto mt-5">
-    <div class="card--product">
-      <div class="avatar">
-        <% if product.photos.attached? %>
-          <%= cl_image_tag product.photos.first.key, alt: "text", class: "avatar" %>
-        <% elsif product.scan.photo.attached? %>
-          <%= cl_image_tag product.scan.photo.key, alt: "text", class: "avatar" %>
-        <% else %>
-          <%= image_tag "blank_image", class:"avatar" %>
-        <% end %>
-      </div>
-      <div class="card--product-content">
-        <p class="small bold"><%= product.item_name %></p>
-        <p class="xs">Score: <%= product.score %></p>
-      </div>
-      <div class="card--product-icon">
-        <%= link_to wardrobes_path do %>
-          <%= image_tag "hanger-green", alt: "text" %>
-        <% end %>
-        <%= link_to edit_product_path(product) do %>
-           <%= image_tag "pencil-black", alt: "text" %>
-        <% end %>
-        <%= link_to bookmark, method: :delete, data: { confirm: "Are you sure?" } do %>
-          <%= image_tag "trash-red", alt: "text" %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-<% end %>
