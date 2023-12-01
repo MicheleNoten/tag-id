@@ -16,22 +16,49 @@ Fibre.destroy_all
 csv_path = Rails.root.join('db', 'fibres.csv')
 CSV.foreach(csv_path, headers: true) do |row|
   p row
-  new = Fibre.create! do |fibre|
-    fibre.material = row['material']
-    fibre.material_standard = row['material_standard']
-    fibre.material_standard_combined = row['material_standard_combined']
-    fibre.scoring_type = row['scoring_type']
-    fibre.climate = row['climate']
-    fibre.water = row['water']
-    fibre.chemistry = row['chemistry']
-    fibre.land = row['land']
-    fibre.biodiversity = row['biodiversity']
-    fibre.resource_use_and_waste = row['resource_use_and_waste']
-    fibre.human_rights = row['human_rights']
-    fibre.animal_welfare = row['animal_welfare']
-    fibre.integrity = row['integrity']
+  fibre = Fibre.create!(
+    material: row['Material'].downcase.strip,
+    material_standard: row['Type'].downcase.strip,
+    material_standard_combined: row['material_type'].downcase.strip,
+    scoring_type: row['Scoring'].downcase.strip,
+    climate: row['Climate'],
+    water: row['Water'],
+    chemistry: row['Chemistry'],
+    land: row['Land'],
+    biodiversity: row['Biodiversity'],
+    resource_use_and_waste: row['Resource use & waste'],
+    human_rights: row['Human Rights'],
+    animal_welfare: row['Animal Welfare'],
+    integrity: row['Integrity']
+  )
+  p fibre
+
+  categories = ["Water", "Climate", "Chemistry", "Land", "Biodiversity", "Resource use & waste", "Human Rights", "Animal Welfare", "Integrity"]
+
+  fabric = Fabric.create!(
+    name: row['material_type'].downcase.strip
+  )
+
+  categories.each do |category|
+    sdg = Sdg.create!(
+      name: category,
+      description: "This indicator measures the adaptive monitoring of water resources related to withdrawal. Monitoring will focus on pressures degrading water resources, the state of water resources, and the effectiveness of monitoring-based actions. Together, these create the Pressure, State, Response (PSR) framework. Within this framework, the indicators are linked such that a change in pressure with regard to water will result in a corresponding move with the state of the water resources.",
+      score: row[category]
+    )
+
+    SdgFabric.create!(
+      sdg: sdg,
+      fabric: fabric
+    )
   end
-  p new
+  p fabric.sdgs.pluck(:score).count
+  if fabric.sdgs.pluck(:score).count == 0
+    fabric.weighted_average_score = 0
+  else
+    fabric.weighted_average_score = fabric.sdgs.pluck(:score).sum / fabric.sdgs.pluck(:score).count
+  end
+  # DO THE WEIGHTED AVERAGE IMPACT SCORES
+  fabric.save!
 end
 
 puts "Creating entries..."
@@ -126,51 +153,51 @@ Product.create!(
   score: 1,
 )
 
-puts Fabric.create!(
-  name: "Cotton",
-  weighted_average_performance: 84,
-  weighted_average_score: 3
-)
+# puts Fabric.create!(
+#   name: "Cotton",
+#   weighted_average_performance: ,
+#   weighted_average_score: 3
+# )
 
-Fabric.create!(
-  name: "Polyester",
-  weighted_average_performance: 34,
-  weighted_average_score: 1
-)
+# Fabric.create!(
+#   name: "Polyester",
+#   weighted_average_performance: 34,
+#   weighted_average_score: 1
+# )
 
-puts ProductFabric.create!(
-  fabric: Fabric.first,
-  product: Product.first,
-  fabric_percent: 100
-)
+# puts ProductFabric.create!(
+#   fabric: Fabric.first,
+#   product: Product.first,
+#   fabric_percent: 100
+# )
 
-ProductFabric.create!(
-  fabric: Fabric.last,
-  product: Product.last,
-  fabric_percent: 80
-)
+# ProductFabric.create!(
+#   fabric: Fabric.last,
+#   product: Product.last,
+#   fabric_percent: 80
+# )
 
-puts Sdg.create!(
-  name: "Water",
-  description: "This indicator measures the adaptive monitoring of water resources related to withdrawal. Monitoring will focus on pressures degrading water resources, the state of water resources, and the effectiveness of monitoring-based actions. Together, these create the Pressure, State, Response (PSR) framework. Within this framework, the indicators are linked such that a change in pressure with regard to water will result in a corresponding move with the state of the water resources.",
-  score: 3
-)
+# puts Sdg.create!(
+#   name: "Water",
+#   description: "This indicator measures the adaptive monitoring of water resources related to withdrawal. Monitoring will focus on pressures degrading water resources, the state of water resources, and the effectiveness of monitoring-based actions. Together, these create the Pressure, State, Response (PSR) framework. Within this framework, the indicators are linked such that a change in pressure with regard to water will result in a corresponding move with the state of the water resources.",
+#   score: 3
+# )
 
-Sdg.create!(
-  name: "Climate",
-  description: "This indicator evaluates the implementation of long term climate resiliency methods to protect against extreme weather events. Climate resiliency is measured through the adoption of actions to prevent and minimize climate change disruption. This indicator focuses on establishing a programs adopted onsite practices, technology adoptions, and financial support.",
-  score: 2
-)
+# Sdg.create!(
+#   name: "Climate",
+#   description: "This indicator evaluates the implementation of long term climate resiliency methods to protect against extreme weather events. Climate resiliency is measured through the adoption of actions to prevent and minimize climate change disruption. This indicator focuses on establishing a programs adopted onsite practices, technology adoptions, and financial support.",
+#   score: 2
+# )
 
-puts SdgFabric.create!(
-  sdg: Sdg.first,
-  fabric: Fabric.first
-)
+# puts SdgFabric.create!(
+#   sdg: Sdg.first,
+#   fabric: Fabric.first
+# )
 
-SdgFabric.create!(
-  sdg: Sdg.first,
-  fabric: Fabric.first
-)
+# SdgFabric.create!(
+#   sdg: Sdg.first,
+#   fabric: Fabric.first
+# )
 
 puts Bookmark.create!(
   user: User.first,
