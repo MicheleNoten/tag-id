@@ -27,23 +27,14 @@
   align-items: center;
 }
 
-.profile--action-container {
-  // margin-top: 140px;
-}
-
-.my-80px {
+.profile-avatar {
   margin: 80px 0;
-}
-
-.profile-header {
-  position: relative;
 }
 
 .back-button {
   position: absolute;
-  top: 33%;
-  left: 6%;
-
+  top: 4%;
+  padding-left: 6%;
   a {
     color:#A4BE7B;
   }

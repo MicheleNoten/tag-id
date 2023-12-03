@@ -1,21 +1,27 @@
-<div class="row profile-header mt-4">
-  <div class="back-button">
-    <%= link_to "Back", root_path %>
+<div class="container">
+  <div class="col mt-5">
+    <div class="row profile-header">
+      <div class="back-button">
+        <%= link_to "Back", root_path %>
+      </div>
+      <h3 class="text-center">Wardrobe</h3>
+    </div>
+
+    <div class="row mt-5 px-3">
+      <div class="card--product">
+        <div class="avatar">
+          <%= image_tag "dummy_avatar.jpg", class: "avatar" %>
+        </div>
+        <div class="card--product-content">
+          <p class="small bold">product.item_name</p>
+          <p class="xs">Score: product.avg_sc </p>
+        </div>
+        <div class="card--product-icon">
+          <%= image_tag "hanger.svg", class: "icon", alt: "add to wardrobe" %>
+          <%= image_tag "pencil.svg", class: "icon", alt: "edit" %>
+          <%= image_tag "trash.svg", class: "icon", alt: "delete" %>
+        </div>
+        </div>
+    </div>
   </div>
-  <h3 class="text-center">Wardrobe</h3>
-<div class="col-12 mx-auto">
-  <div class="card--product">
-    <div class="avatar">
-      <%= image_tag "dummy_avatar.jpg", class: "avatar" %>
-    </div>
-    <div class="card--product-content">
-      <p class="small bold">product.item_name</p>
-      <p class="xs">Score: product.avg_sc </p>
-    </div>
-    <div class="card--product-icon">
-      <%= image_tag "hanger.svg", class: "icon", alt: "add to wardrobe" %>
-      <%= image_tag "pencil.svg", class: "icon", alt: "edit" %>
-      <%= image_tag "trash.svg", class: "icon", alt: "delete" %>
-    </div>
-    </div>
 </div>

@@ -1,81 +1,84 @@
-<div class="row profile-header mt-4">
-  <div class="back-button">
-    <%= link_to "Back", root_path %>
-  </div>
-  <h3 class="text-center">Profile</h3>
-</div>
-
-<%# Avatar Section with name %>
-<div class="col my-80px">
-  <div class="row my-4">
-    <div class="col-5 d-flex justify-content-center mx-auto">
-      <% if current_user.avatar.attached? %>
-        <%= cl_image_tag current_user.avatar.key, class: "avatar-profile"%>
-      <% else %>
-        <%= image_tag "dummy_avatar.jpg", class: "avatar-profile"%>
-      <% end %>
+<div class="container">
+  <div class="col mt-5">
+    <div class="row page-header">
+      <div class="back-button">
+        <%= link_to "Back", root_path %>
+      </div>
+      <h3 class="text-center">Profile</h3>
     </div>
 
-  </div>
-  <div class="col-5 d-flex justify-content-center mx-auto">
-    <h6><%= "#{current_user.first_name} #{current_user.last_name}" %></h6>
-  </div>
-</div>
+    <%# Avatar Section with name %>
+    <div class="row profile-avatar">
+      <div class="row my-4">
+        <div class="col-12 d-flex justify-content-center mx-auto">
+          <% if current_user.avatar.attached? %>
+            <%= cl_image_tag current_user.avatar.key, class: "avatar-profile"%>
+          <% else %>
+            <%= image_tag "dummy_avatar.jpg", class: "avatar-profile"%>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-12 d-flex justify-content-center mx-auto">
+        <h6><%= "#{current_user.first_name} #{current_user.last_name}" %></h6>
+      </div>
+    </div>
 
-<%# Profile Actions %>
-<div class="col">
-  <div class="profile--action-container">
-    <%= link_to edit_user_registration_path do %>
-      <div class="profile-action">
-        <div class="profile-image">
-          <%= image_tag "blackuser.svg", alt: "text" %>
-        </div>
-        <div class="profile-content">
-          <p>EDIT MY PROFILE</p>
-        </div>
-        <div class="svg-icon">
-          <%= image_tag "Arrow.svg", alt: "text" %>
-        </div>
+    <%# Profile Actions %>
+    <div class="row">
+      <div class="profile--action-container">
+        <%= link_to edit_user_registration_path do %>
+          <div class="profile-action">
+            <div class="profile-image">
+              <%= image_tag "blackuser.svg", alt: "text" %>
+            </div>
+            <div class="profile-content">
+              <p>EDIT MY PROFILE</p>
+            </div>
+            <div class="svg-icon">
+              <%= image_tag "Arrow.svg", alt: "text" %>
+            </div>
+          </div>
+        <% end %>
+        <%= link_to wardrobes_path do %>
+          <div class="profile-action">
+            <div class="profile-image">
+              <%= image_tag "Star.svg", alt: "text" %>
+            </div>
+            <div class="profile-content">
+              <p>MY WARDROBE</p>
+            </div>
+            <div class="svg-icon">
+              <%= image_tag "Arrow.svg", alt: "text" %>
+            </div>
+          </div>
+        <% end %>
+        <%= link_to bookmarks_path do %>
+          <div class="profile-action">
+            <div class="profile-image">
+              <%= image_tag "bookmarks.svg", alt: "text" %>
+            </div>
+            <div class="profile-content">
+              <p>MY BOOKMARKS</p>
+            </div>
+            <div class="svg-icon">
+              <%= image_tag "Arrow.svg", alt: "text" %>
+            </div>
+          </div>
+        <% end %>
+        <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
+          <div class="profile-action">
+            <div class="profile-image">
+              <%= image_tag "setting.svg", alt: "text" %>
+            </div>
+            <div class="profile-content">
+              <p>LOG OUT</p>
+            </div>
+            <div class="svg-icon opacity-0">
+              <%= image_tag "Arrow.svg", alt: "text" %>
+            </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-    <%= link_to wardrobes_path do %>
-      <div class="profile-action">
-        <div class="profile-image">
-          <%= image_tag "Star.svg", alt: "text" %>
-        </div>
-        <div class="profile-content">
-          <p>MY WARDROBE</p>
-        </div>
-        <div class="svg-icon">
-          <%= image_tag "Arrow.svg", alt: "text" %>
-        </div>
-      </div>
-    <% end %>
-    <%= link_to bookmarks_path do %>
-      <div class="profile-action">
-        <div class="profile-image">
-          <%= image_tag "bookmarks.svg", alt: "text" %>
-        </div>
-        <div class="profile-content">
-          <p>MY BOOKMARKS</p>
-        </div>
-        <div class="svg-icon">
-          <%= image_tag "Arrow.svg", alt: "text" %>
-        </div>
-      </div>
-    <% end %>
-    <%= link_to new_user_session_path do %>
-      <div class="profile-action">
-        <div class="profile-image">
-          <%= image_tag "setting.svg", alt: "text" %>
-        </div>
-        <div class="profile-content">
-          <p>LOG OUT</p>
-        </div>
-        <div class="svg-icon opacity-0">
-          <%= image_tag "Arrow.svg", alt: "text" %>
-        </div>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>
