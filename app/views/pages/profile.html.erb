@@ -6,7 +6,7 @@
       </div>
       <h3 class="text-center">Profile</h3>
     </div>
-
+    <% if user_signed_in? %>
     <%# Avatar Section with name %>
     <div class="row profile-avatar">
       <div class="row my-4">
@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <%# Profile Actions %>
+    <%# Profile Actions When user signed in %>
     <div class="row">
       <div class="profile--action-container">
         <%= link_to edit_user_registration_path do %>
@@ -80,5 +80,37 @@
         <% end %>
       </div>
     </div>
+    <% else %>
+    <%# Profile Actions When user not signed in %>
+    <div class="row">
+      <div class="profile--action-container">
+        <%= link_to new_user_session_path do %>
+          <div class="profile-action">
+            <div class="profile-image">
+              <%= image_tag "blackuser.svg", alt: "text" %>
+            </div>
+            <div class="profile-content">
+              <p>LOG IN</p>
+            </div>
+            <div class="svg-icon">
+              <%= image_tag "Arrow.svg", alt: "text" %>
+            </div>
+          </div>
+        <% end %>
+        <%= link_to new_user_registration_path do %>
+          <div class="profile-action">
+            <div class="profile-image">
+              <%= image_tag "Star.svg", alt: "text" %>
+            </div>
+            <div class="profile-content">
+              <p>SIGN UP</p>
+            </div>
+            <div class="svg-icon">
+              <%= image_tag "Arrow.svg", alt: "text" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
