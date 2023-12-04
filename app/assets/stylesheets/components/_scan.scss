@@ -1,19 +1,28 @@
 .scan-container {
-  position: relative;
   text-align: center;
 }
 .scan-video {
   width: 100%;
 }
-.scan-startbutton {
+#scan-startbutton {
   position: absolute;
-  bottom: 8px;
-  left: 42%;
-  text-align: center;
-  font-size: 48px;
+  height: 90px;
+  width: 90px;
+  bottom: 14px;
+  left: 38%;
   margin: 0;
-  text-shadow: 0 0 8px rgba(255,255,255,0.7);
-  cursor: pointer;
+  padding: 0;
+  border: 0;
+  z-index: 99;
+  text-align: center;
+  border-radius: 50%;
+  background-color: $green;
+
+
+  .click-button {
+    height: 36px;
+    width: 36px;
+  }
 }
 
 .camera-wrapper {
@@ -23,4 +32,18 @@
 .scan-action {
   display: flex;
   flex-wrap: wrap;
+}
+
+.back-button {
+  padding-left: 10px;
+}
+
+.manual-button {
+  position: absolute;
+  top: 4%;
+  right: 10px;
+
+  .button-beige {
+    border-radius: 10px;
+  }
 }

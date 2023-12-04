@@ -4,12 +4,15 @@
       <video class="scan-video h-100" data-scan-target="video" playsinline autoplay>
         Video stream not available.
       </video>
-      <button class="scan-startbutton" data-action="click->scan#takePicture" data-scan-target="startbutton">📸</button>
+      <button id="scan-startbutton" data-action="click->scan#takePicture" data-scan-target="startbutton"> <%= image_tag "scan.svg", alt: "click button", class: "click-button" %> </button>
       <!-- Optional: Element to display the scan image -->
       <img class="scan-photo" style="display:none;" data-scan-target="photo">
     </div>
     <div class="back-button">
-      <%= link_to 'Back', scans_path, class: "button btn-green" %>
+      <%= link_to 'Back', scans_path, class: "btn btn-green" %>
+    </div>
+    <div class="manual-button">
+      <%= link_to 'Manual', new_product_path, class: "btn button-beige" %>
     </div>
 
 </div>
