@@ -7,7 +7,13 @@ class ProductsController < ApplicationController
   def show
     @products = Product.all
     @product = Product.find_by_id(params[:id])
-    
+
+    if @product
+      scores = @product.product_fabrics.map { |product_fabric| product_fabric.fabric_percent/100.0 * product_fabric.fabric.weighted_average_score }
+      @average = scores.present? ? (scores.sum / scores.count) : 0
+    else
+      redirect_to root_path, alert: 'Product not found'
+    end
   end
 
   def new
@@ -17,9 +23,9 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.user = current_user
-    if @product.save
-      ProductFabric.create(product: @product, fabric: Fabric.find_by_name(params[:fabric_type_1].downcase), fabric_percent: [:fabric_composition_1]) if params[:fabric_type_1].present?
-      ProductFabric.create(product: @product, fabric: Fabric.find_by_name(params[:fabric_type_2].downcase), fabric_percent: [:fabric_composition_2]) if params[:fabric_type_2].present?
+    if @product.save #update the code to make dynamic incase <2 fabrics and >2 fabrics
+      ProductFabric.create(product: @product, fabric: Fabric.find_by_name(params[:fabric_type_1].downcase), fabric_percent: params[:fabric_composition_1]) if params[:fabric_type_1].present?
+      ProductFabric.create(product: @product, fabric: Fabric.find_by_name(params[:fabric_type_2].downcase), fabric_percent: params[:fabric_composition_2]) if params[:fabric_type_2].present?
       redirect_to product_path(@product), notice: 'Product was successfully created.'
     else
       render :new
@@ -38,6 +44,13 @@ class ProductsController < ApplicationController
       render :edit
     end
   end
+
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to root_path, notice: 'Product was successfully deleted.'
+  end
+
 
   private
 
