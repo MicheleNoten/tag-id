@@ -1,24 +1,26 @@
-<%= simple_form_for(@product) do |f| %>
-<%= f.input :item_name%>
-<div data-controller-target="fabric-list">
-  <div data-controller-target="fabric">
-    <input type="text" name="fabric_type_1">
-    <input type="text" name="fabric_composition_1">
+<%= simple_form_for @product, html: { data: { controller: "fabric-list" }} do |f| %>
+  <%= f.input :item_name%>
+  <div data-fabric-list-target="list">
+    <div class="fabric-container" data-fabric-list-target="fabric">
+      <div class="fabric mb-3">
+        <label for="fabric_type_1" class="form-label">Fabric type</label>
+        <input value="<%= @product.product_fabrics.first.fabric.name if @product.product_fabrics.first %>" type="text" class="form-control" name="fabric_type_1" id="fabric_type_1">
+      </div>
+      <div class="fabric">
+        <label for="fabric_composition_1" class="form-label">Percentage (%)</label>
+        <input type="text" name="fabric_composition_1" class="form-control" id="fabric_composition_1">
+      </div>
+    </div>
   </div>
-  <div data-controller-target="fabric">
-    <input type="text" name="fabric_type_2">
-    <input type="text" name="fabric_composition_2">
-  </div>
-  <button data-action="click->controller#addFabric">Add</button>
-</div>
-<%= f.input :made_in%>
-<%= f.input :brand%>
-<%= f.association :category%>
-<%= f.input :purchased_in%>
-<%= f.input :certification_label%>
-<%= f.input :photos, as: :file, input_html: { multiple: true } %>
-<%= f.input :comments%>
-<%= f.submit class: 'button button-green w-100 m-0 mt-4'%>
-<%= link_to "Delete", root_path,  class: 'button button-beige m-0 mt-4 w-100' %>
-<%# need to update the delete button to actually delete this input %>
+  <button data-action="click->fabric-list#add">Add</button>
+  <%= f.hidden_field :counter, value:1, data: {fabric_list_target: "counter"} %>
+  <%= f.input :made_in%>
+  <%= f.input :brand%>
+  <%= f.association :category%>
+  <%= f.input :purchased_in%>
+  <%= f.input :certification_label%>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.input :comments%>
+  <%= f.submit class: 'button button-green w-100 m-0 mt-4'%>
+  <%= link_to "Delete", root_path(@product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button button-beige m-0 mt-4 w-100' %>
 <% end %>

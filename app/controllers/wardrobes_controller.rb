@@ -27,4 +27,7 @@ class WardrobesController < ApplicationController
     Wardrobe.find_by_product_id(@product).destroy
     redirect_to wardrobes_path
   end
+  def show
+    @wardrobe = Wardrobe.find(params[:id])
+  end
 end
