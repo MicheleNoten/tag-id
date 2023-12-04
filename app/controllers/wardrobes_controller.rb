@@ -3,9 +3,10 @@ class WardrobesController < ApplicationController
     @products = current_user.wardrobe_products
     @fabrics = Fabric.all
     @categories = Category.all
-    if params[:category]
+    if params[:category] && params[:category].length > 1
       @products = @products.where(category_id: params[:category])
     end
+    # >> @products = Product.joins(:product_fabrics).where(product_fabrics: {fabric_id: ["", "1"]})
   end
 
   def index_products

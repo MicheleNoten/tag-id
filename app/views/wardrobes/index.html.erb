@@ -2,7 +2,7 @@
   <div class="col mt-5">
     <div class="row profile-header">
       <div class="back-button">
-        <%= link_to "Back", root_path %>
+        <%= link_to "Back", :back %>
       </div>
       <h3 class="text-center">Wardrobe</h3>
     </div>
@@ -30,25 +30,24 @@
           </div>
           <%= form_with url: wardrobes_path, method: :get do |f| %>
             <div class="modal-body">
-                <h6>Categories</h6>
-                <ul class="text-decoration-none">
-                  <%= f.collection_check_boxes(:category, @categories, :id, :name)  do |b| %>
-                    <li>
-                      <%= b.check_box %>
-                      <%= b.label %>
-                    </li>
-                  <% end %>
-                </ul>
-                <h6>Fabrics</h6>
-                <ul class="text-decoration-none">
-                  <%= f.collection_check_boxes(:fabric, @fabrics, :id, :name) do |b| %>
-                    <li>
-                      <%= b.check_box %>
-                      <%= b.label %>
-                    </li>
-                  <% end %>
-                </ul>
-                </div>
+              <h6>Categories</h6>
+              <ul class="text-decoration-none" style="list-style-type: none">
+                <%= f.collection_check_boxes(:category, @categories, :id, :name)  do |b| %>
+                  <li>
+                    <%= b.check_box %>
+                    <%= b.label %>
+                  </li>
+                <% end %>
+              </ul>
+              <h6>Fabrics</h6>
+              <ul class="text-decoration-none" style="list-style-type: none">
+                <%= f.collection_check_boxes(:fabric, @fabrics, :id, :name) do |b| %>
+                  <li>
+                    <%= b.check_box %>
+                    <%= b.label %>
+                  </li>
+                <% end %>
+              </ul>
             </div>
 
             <div class="modal-footer">
@@ -60,13 +59,11 @@
       </div>
     </div>
 
-    <div class="row mt-2 px-3">
+    <div class="row mt-5 px-3">
       <% @products.each do |product| %>
-        <div class="col-12 mx-auto mt-5">
+        <div class="col-12 mx-auto mt-1">
           <div class="card--product">
-            <div class="avatar">
-              <%= image_tag "dummy_avatar.jpg", class: "avatar" %>
-            </div>
+            <%= render "shared/product_avatar", product: product %>
             <div class="card--product-content">
               <p class="small bold"><%= product.item_name %></p>
               <p class="xs"><%= product.score %></p>
