@@ -17,9 +17,16 @@
   <% end %>
   <div class="container mt-5">
     <div class="col-10 m-auto">
-      
       <div class="form-overlay">
         <%= render "products/form", product: @product%>
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const controllerElement = document.querySelector('[data-controller="fabric-list"]');
+          if (controllerElement) {
+            const controller = new Stimulus.Controllers["fabric-list"](controllerElement);
+            }
+            });
+            </script>
       </div>
     </div>
   </div>
