@@ -23,29 +23,15 @@ export default class extends Controller {
     // For mobile facingMode should be "environment" and desktop "user"
     // Set the constraints for the video stream
 
-    var userAgent = navigator.userAgent;
-    let faceMode = "user";
-    let videoWidth = containerWidth;
-    let videoHeight = containerHeight;
-
-    if (userAgent.match(/Android/i) || userAgent.match(/iPhone|iPad|iPod/i)) {
-        // Code for mobile devices
-        console.log("Mobile device detected", userAgent);
-        faceMode = "environment";
-        videoWidth = containerHeight;
-        videoHeight = containerWidth;
-    } else {
-        // Code for desktop devices
-        console.log("Desktop device detected", userAgent);
-        videoWidth = containerHeight;
-        videoHeight = containerWidth;
-    }
+    let faceMode = "environment";
+    let videoWidth = containerHeight;
+    let videoHeight = containerWidth;
 
     const constraints = {
       video: {
         facingMode: faceMode, //{ exact: "environment" },
-        width: {ideal: videoWidth},
-        height: {ideal: videoHeight},
+        width: { min: 1024, ideal: 1280, max: 1920 },
+        height: { min: 576, ideal: 720, max: 1080 },
         focusMode: { ideal: "continuous" }
       },
       audio: false
@@ -107,12 +93,12 @@ export default class extends Controller {
           data: formData,
           success: (response) => {
             console.log("Success", response);
+            location.replace("/scans");
           },
           error: (response) => {
             console.log("Error", response);
           }
         });
-        location.replace("/scans");
       } else {
         console.error('Failed to create blob');
       }

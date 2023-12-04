@@ -5,9 +5,16 @@ class Scan < ApplicationRecord
   has_one :product
 
   def set_gpt_response
-    prompt = "Read the clothing label in the image and just return a json with follwoing keys (fabric_compositon,origin_country,brand)
-    Explanation of what each key should contain - fabric_compositon: 'the fabric composition as an Array of strings', 'origin_country': 'Country of manufactuing', 'brand': 'Brand name / maufactured on label'.
-    Do not include any explanations, only provide a  RFC8259 compliant JSON response  following this format without deviation. Sample response - {'fabric_compositon': ['100% Cotton'], 'origin_country': 'India', 'brand': 'Levis'}"
+    prompt = "Examin the clothing label presented in the image and provide a JSON output, focusing solely on the overall fabric composition of the cloth. Exclude any detailed breakdowns like the material used for pockets or other specific parts,
+    strictly adhering to RFC 8259 standards. Analyze the label text, even if presented in multiple languages, and provide the most comprehensible English translation.
+    The JSON response should include the following keys with specific information:
+    1. 'fabric_composition': An array containing the fabric composition details as listed on the label.
+    2. 'origin_country': The country where the garment was manufactured. If this information is not available on the label, return 'nil'.
+    3. 'brand': The brand name or manufacturer as indicated on the label.
+    If this information is not available, return 'nil'.
+    Please ensure the response excludes any explanatory text and strictly follows the JSON format.
+    Example of a desired response: {'fabric_composition': ['80% Cotton', '20% Nylon'], 'origin_country': 'India', 'brand': 'Levis'}"
+
     client = OpenAI::Client.new
     chaptgpt_response = client.chat(parameters: {
       model: "gpt-4-vision-preview",
