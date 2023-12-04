@@ -23,14 +23,22 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.user = current_user
-    if @product.save #update the code to make dynamic incase <2 fabrics and >2 fabrics
-      ProductFabric.create(product: @product, fabric: Fabric.find_by_name(params[:fabric_type_1].downcase), fabric_percent: params[:fabric_composition_1]) if params[:fabric_type_1].present?
-      ProductFabric.create(product: @product, fabric: Fabric.find_by_name(params[:fabric_type_2].downcase), fabric_percent: params[:fabric_composition_2]) if params[:fabric_type_2].present?
+    if @product.save
+      params[:product][:counter].to_i.times do |index|
+        fabric_type_params = params["fabric_type_#{index + 1}"]
+        fabric_composition_params = params["fabric_composition_#{index + 1}"]
+        fabric = Fabric.find_by_name(fabric_type_params.downcase)
+        ProductFabric.create(product: @product, fabric: fabric, fabric_percent: fabric_composition_params)
+      end
       redirect_to product_path(@product), notice: 'Product was successfully created.'
     else
       render :new
     end
   end
+
+      # ProductFabric.create(product: @product, fabric: Fabric.find_by_name(params[:fabric_type_1].downcase), fabric_percent: params[:fabric_composition_1]) if params[:fabric_type_1].present?
+      # ProductFabric.create(product: @product, fabric: Fabric.find_by_name(params[:fabric_type_2].downcase), fabric_percent: params[:fabric_composition_2]) if params[:fabric_type_2].present?
+      # redirect_to product_path(@product), notice: 'Product was successfully created.'
 
   def edit
     @product = Product.find(params[:id])
