@@ -1,18 +1,23 @@
 <p style="color: green"><%= notice %></p>
+<div class="container-fluid">
+    <% if @scan.photo.attached? %>
+      <%= cl_image_tag @scan.photo.key , alt: "tag scan", style: "width: 100px", class: "w-100" %>
+    <% end %>
+</div>
+<div class="container">
+  <div class="col">
 
-<% if @scan.photo.attached? %>
-  <%= cl_image_tag @scan.photo.key , alt: "tag scan", style: "width: 100px" %>
-<% end %>
+    <h5 class="mt-5 bold">Chat Gpt response</h5>
+    <%= @scan.response_chatgpt %>
 
-<h5>Chat Gpt response</h5>
-<%= @scan.response_chatgpt %>
+    <h5 class="mt-5 bold">Chat Gpt Request</h5>
+    <%= @scan.request_chatgpt %>
 
-<h5>Chat Gpt Request</h5>
-<%= @scan.request_chatgpt %>
+    <div>
+      <%= link_to "Edit this scan", edit_scan_path(@scan),  class: 'button button-green m-0 mt-4 w-100' %>
+      <%= link_to "Back to scans", scans_path,  class: 'button button-beige m-0 mt-4 w-100' %>
 
-<div>
-  <%= link_to "Edit this scan", edit_scan_path(@scan) %> |
-  <%= link_to "Back to scans", scans_path %>
-
-  <%= button_to "Destroy this scan", @scan, method: :delete %>
+      <%= button_to "Destroy this scan", @scan, method: :delete,  class: 'button button-red m-0 mt-4 w-100' %>
+    </div>
+  </div>
 </div>

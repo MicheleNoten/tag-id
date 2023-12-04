@@ -35,8 +35,9 @@ class Scan < ApplicationRecord
       max_tokens: 300
     })
     new_content = chaptgpt_response["choices"][0]["message"]["content"]
+    cleaned_text = new_content.gsub(/^\`\`\`json\s|\s\`\`\`$/, '')
 
-    update(response_chatgpt: new_content, request_chatgpt: prompt)
+    update(response_chatgpt: cleaned_text, request_chatgpt: prompt)
     return new_content
   end
 end
