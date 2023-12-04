@@ -18,7 +18,7 @@
 <%= f.input :certification_label%>
 <%= f.input :photos, as: :file, input_html: { multiple: true } %>
 <%= f.input :comments%>
-<%= f.submit class: 'btn btn-primary'%>
-<%= link_to "Delete", root_path %>
+<%= f.submit class: 'button button-green w-100 m-0 mt-4'%>
+<%= link_to "Delete", root_path,  class: 'button button-beige m-0 mt-4 w-100' %>
 <%# need to update the delete button to actually delete this input %>
 <% end %>
