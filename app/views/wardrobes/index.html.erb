@@ -16,6 +16,9 @@
     <%# <p class="" data-bs-toggle="modal" data-bs-target="#exampleModal"> %>
     <%= image_tag "Vector.svg", data: { bs_toggle: "modal", bs_target: "#exampleModal" } %>
     <%# </p> %>
+    <div>
+      <%= link_to "All", wardrobes_path  %>
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -25,35 +28,42 @@
             <h5 class="modal-title" id="exampleModalLabel">Filter by</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
-            <h6>Categories</h6>
-            <ul>
-              <% @categories.each do |category| %>
-                <li class="nav-item active"><input type="checkbox" id="<%= category.name %>"><label for="<%= category.name %>"><%= category.name %></label></li>
-              <% end %>
-            </ul>
-            <h6>Fabrics</h6>
-            <ul>
-              <% @fabrics.each do |fabric| %>
-                <li class="nav-item active"><input type="checkbox" id="<%= fabric.name %>"><label for="<%= fabric.name %>"><%= fabric.name %></label></li>
-              <% end %>
-            </ul>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
+          <%= form_with url: wardrobes_path, method: :get do |f| %>
+            <div class="modal-body">
+              <h6>Categories</h6>
+              <ul class="text-decoration-none" style="list-style-type: none">
+                <%= f.collection_check_boxes(:category, @categories, :id, :name)  do |b| %>
+                  <li>
+                    <%= b.check_box %>
+                    <%= b.label %>
+                  </li>
+                <% end %>
+              </ul>
+              <h6>Fabrics</h6>
+              <ul class="text-decoration-none" style="list-style-type: none">
+                <%= f.collection_check_boxes(:fabric, @fabrics, :id, :name) do |b| %>
+                  <li>
+                    <%= b.check_box %>
+                    <%= b.label %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <%= submit_tag "Search", class: "btn btn-primary" %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
 
-    <div class="row mt-2 px-3">
+    <div class="row mt-5 px-3">
       <% @products.each do |product| %>
-        <div class="col-12 mx-auto mt-5">
+        <div class="col-12 mx-auto mt-1">
           <div class="card--product">
-            <div class="avatar">
-              <%= image_tag "dummy_avatar.jpg", class: "avatar" %>
-            </div>
+            <%= render "shared/product_avatar", product: product %>
             <div class="card--product-content">
               <p class="small bold"><%= product.item_name %></p>
               <p class="xs"><%= product.score %></p>

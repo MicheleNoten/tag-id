@@ -1,0 +1,9 @@
+<div class="avatar">
+  <% if product.photos.attached? %>
+    <%= cl_image_tag product.photos.first.key, alt: "text", class: "avatar" %>
+  <% elsif product.scan.photo.attached? %>
+    <%= cl_image_tag product.scan.photo.key, alt: "text", class: "avatar" %>
+  <% else %>
+    <%= image_tag "blank_image", class:"avatar" %>
+  <% end %>
+</div>
