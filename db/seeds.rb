@@ -1,5 +1,5 @@
-require 'csv'
 
+require 'csv'
 puts "Destroying entries..."
 Wardrobe.destroy_all
 Bookmark.destroy_all
