@@ -36,7 +36,7 @@ class Scan < ApplicationRecord
     })
     new_content = chaptgpt_response["choices"][0]["message"]["content"]
 
-    update(response_chatgpt: new_content)
+    update(response_chatgpt: new_content, request_chatgpt: prompt)
     return new_content
   end
 end

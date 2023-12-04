@@ -7,6 +7,9 @@
 <h5>Chat Gpt response</h5>
 <%= @scan.response_chatgpt %>
 
+<h5>Chat Gpt Request</h5>
+<%= @scan.request_chatgpt %>
+
 <div>
   <%= link_to "Edit this scan", edit_scan_path(@scan) %> |
   <%= link_to "Back to scans", scans_path %>
