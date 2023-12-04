@@ -3,6 +3,9 @@ class WardrobesController < ApplicationController
     @products = current_user.wardrobe_products
     @fabrics = Fabric.all
     @categories = Category.all
+    if params[:category]
+      @products = @products.where(category_id: params[:category])
+    end
   end
 
   def index_products
