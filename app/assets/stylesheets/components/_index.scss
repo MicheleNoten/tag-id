@@ -1,16 +1,16 @@
+@import "typography";
 @import "alert";
 @import "avatar";
 @import "form_legend_clear";
 @import "navbar";
-@import "scan";
 @import "button";
-@import "typography";
 @import "circle";
 @import "form";
 @import "image_slider";
 @import "footer";
 @import "card";
 @import "profile";
+@import "scan";
 
 // desktop only visibility
 @media screen and (min-width: 431px) {

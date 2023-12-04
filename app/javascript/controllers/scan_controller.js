@@ -30,8 +30,8 @@ export default class extends Controller {
     const constraints = {
       video: {
         facingMode: faceMode, //{ exact: "environment" },
-        width: { min: 1024, ideal: 1280, max: 1920 },
-        height: { min: 576, ideal: 720, max: 1080 },
+        width: { min: 1024, ideal: containerHeight * 2, max: 1920 },
+        height: { min: 576, ideal: containerWidth * 2, max: 1080 },
         focusMode: { ideal: "continuous" }
       },
       audio: false
