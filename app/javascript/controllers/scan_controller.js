@@ -19,11 +19,20 @@ export default class extends Controller {
     let containerWidth = scanContainer.clientWidth;
     let containerHeight = scanContainer.clientHeight;
 
+    // TODO: Check devise type and set constraints accordingly
+    // For mobile facingMode should be "environment" and desktop "user"
+    // Set the constraints for the video stream
+
+    let faceMode = "environment";
+    let videoWidth = containerHeight;
+    let videoHeight = containerWidth;
+
     const constraints = {
       video: {
-        facingMode: "user", //{ exact: "environment" },
-        width: {ideal: containerHeight},
-        height: {ideal: containerWidth}
+        facingMode: faceMode, //{ exact: "environment" },
+        width: { min: 1024, ideal: 1280, max: 1920 },
+        height: { min: 576, ideal: 720, max: 1080 },
+        focusMode: { ideal: "continuous" }
       },
       audio: false
     }
@@ -77,13 +86,19 @@ export default class extends Controller {
         this.videoTarget.pause();
 
         console.log("Sending form data", formData);
+        // TODO: Use fetch instead of Rails.ajax
         Rails.ajax({
-          url: "/scans",
-          type: "post",
-          data: formData
+          url: '/scans',
+          type: 'POST',
+          data: formData,
+          success: (response) => {
+            console.log("Success", response);
+            location.replace("/scans");
+          },
+          error: (response) => {
+            console.log("Error", response);
+          }
         });
-        location.replace("/scans")
-        console.log("Form data sent");
       } else {
         console.error('Failed to create blob');
       }

@@ -1,19 +1,20 @@
 <div class="container">
-  <div class="col-8 mt-5 mx-auto">
+  <div class="col mt-5 mx-auto">
     <p style="color: green"><%= notice %></p>
     <h1>Scans</h1>
 
     <div class="row mt-5">
       <% @scans.each do |scan| %>
-        <div class="col-6">
+        <div class="col-6 mt-4">
 
             <% if scan.photo.attached? %>
-              <%= cl_image_tag scan.photo.key , alt: "tag scan", style: "width: 100px" %>
+              <%= cl_image_tag scan.photo.key , alt: "tag scan", class: "w-100" %>
             <% end %>
-
-           <%= link_to 'Show', scan %>
-           <%= link_to 'Edit', edit_scan_path(scan) %>
-           <%= link_to 'Destroy', scan, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <div class="scan-action">
+           <%= link_to 'Show', scan , class: 'btn btn-primary m-0 w-100'%>
+           <%= link_to 'Edit', edit_scan_path(scan), class: 'btn btn-secondary m-0 w-50' %>
+           <%= link_to 'Destroy', scan, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning m-0 w-50' %>
+          </div>
 
         </div>
       <% end %>

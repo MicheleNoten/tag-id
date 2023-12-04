@@ -38,3 +38,13 @@
   box-sizing: border-box;
   border-radius: 10px;
 }
+
+.button-red {
+  background: #F45B69;
+  color: white;
+
+  &:hover {
+    background: white;
+    color: #F45B69;
+  }
+}
