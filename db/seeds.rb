@@ -128,7 +128,7 @@ puts Product.create!(
 Product.create!(
   user: User.first,
   category: jeans,
-  scan: Scan.first,
+  scan: Scan.second,
   item_name: "Black boyfriend jeans",
   made_in: "Portugal",
   brand: "Cos",
@@ -142,7 +142,7 @@ Product.create!(
 Product.create!(
   user: User.first,
   category: sportwear,
-  scan: Scan.first,
+  scan: Scan.third,
   item_name: "Blue yoga shorts",
   made_in: "Sri Lanka",
   brand: "Lululemon",
