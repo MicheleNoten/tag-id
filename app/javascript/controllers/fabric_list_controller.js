@@ -20,4 +20,16 @@ export default class extends Controller {
     this.listTarget.insertAdjacentHTML("beforeend", input);
     this.counterTarget.value = counter;
   }
+
+  removeFabric(event) {
+    const fabricContainers = this.element.querySelectorAll('[data-fabric-list-target="fabric"]');
+    const lastFabricContainer = fabricContainers[fabricContainers.length - 1];
+
+    if (lastFabricContainer) {
+      lastFabricContainer.remove();
+
+      const counter = this.fabricTargets.length;
+      this.counterTarget.value = counter;
+    }
+  }
 }
