@@ -4,6 +4,10 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["fabric", "list", "counter"];
 
+  connect() {
+    console.log("Hello from fabric list controller");
+  }
+
   add() {
     const counter = this.fabricTargets.length + 1;
     console.log(counter);
