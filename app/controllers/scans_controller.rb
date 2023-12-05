@@ -23,8 +23,49 @@ class ScansController < ApplicationController
 
     respond_to do |format|
       if @scan.save
-        format.html { redirect_to scans_path, notice: "Scan was successfully created." }
-        format.json { render :show, status: :created, location: @scan }
+        puts "Scan was successfully created. Fetching GPT response..."
+        @scan.set_gpt_response if @scan.photo.attached? && @scan.response_chatgpt.nil?
+        if valid_hash_string?(@scan.response_chatgpt)
+          scan_fabric_composition = JSON.parse(@scan.response_chatgpt)
+
+          puts "Scan fabric composition is not empty. Creating new product..."
+          @product = Product.new
+          @product.scan = @scan
+          @product.user = current_user
+          @product.category = Category.second
+
+          # TODO: Convert response_chatgpt to JSON and save in product
+          scan_fabric_composition = JSON.parse(@scan.response_chatgpt)
+          @product.brand = scan_fabric_composition["brand"]
+          @product.made_in = scan_fabric_composition["origin_country"]
+          @product.save!
+          puts "Product saved!"
+
+          # Create product fabric composition
+          puts "Creating product fabric composition..."
+          # TODO: Save fabric composition in product
+          scan_fabric_composition["fabric_composition"].each do |fabric, value|
+            puts "#{fabric}: #{value}"
+            unless Fabric.where('lower(name) = ?', fabric.downcase).first.nil?
+              @fabricComposition = ProductFabric.new
+              @fabricComposition.product = @product
+              @fabricComposition.fabric_percent = value.gsub('%', '').to_i
+              @fabricComposition.fabric = Fabric.where('lower(name) = ?', fabric.downcase).first
+              p @fabricComposition
+              if @fabricComposition.save!
+                puts "Product fabric composition saved!"
+              end
+            end
+          end
+
+          # Redirection
+          format.html { redirect_to root_path, notice: "Scan was successfully created." }
+          format.json { render json: { scan_status: 'PRODUCT_SUCCESS', redirect_to: edit_product_path(@product) } }
+        else
+          puts "Scan fabric composition is empty. Redirecting to new product page..."
+          format.html { redirect_to root_path, notice: "Scan was successfully created. Product creation failed" }
+          format.json { render json: { scan_status: 'PRODUCT_FAILED', redirect_to: new_product_path } }
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @scan.errors, status: :unprocessable_entity }
@@ -35,6 +76,7 @@ class ScansController < ApplicationController
   # PATCH/PUT /scans/1 or /scans/1.json
   def update
     respond_to do |format|
+      @scan.set_gpt_response if @scan.photo.attached?
       if @scan.update(video_params)
         format.html { redirect_to scan_path(@scan), notice: "Scan was successfully updated." }
         format.json { render :show, status: :ok, location: @scan }
@@ -56,6 +98,15 @@ class ScansController < ApplicationController
   end
 
   private
+
+  def valid_hash_string?(str)
+    begin
+      result = eval(str)
+      result.is_a?(Hash)
+    rescue SyntaxError, NameError
+      false
+    end
+  end
 
   def set_scan
     @scan = Scan.find(params[:id])
