@@ -14,11 +14,13 @@
 
     <!-- Button trigger modal -->
     <%# <p class="" data-bs-toggle="modal" data-bs-target="#exampleModal"> %>
-    <%= image_tag "Vector.svg", data: { bs_toggle: "modal", bs_target: "#exampleModal" } %>
-    <%# </p> %>
-    <div>
-      <%= link_to "All", wardrobes_path  %>
-    </div>
+      <div class="header-wrapper d-flex justify-content-between px-3">
+        <div>
+          <%= link_to "All", wardrobes_path  %>
+        </div>
+        <%= image_tag "Vector.svg", data: { bs_toggle: "modal", bs_target: "#exampleModal" } %>
+        <%# </p> %>
+      </div>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
