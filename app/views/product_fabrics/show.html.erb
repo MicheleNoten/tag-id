@@ -1,8 +1,4 @@
 <div class="image-container">
-<div>
-  <%= link_to "Back", :back %>
-  <%= render "shared/menu" %>
-</div>
   <% if @product.photos.attached? %>
     <div class="slider-container">
       <div class="slider-wrapper">
@@ -26,13 +22,12 @@
           <%= @product_fabric.fabric.weighted_average_score %>
         </div>
     <div class="card--score-content py-3">
-      <h6 class="bold"><%="#{@product.item_name}"%></h6>
-      <p class="small">Pre-defined message based on score.</p>
+      <h6 class="bold"><%= @product_fabric.fabric.name.capitalize %></h6>
+      <p class="small"><%="#{@product.item_name}"%></p>
       <%= link_to "Back", :back %>
     </div>
     </div>
 </div>
-<H4> <%= @product_fabric.fabric.name.capitalize %> </H4>
 <% @product_fabric.fabric.sdgs.each do |sdg| %>
     <div class="col-12 mx-auto">
       <div class="card--item">
