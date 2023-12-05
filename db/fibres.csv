@@ -1,37 +1,25 @@
 Material,Type,material_type,Scoring,Climate,Water,Chemistry,Land,Biodiversity,Resource use & waste,Human Rights,Animal Welfare,Integrity
-Cotton,No Standard,Cotton no standard,Impact area level ,0,0,0,0,0,0,0,0,2
 Cotton,No Standard,Cotton,Impact area level ,0,0,0,0,0,0,0,0,2
 Cotton,Organic,Cotton organic,Impact area level ,1,1,1,2,1,1,0,0,2
 Cotton,Recycled ,Cotton recycled ,Impact area level ,2,3,2,0,0,2,0,0,3
 Cotton,Certified,Cotton certified,Impact area level ,1,3,2,0,0,1,0,0,3
-Polyester,No Standard,Polyester no standard,Impact area level ,0,0,0,0,0,0,0,0,0
 Polyester,No Standard,Polyester,Impact area level ,0,0,0,0,0,0,0,0,0
 Polyester,Chemically recycled,Polyester chemically recycled,Impact area level ,1,1,1,0,0,2,0,0,0
 Polyester,Mechanically recycled,Polyester mechanically recycled,Impact area level ,2,3,2,0,0,2,0,0,0
 Acrylic,No Standard,Acrylic,Impact area level ,0,0,0,0,0,0,0,0,0
-Acrylic,No Standard,Acrylic no standard,Impact area level ,0,0,0,0,0,0,0,0,0
 Acrylic,Recycled ,Acrylic recycled ,Impact area level ,0,1,1,0,0,3,0,0,0
-Elastane,No Standard,Elastane no standard,Impact area level ,0,0,0,0,0,0,0,0,0
 Elastane,No Standard,Elastane,Impact area level ,0,0,0,0,0,0,0,0,0
 Elastane,Recycled ,Elastane recycled ,Impact area level ,0,1,1,0,0,3,0,0,0
-Polyamide (Nylon),No Standard,Polyamide (Nylon) no standard,Impact area level ,0,0,0,0,0,0,0,0,0
 Polyamide (Nylon),No Standard,Polyamide (Nylon),Impact area level ,0,0,0,0,0,0,0,0,0
 Polyamide (Nylon),Recycled ,Polyamide (Nylon) recycled ,Impact area level ,3,1,2,0,0,2,0,0,0
-Flax,No Standard,Flax no standard,Impact area level ,1,1,0,0,0,1,0,0,2
 Flax,No Standard,Flax,Impact area level ,1,1,0,0,0,1,0,0,2
 Flax,Organic,Flax organic,Impact area level ,1,1,1,2,1,2,0,0,3
 Acetate,No Standard,Acetate,Impact area level ,0,0,0,0,0,0,0,0,0
-Acetate,No Standard,Acetate no standard,Impact area level ,0,0,0,0,0,0,0,0,0
-Bamboo Viscose,No Standard,Bamboo Viscose no standard,Impact area level ,0,1,0,0,0,0,0,0,0
 Bamboo Viscose,No Standard,Bamboo Viscose,Impact area level ,0,1,0,0,0,0,0,0,0
-Lyocell,No Standard,Lyocell no standard,Impact area level ,1,1,0,0,0,0,0,0,3
 Lyocell,No Standard,Lyocell,Impact area level ,1,1,0,0,0,0,0,0,3
-Modal,No Standard,Modal no standard,Impact area level ,0,1,0,0,0,0,0,0,0
 Modal,No Standard,Modal,Impact area level ,0,1,0,0,0,0,0,0,0
-Viscose,No Standard,Viscose no standard,Impact area level ,0,1,0,0,0,0,0,0,0
 Viscose,No Standard,Viscose,Impact area level ,0,1,0,0,0,0,0,0,0
-Wool,No Standard,Wool no standard,Impact area level ,0,0,0,0,0,0,0,0,0
-Wool,No Standard,Wool,Impact area level ,0,0,0,0,0,0,0,0,0
-Wool,Organic,Wool organic,Impact area level ,0,0,1,2,1,2,0,2,3
-Wool,Recycled ,Wool recycled ,Impact area level ,2,2,0,0,0,1,0,0,3
-Wool,Responsible,Wool responsible,Impact area level ,0,0,0,2,2,0,0,4,3
+Wool ,No Standard,Wool,Impact area level ,0,0,0,0,0,0,0,0,0
+Wool ,Organic,Wool  organic,Impact area level ,0,0,1,2,1,2,0,2,3
+Wool ,Recycled ,Wool  recycled ,Impact area level ,2,2,0,0,0,1,0,0,3
+Wool ,Responsible,Wool  responsible,Impact area level ,0,0,0,2,2,0,0,4,3

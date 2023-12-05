@@ -90,10 +90,16 @@ export default class extends Controller {
         Rails.ajax({
           url: '/scans',
           type: 'POST',
+          dataType: 'json',
+          accept: 'json',
           data: formData,
           success: (response) => {
             console.log("Success", response);
-            location.replace("/scans");
+            if (response.scan_status === "PRODUCT_FAILED") {
+              window.location.href = response.redirect_to;
+            } else if (response.scan_status === "PRODUCT_SUCCESS") {
+              window.location.href = response.redirect_to;
+            }
           },
           error: (response) => {
             console.log("Error", response);
