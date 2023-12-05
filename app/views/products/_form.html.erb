@@ -16,6 +16,7 @@
       </div>
     <% end %>
   </div>
+  <%= image_tag "Arrow.svg", alt: "text", data: {action: "click->fabric-list#add"} %>
   <button data-action="click->fabric-list#add">Add</button>
   <%= f.hidden_field :counter, value: @product.product_fabrics.size, data: { fabric_list_target: "counter" } %>
   <%= f.input :made_in %>
