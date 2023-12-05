@@ -99,7 +99,9 @@
                  </div>
               </div>
               <div class="image-wrapper mt-4 me-4">
-                 <%= image_tag "score2.svg", alt: "image", class: "image-item" %>
+                <%= link_to score_path do %>
+                  <%= image_tag "score2.svg", alt: "image", class: "image-item" %>
+                <% end %>
               </div>
             </div>
           </div>

@@ -162,3 +162,16 @@
 .no-border {
   border: 0;
 }
+
+.score-card {
+  display: flex;
+  align-items: center;
+}
+
+.score-title {
+  text-align: left;
+}
+
+.score-card-img {
+  display: inline-flex;
+}
