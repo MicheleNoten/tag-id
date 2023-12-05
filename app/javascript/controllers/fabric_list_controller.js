@@ -11,23 +11,25 @@ export default class extends Controller {
   add() {
     const counter = this.fabricTargets.length + 1;
     console.log(counter);
-    const input = `<div class="fabric-container" data-fabric-list-target="fabric">
-                    <div class="fabric mb-3">
-                    <label for="fabric_type_${counter}" class="form-label">Fabric type</label>
-                    <input type="text" class="form-control" name="fabric_type_${counter}" id="fabric_type_${counter}">
-                  </div>
-                  <div class="fabric">
-                    <label for="fabric_composition_${counter}" class="form-label">Percentage (%)</label>
-                    <input type="text" name="fabric_composition_${counter}" class="form-control" id="fabric_composition_${counter}">
-                  </div>
-                  <button type="button" data-id=${counter} data-action="click->fabric-list#removeFabric" style="background: none; border: none; color: black; cursor: pointer;">X</button>
+    const input =
+                  `<div class="fabric-container" data-fabric-list-target="fabric">
+                    <div class="fabric-labels">
+                      <label for="fabric_type_${counter}" class="form-label">Fabric type</label>
+                      <label for="fabric_composition_${counter}" class="form-label ms-2">Percentage (%)</label>
+                    </div>
+                    <div class="fabric-inputs">
+                      <input type="text" class="form-control" name="fabric_type_${counter}" id="fabric_type_${counter}">
+                      <input type="text" name="fabric_composition_${counter}" class="form-control ms-2" id="fabric_composition_${counter}">
+                      <button type="button" data-id=${counter} data-action="click->fabric-list#removeFabric" class="form-button"> <img src="/assets/trash.svg" alt="text"></button>
+                    </div>
                   </div>`;
+
     this.listTarget.insertAdjacentHTML("beforeend", input);
     this.counterTarget.value = counter;
   }
 
   removeFabric(event) {
     this.deletedItemsTarget.value += event.currentTarget.dataset.type + ",";
-    event.currentTarget.parentElement.remove();
+    event.currentTarget.parentElement.parentElement.remove();
   }
 }
