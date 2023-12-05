@@ -11,14 +11,26 @@
       <div class="circle circle--large circle--large-1">1</div>
     </div>
 
+    <!-- Search bar -->
+
+    <%= form_with url: wardrobes_path, method: :get, class: "d-flex mt-4" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control me-2",
+            placeholder: "Type a keyword"
+        %>
+      <%= submit_tag "Search", name: "", class: "btn btn-outline-primary" %>
+    <% end %>
 
     <!-- Button trigger modal -->
     <%# <p class="" data-bs-toggle="modal" data-bs-target="#exampleModal"> %>
-    <%= image_tag "Vector.svg", data: { bs_toggle: "modal", bs_target: "#exampleModal" } %>
-    <%# </p> %>
-    <div>
-      <%= link_to "All", wardrobes_path  %>
-    </div>
+      <div class="header-wrapper d-flex justify-content-between px-3 mt-3">
+        <div>
+          <%= link_to "All", wardrobes_path  %>
+        </div>
+        <%= image_tag "Vector.svg", data: { bs_toggle: "modal", bs_target: "#exampleModal" } %>
+        <%# </p> %>
+      </div>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

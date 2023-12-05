@@ -2,7 +2,7 @@ class Scan < ApplicationRecord
   belongs_to :user
 
   has_one_attached :photo
-  has_one :product
+  has_many :product, dependent: :destroy
 
   def set_gpt_response
     prompt = "Examin the clothing label presented in the image and provide a JSON output, focusing solely on the overall fabric composition of the cloth. Exclude any detailed breakdowns like the material used for pockets or other specific parts,

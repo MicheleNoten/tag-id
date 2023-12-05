@@ -1,0 +1,20 @@
+.image-container {
+  display: flex;
+  overflow: scroll;
+}
+
+.image-item {
+  height: 25vw;
+  width: 25vw;
+}
+
+.image-wrapper {
+  position: relative;
+}
+
+.image-title {
+  position: absolute;
+  bottom: 0;
+  margin-left: 4px;
+  color: white;
+}

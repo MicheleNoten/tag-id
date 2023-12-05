@@ -1,0 +1,11 @@
+<div class="fabric-container" data-fabric-list-target="fabric">
+  <div class="fabric mb-3">
+    <label for="fabric_type_<%= index + 1 %>" class="form-label">Fabric type</label>
+    <input value="<%= fabric.fabric.name if fabric.fabric %>" type="text" class="form-control" name="fabric_type_<%= index + 1 %>" id="fabric_type_<%= index + 1 %>">
+  </div>
+  <div class="fabric">
+    <label for="fabric_composition_<%= index + 1 %>" class="form-label">Percentage (%)</label>
+    <input type="text" name="fabric_composition_<%= index + 1 %>" class="form-control" id="fabric_composition_<%= index + 1 %>" value="<%= fabric.fabric_percent %>">
+  </div>
+    <button type="button" data-type="<%= fabric.fabric.name %>" data-action="click->fabric-list#removeFabric" style="background: none; border: none; color: black; cursor: pointer;">X</button>
+</div>
