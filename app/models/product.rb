@@ -3,6 +3,8 @@ class Product < ApplicationRecord
   belongs_to :user
   belongs_to :scan, optional: true
 
+  attr_accessor :deleted_items
+
   has_many :product_fabrics, dependent: :destroy
   has_many :fabrics, through: :product_fabrics
   has_many_attached :photos, dependent: :destroy

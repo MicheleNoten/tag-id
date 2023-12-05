@@ -42,12 +42,14 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
+
+    remove_deleted_items(@product, params[:product][:deleted_items]) unless params[:product][:deleted_items].nil?
     if @product.update(product_params)
-      @product.product_fabrics.destroy_all
+      # @product.product_fabrics.destroy_all
       params[:product][:counter].to_i.times do |index|
         fabric_type_params = params["fabric_type_#{index + 1}"]
         fabric_composition_params = params["fabric_composition_#{index + 1}"]
-        fabric = Fabric.find_by_name(fabric_type_params.downcase)
+        fabric = Fabric.find_by_name(fabric_type_params&.downcase)
         @product.product_fabrics.create(
           fabric: fabric,
           fabric_percent: fabric_composition_params
@@ -56,6 +58,15 @@ class ProductsController < ApplicationController
       redirect_to product_path(@product), notice: 'Product was successfully updated.'
     else
       render :edit
+    end
+  end
+
+  def remove_deleted_items(product, deleted_items_list)
+    deleted_items = deleted_items_list.split(',')
+    deleted_items.each do |item|
+      product.product_fabrics.each do |product_fabric|
+        product_fabric.destroy if product_fabric.fabric.name == item
+      end
     end
   end
 
