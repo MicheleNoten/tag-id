@@ -207,9 +207,7 @@ Sdg.create!(
 
 Sdg.create!(
   name: "Land Use",
-  description: "This assessment checks a program's plan for cultivating fibers and materials in relation to soil health. It reviews the structure of a soil health management plan (SHMP) as a tool for protecting soil ecosystems and considering social and environmental impacts. At higher levels, the SHMP evaluates risks and aligns with the local landscape. Another aspect is adaptive monitoring of soil, using the Pressure, State, Response (PSR) framework to link changes in pressure to corresponding moves in soil state. The evaluation also measures a program's ambition in soil health, considering expansion, intensification, the importance of soil health, continuous improvement, and positive outcomes. Another aspect is protecting natural habitats through set-asides, minimizing impacts, and enhancing through active management and restoration.
-
-  ",
+  description: "This assessment checks a program's plan for cultivating fibers and materials in relation to soil health. It reviews the structure of a soil health management plan (SHMP) as a tool for protecting soil ecosystems and considering social and environmental impacts. At higher levels, the SHMP evaluates risks and aligns with the local landscape. Another aspect is adaptive monitoring of soil, using the Pressure, State, Response (PSR) framework to link changes in pressure to corresponding moves in soil state. The evaluation also measures a program's ambition in soil health, considering expansion, intensification, the importance of soil health, continuous improvement, and positive outcomes. Another aspect is protecting natural habitats through set-asides, minimizing impacts, and enhancing through active management and restoration.",
 )
 
 Sdg.create!(
