@@ -5,7 +5,7 @@
       <%= render "products/fabric_input", fabric: ProductFabric.new, index: 0%>
     <% end %>
     <% @product.product_fabrics.each_with_index do |fabric, index| %>
-      <% index += 1 %>
+      <% index += 1 if action_name == "new" %>
       <%= render "products/fabric_input", fabric: fabric, index: index %>
     <% end %>
   </div>
