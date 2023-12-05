@@ -28,7 +28,11 @@
               <% else %>
                 <% @scans.each do |scan| %>
                   <div class="image-wrapper mt-4 me-4">
-                    <%= cl_image_tag scan.photo.key, alt: "image", class: "image-item" %>
+                    <% if scan.photo.attached? %>
+                      <%= cl_image_tag scan.photo.key, alt: "image", class: "image-item" %>
+                    <% else %>
+                       <%= image_tag "blank_image.png", alt: "text" %>
+                    <% end %>
                   </div>
                 <% end %>
               <% end %>

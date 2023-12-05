@@ -13,13 +13,17 @@
 
     <!-- Search bar -->
 
-    <%= form_with url: wardrobes_path, method: :get, class: "d-flex mt-4" do %>
-      <%= text_field_tag :query,
-            params[:query],
-            class: "form-control me-2",
-            placeholder: "Type a keyword"
-        %>
-      <%= submit_tag "Search", name: "", class: "btn btn-outline-primary" %>
+    <%= form_with url: wardrobes_path, method: :get, class: "mt-4 mb-5 px-3" do %>
+      <div class="input-group mt-5 mb-3">
+        <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Type a keyword"
+          %>
+        <div class="input-group-append">
+          <%= submit_tag "Search", name: "", class: "btn btn-outline-primary" %>
+        </div>
+      </div>
     <% end %>
 
     <!-- Button trigger modal -->
@@ -80,7 +84,7 @@
               <p class="small bold"><%= product.item_name %></p>
               <p class="xs"><%= product.score %></p>
             </div>
-            <div class="card--product-icon">
+            <div class="card--product-icon justify-content-evenly">
               <%= link_to edit_product_path(product) do %>
                 <%= image_tag "pencil-black", alt: "text" %>
               <% end %>
