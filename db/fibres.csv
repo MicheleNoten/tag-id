@@ -30,8 +30,8 @@ Modal,No Standard,Modal no standard,Impact area level ,0,1,0,0,0,0,0,0,0
 Modal,No Standard,Modal,Impact area level ,0,1,0,0,0,0,0,0,0
 Viscose,No Standard,Viscose no standard,Impact area level ,0,1,0,0,0,0,0,0,0
 Viscose,No Standard,Viscose,Impact area level ,0,1,0,0,0,0,0,0,0
-Wool ,No Standard,Wool  no standard,Impact area level ,0,0,0,0,0,0,0,0,0
-Wool ,No Standard,Wool,Impact area level ,0,0,0,0,0,0,0,0,0
-Wool ,Organic,Wool  organic,Impact area level ,0,0,1,2,1,2,0,2,3
-Wool ,Recycled ,Wool  recycled ,Impact area level ,2,2,0,0,0,1,0,0,3
-Wool ,Responsible,Wool  responsible,Impact area level ,0,0,0,2,2,0,0,4,3
+Wool,No Standard,Wool no standard,Impact area level ,0,0,0,0,0,0,0,0,0
+Wool,No Standard,Wool,Impact area level ,0,0,0,0,0,0,0,0,0
+Wool,Organic,Wool organic,Impact area level ,0,0,1,2,1,2,0,2,3
+Wool,Recycled ,Wool recycled ,Impact area level ,2,2,0,0,0,1,0,0,3
+Wool,Responsible,Wool responsible,Impact area level ,0,0,0,2,2,0,0,4,3
