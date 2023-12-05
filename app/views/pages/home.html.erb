@@ -1,89 +1,105 @@
 <div class="container">
   <div class="col mt-5 mx-auto">
-    <h1 class="text-center">Typograpgy</h1>
-    <div class="row">
-      <h1 class="text-center">Heading 1</h1>
-      <h2 class="text-center">Heading 2</h2>
-      <h3 class="text-center">Heading 3</h3>
-      <h4 class="text-center">Heading 4</h4>
-      <h5 class="text-center">Heading 5</h5>
-      <h6 class="text-center">Heading 6</h6>
-      <p class="text-center">Paragraph</p>
-      <h1 class="text-center my-3">Cards</h1>
-      <%# Card Score Starts here %>
-      <div class="col-12 mx-auto">
-        <div class="card--score">
-          <div class="card--score-sdg">
-            <div class="circle circle--medium circle--medium-3">3</div>
-          </div>
-          <div class="card--score-content py-3">
-            <h6 class="bold">Not-good-enough</h6>
-            <p class="small">Pre-defined message based on score.</p>
-          </div>
-         </div>
-      </div>
-      <%# Card Score Ends here %>
+    <h3>Welcome back 🌼</h3>
+    <p><%= "#{current_user.first_name} #{current_user.last_name}" %></p>
 
-      <%# Card Product Starts here %>
-      <div class="col-12 mx-auto">
-        <div class="card--product">
-          <div class="avatar">
-            <%= image_tag "dummy_avatar.jpg", class: "avatar" %>
-          </div>
-          <div class="card--product-content">
-            <p class="small bold">product.item_name</p>
-            <p class="xs">Score: product.avg_sc </p>
-          </div>
-          <div class="card--product-icon">
-            <%= image_tag "hanger.svg", class: "icon", alt: "add to wardrobe" %>
-            <%= image_tag "pencil.svg", class: "icon", alt: "edit" %>
-            <%= image_tag "trash.svg", class: "icon", alt: "delete" %>
-          </div>
-         </div>
-      </div>
-      <%# Card Product Ends here %>
-
-      <%# Card Item code starts here %>
-      <div class="col-12 mx-auto">
-        <div class="card--item">
-          <div class="card--item-info">
-            <div class="info-circle">
-              <p>91<span class="xs">%</span></p>
+    <div class="row height d-flex justify-content-center align-items-center border-radius">
+      <div class="col-md-6 mt-4">
+        <%# Search Bar %>
+        <%= form_with url: wardrobes_path, method: :get, class: "d-flex" do %>
+          <%= text_field_tag :query,
+                params[:query],
+                class: "form-control me-2",
+                placeholder: "Type a keyword"
+            %>
+          <%= submit_tag "Search", name: "", class: "btn btn-outline-primary" %>
+        <% end %>
+        <%# Image Slider %>
+        <div class="image-slider row mt-3">
+          <div class="col-12">
+            <h6 class="bold">Latest scans</h6>
+            <div class="image-container">
+              <% if @scans.empty? %>
+                <div class="image-wrapper mt-4 me-4">
+                  <%= link_to new_scan_path do %>
+                    <%= image_tag "add_scan2.jpeg", alt: "text", class: "image-item" %>
+                  <% end %>
+                </div>
+              <% else %>
+                <% @scans.each do |scan| %>
+                  <div class="image-wrapper mt-4 me-4">
+                    <%= cl_image_tag scan.photo.key, alt: "image", class: "image-item" %>
+                  </div>
+                <% end %>
+              <% end %>
             </div>
           </div>
-          <div class="card--item-content py-3">
-            <h3>Nylon</h3>
-            <p>Land is a place where you can build your own world.</p>
-          </div>
-          <div class="card--item-sdg">
-            <div class="circle circle--small circle--small-3">3</div>
-          </div>
-         </div>
-      </div>
-      <div class="col-12 mx-auto">
-        <div class="card--item">
-          <div class="card--item-info">
-            <div class="info-circle">
-              <p>19<span class="xs">%</span></p>
-            </div>
-          </div>
-          <div class="card--item-content py-3">
-            <h3>Lycra</h3>
-            <p>Water is essential for life. Save water</p>
-          </div>
-          <div class="card--item-sdg">
-            <div class="circle circle--small circle--small-4">4</div>
-          </div>
-         </div>
-      </div>
-      <%# Card Item code ends here %>
-
-       <h1 class="text-center my-3">Circles</h1>
-      <div class="col-12 mx-auto d-flex justify-content-center">
-        <div class="circle circle--large circle--large-1">1</div>
         </div>
-      <div class="col-12 mx-auto d-flex justify-content-center px-2">
-        <div class="circle circle--medium circle--medium-2">2</div>
+        <div class="image-slider row mt-3">
+          <div class="col-12">
+            <h6 class="bold">Common worries</h6>
+            <div class="image-container">
+              <div class="image-wrapper mt-4 me-4">
+                 <%= image_tag "Climate.jpeg", alt: "image", class: "image-item" %>
+                 <div class="image-title">
+                    <p>Climate</p>
+                 </div>
+              </div>
+              <div class="image-wrapper mt-4 me-4">
+                 <%= image_tag "water.jpeg", alt: "image", class: "image-item" %>
+                 <div class="image-title">
+                    <p>Water</p>
+                 </div>
+              </div>
+              <div class="image-wrapper mt-4 me-4">
+                 <%= image_tag "land.jpeg", alt: "image", class: "image-item" %>
+                 <div class="image-title">
+                    <p>Land</p>
+                 </div>
+              </div>
+              <div class="image-wrapper mt-4 me-4">
+                 <%= image_tag "human_rights.jpeg", alt: "image", class: "image-item" %>
+                 <div class="image-title">
+                    <p>Human Rights</p>
+                 </div>
+              </div>
+              <div class="image-wrapper mt-4 me-4">
+                 <%= image_tag "biodiversity.jpeg", alt: "image", class: "image-item" %>
+                 <div class="image-title">
+                    <p>Biodiversity</p>
+                 </div>
+              </div>
+              <div class="image-wrapper mt-4 me-4">
+                 <%= image_tag "waste.jpeg", alt: "image", class: "image-item" %>
+                 <div class="image-title">
+                    <p>Waste</p>
+                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="image-slider row mt-3">
+          <div class="col-12">
+            <h6 class="bold">Top sustainable choice</h6>
+            <div class="image-container">
+              <div class="image-wrapper mt-4 me-4">
+                 <%= image_tag "recycle.jpeg", alt: "image", class: "image-item" %>
+                 <div class="image-title">
+                    <p>Recycle</p>
+                 </div>
+              </div>
+              <div class="image-wrapper mt-4 me-4">
+                 <%= image_tag "second_hand.jpeg", alt: "image", class: "image-item" %>
+                 <div class="image-title">
+                    <p>Second hand</p>
+                 </div>
+              </div>
+              <div class="image-wrapper mt-4 me-4">
+                 <%= image_tag "score2.svg", alt: "image", class: "image-item" %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
