@@ -33,6 +33,7 @@
 
 <% @product.product_fabrics.each do |product_fabric| %>
     <div class="col-12 mx-auto">
+      <%= link_to product_fabric_path(product_fabric), class: "card--item-link" do %>
       <div class="card--item">
         <div class="card--item-info">
           <div class="info-circle">
@@ -44,7 +45,7 @@
           <p>XXX Land is a place where you can build your own world.</p>
           </div>
         <div class="card--item-sdg">
-        <% average_score = product_fabric.fabric.weighted_average_score%>
+        <% average_score = product_fabric.fabric.weighted_average_score %>
         <% circle_class = "circle circle--small circle--small-#{average_score}" %>
         <div class="<%= circle_class %>">
           <%= average_score %>
@@ -52,6 +53,7 @@
       </div>
     </div>
   </div>
+  <% end %>
   <% end %>
   <% if @product.made_in.present? %>
   <div class="col-12 mx-auto">
