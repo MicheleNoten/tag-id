@@ -46,6 +46,7 @@ class ScansController < ApplicationController
           # TODO: Save fabric composition in product
           scan_fabric_composition["fabric_composition"].each do |fabric, value|
             puts "#{fabric}: #{value}"
+
             if Fabric.search_by_name("polyester recycled").first
               @fabricComposition = ProductFabric.new
               @fabricComposition.product = @product
