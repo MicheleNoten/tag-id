@@ -1,17 +1,58 @@
+<div class="image-container">
+<div>
+  <%= link_to "Back", :back %>
+  <%= render "shared/menu" %>
+</div>
+  <% if @product.photos.attached? %>
+    <div class="slider-container">
+      <div class="slider-wrapper">
+        <% @product.photos.each_with_index do |photo, index| %>
+          <div class="slide <%= 'active' if index.zero? %>">
+            <%= cl_image_tag photo.key, class: "w-100", alt: "Slide" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <%= image_tag "blank_image.png", class: "w-100" %>
+  <% end %>
+</div>
 <div class="container">
-    <img src="#">
-    <div>
-      <h6>Back</h6>
-      <%= render "shared/menu" %>
+<div class="col-12 mx-auto">
+    <div class="card--score">
+      <div class="card--score-sdg">
+        <% circle_class = "circle circle--medium circle--medium-#{@product_fabric.fabric.weighted_average_score}" %>
+        <div class="<%= circle_class %>">
+          <%= @product_fabric.fabric.weighted_average_score %>
+        </div>
+    <div class="card--score-content py-3">
+      <h6 class="bold"><%="#{@product.item_name}"%></h6>
+      <p class="small">Pre-defined message based on score.</p>
+      <%= link_to "Back", :back %>
+    </div>
     </div>
 </div>
-<div class="circle-large">1</div>
-<p>
-  Used to address the cultivation of fibers and materials as they relate greenhouse
-  gas (GHG) emissions.
-</p>
+<H4> <%= @product_fabric.fabric.name.capitalize %> </H4>
 <% @product_fabric.fabric.sdgs.each do |sdg| %>
-  <p><%= sdg.name %></p>
-  <p><%= sdg.description %></p>
-  <div class="circle-small">1</div>
-<% end %>
+    <div class="col-12 mx-auto">
+      <div class="card--item">
+        <div class="card--item-info">
+          <div class="info-circle">
+          <p><%=" "%><span class="xs">icon</span></p>
+          </div>
+          </div>
+          <div class="card--item-content py-3 no-border">
+          <h5><%= sdg.name %></h5>
+          <p><%= sdg.description %>.</p>
+          </div>
+        <div class="card--item-sdg">
+        <% circle_class = "circle circle--small circle--small-#{sdg.score}" %>
+        <div class="<%= circle_class %>">
+          <%= sdg.score %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+</div>

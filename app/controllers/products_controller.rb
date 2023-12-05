@@ -14,6 +14,9 @@ class ProductsController < ApplicationController
     else
       redirect_to root_path, alert: 'Product not found'
     end
+
+    # @average = calculate_average(@product)
+    # redirect_to product_fabric_path(@product_fabric, average: @average)
   end
 
   def new
@@ -87,5 +90,4 @@ class ProductsController < ApplicationController
   def fabric_types
     params.require(:fabric_types).permit(fabric_types: [])
   end
-
 end
