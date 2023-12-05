@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   def home
     if user_signed_in?
     @scans = current_user.scans
+    end 
   end
 
   def profile

@@ -33,6 +33,7 @@ class ProductsController < ApplicationController
         fabric = Fabric.find_by_name(fabric_type_params.downcase)
         ProductFabric.create(product: @product, fabric: fabric, fabric_percent: fabric_composition_params)
       end
+      raise
       redirect_to product_path(@product), notice: 'Product was successfully created.'
     else
       render :new

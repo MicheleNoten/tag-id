@@ -1,7 +1,6 @@
 <%= simple_form_for @product, html: { data: { controller: "fabric-list" }} do |f| %>
   <%= f.input :item_name %>
   <div data-fabric-list-target="list">
-
     <% if action_name == "new" %>
       <%= render "products/fabric_input", fabric: ProductFabric.new, index: 0%>
     <% end %>
@@ -11,7 +10,7 @@
     <% end %>
   </div>
   <%= image_tag "Arrow.svg", alt: "text", data: {action: "click->fabric-list#add"} %>
-  <%= f.hidden_field :counter, value: @product.product_fabrics.size, data: { fabric_list_target: "counter" } %>
+  <%= f.hidden_field :counter, value: @product.product_fabrics.size == 0 ? 1 : @product.product_fabrics.size, data: { fabric_list_target: "counter" } %>
   <%= f.hidden_field :deleted_items, data: { fabric_list_target: "deletedItems" } %>
   <%= f.input :made_in %>
   <%= f.input :brand %>
