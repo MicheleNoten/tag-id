@@ -1,10 +1,10 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:profile ]
+  skip_before_action :authenticate_user!, only: [:profile]
 
   def home
     if user_signed_in?
-    @scans = current_user.scans
-    end 
+      @scans = current_user.scans
+    end
   end
 
   def profile
