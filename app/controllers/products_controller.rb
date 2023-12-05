@@ -53,10 +53,16 @@ class ProductsController < ApplicationController
         fabric_type_params = params["fabric_type_#{index + 1}"]
         fabric_composition_params = params["fabric_composition_#{index + 1}"]
         fabric = Fabric.find_by_name(fabric_type_params&.downcase)
-        @product.product_fabrics.create(
-          fabric: fabric,
-          fabric_percent: fabric_composition_params
-        ) unless fabric_type_params.blank? && fabric_composition_params.blank?
+        # check if product fabric exists
+        @product_fabric = ProductFabric.find_by(product: @product, fabric: fabric)
+        if @product_fabric
+          @product_fabric.update(fabric_percent: fabric_composition_params)
+        else
+          @product.product_fabrics.create(
+            fabric: fabric,
+            fabric_percent: fabric_composition_params
+          ) unless fabric_type_params.blank? && fabric_composition_params.blank?
+        end
       end
       redirect_to product_path(@product), notice: 'Product was successfully updated.'
     else
