@@ -10,11 +10,45 @@
   height: 100%;
 }
 
-.fabric-container {
+.fabric-labels {
   display: flex;
-  gap: 4px;
+  flex-wrap: nowrap;
+  .form-label {
+    width: 43%;
+    padding: 0;
+  }
 }
 
-.fabric {
-  // margin-right: 4px;
+.fabric-inputs {
+  display: flex;
+  flex-wrap: nowrap;
+  .form-control {
+    width: 43%;
+  }
+
+  .form-button {
+    width: 8%;
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+  }
+}
+
+.fabric-add {
+  background-color: $green;
+  margin: 4px 0;
+  padding: 10px 20px;
+  width: 30%;
+  border-radius: 10px;
+  line-height: 1;
+  color: $beige;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    height: 16px;
+    margin-left: 10px;
+  }
 }

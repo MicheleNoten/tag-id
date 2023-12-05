@@ -9,7 +9,9 @@
       <%= render "products/fabric_input", fabric: fabric, index: index %>
     <% end %>
   </div>
-  <%= image_tag "Arrow.svg", alt: "text", data: {action: "click->fabric-list#add"} %>
+  <div class="fabric-add my-2" data-action ="click->fabric-list#add">
+    Add <%= image_tag "plus.svg", alt: "add fabric" %>
+  </div>
   <%= f.hidden_field :counter, value: @product.product_fabrics.size == 0 ? 1 : @product.product_fabrics.size, data: { fabric_list_target: "counter" } %>
   <%= f.hidden_field :deleted_items, data: { fabric_list_target: "deletedItems" } %>
   <%= f.input :made_in %>

@@ -1,11 +1,11 @@
 <div class="fabric-container" data-fabric-list-target="fabric">
-  <div class="fabric mb-3">
+  <div class="fabric-labels">
     <label for="fabric_type_<%= index + 1 %>" class="form-label">Fabric type</label>
+    <label for="fabric_composition_<%= index + 1 %>" class="form-label ms-2">Percentage (%)</label>
+  </div>
+  <div class="fabric-inputs">
     <input value="<%= fabric.fabric.name if fabric.fabric %>" type="text" class="form-control" name="fabric_type_<%= index + 1 %>" id="fabric_type_<%= index + 1 %>">
+    <input type="text" name="fabric_composition_<%= index + 1 %>" class="form-control ms-2" id="fabric_composition_<%= index + 1 %>" value="<%= fabric.fabric_percent %>">
+    <button class="form-button" type="button" data-type="<%= fabric.fabric&.name %>" data-action="click->fabric-list#removeFabric"><%= image_tag "trash.svg", alt: "text", data: {action: "click->fabric-list#add"} %></button>
   </div>
-  <div class="fabric">
-    <label for="fabric_composition_<%= index + 1 %>" class="form-label">Percentage (%)</label>
-    <input type="text" name="fabric_composition_<%= index + 1 %>" class="form-control" id="fabric_composition_<%= index + 1 %>" value="<%= fabric.fabric_percent %>">
-  </div>
-    <button type="button" data-type="<%= fabric.fabric&.name %>" data-action="click->fabric-list#removeFabric" style="background: none; border: none; color: black; cursor: pointer;">X</button>
 </div>
