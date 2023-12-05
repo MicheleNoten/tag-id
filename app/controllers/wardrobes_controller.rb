@@ -6,6 +6,10 @@ class WardrobesController < ApplicationController
     if params[:category] && params[:category].length > 1
       @products = @products.where(category_id: params[:category])
     end
+
+    if params[:query]
+      @products = @products.global_search(params[:query])
+    end
     # >> @products = Product.joins(:product_fabrics).where(product_fabrics: {fabric_id: ["", "1"]})
   end
 

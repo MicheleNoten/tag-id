@@ -1,65 +1,102 @@
 <div class="container">
   <div class="col mt-5 mx-auto">
     <h3>Welcome back 🌼</h3>
-    <h6><%= "#{current_user.first_name} #{current_user.last_name}" %></h6>
+    <p><%= "#{current_user.first_name} #{current_user.last_name}" %></p>
 
     <div class="row height d-flex justify-content-center align-items-center border-radius">
       <div class="col-md-6 mt-4">
         <%# Search Bar %>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        <%= form_with url: wardrobes_path, method: :get, class: "d-flex" do %>
+          <%= text_field_tag :query,
+                params[:query],
+                class: "form-control me-2",
+                placeholder: "Type a keyword"
+            %>
+          <%= submit_tag "Search", name: "", class: "btn btn-outline-primary" %>
+        <% end %>
         <%# Image Slider %>
-        <div class="image-slider row mt-5">
+        <div class="image-slider row mt-3">
           <div class="col-12">
-            <h5 class="bold">Commom worry</h5>
+            <h6 class="bold">Latest scans</h6>
             <div class="image-container">
-              <div class="image-wrapper mt-4 me-4">
-                 <%= image_tag "Climate.jpeg", alt: "image", class: "image-item" %>
-              </div>
-              <div class="image-wrapper mt-4 me-4">
-                 <%= image_tag "land.jpeg", alt: "image", class: "image-item" %>
-              </div>
-              <div class="image-wrapper mt-4 me-4">
-                 <%= image_tag "tag_scan3.webp", alt: "image", class: "image-item" %>
-              </div>
-              <div class="image-wrapper mt-4 me-4">
-                 <%= image_tag "tag_scan.jpeg", alt: "image", class: "image-item" %>
-              </div>
-              <div class="image-wrapper mt-4 me-4">
-                 <%= image_tag "tag_scan.jpeg", alt: "image", class: "image-item" %>
-              </div>
-              <div class="image-wrapper mt-4 me-4">
-                 <%= image_tag "tag_scan.jpeg", alt: "image", class: "image-item" %>
-              </div>
-
+              <% if @scans.empty? %>
+                <div class="image-wrapper mt-4 me-4">
+                  <%= link_to new_scan_path do %>
+                    <%= image_tag "add_scan2.jpeg", alt: "text", class: "image-item" %>
+                  <% end %>
+                </div>
+              <% else %>
+                <% @scans.each do |scan| %>
+                  <div class="image-wrapper mt-4 me-4">
+                    <%= cl_image_tag scan.photo.key, alt: "image", class: "image-item" %>
+                  </div>
+                <% end %>
+              <% end %>
             </div>
           </div>
         </div>
-        <div class="image-slider row mt-5">
+        <div class="image-slider row mt-3">
           <div class="col-12">
-            <h5 class="bold">Latest Scans</h5>
+            <h6 class="bold">Common worries</h6>
             <div class="image-container">
               <div class="image-wrapper mt-4 me-4">
-                 <%= image_tag "tag_scan.jpeg", alt: "image", class: "image-item" %>
+                 <%= image_tag "Climate.jpeg", alt: "image", class: "image-item" %>
+                 <div class="image-title">
+                    <p>Climate</p>
+                 </div>
               </div>
               <div class="image-wrapper mt-4 me-4">
-                 <%= image_tag "tag_scan.jpeg", alt: "image", class: "image-item" %>
+                 <%= image_tag "water.jpeg", alt: "image", class: "image-item" %>
+                 <div class="image-title">
+                    <p>Water</p>
+                 </div>
               </div>
               <div class="image-wrapper mt-4 me-4">
-                 <%= image_tag "tag_scan3.webp", alt: "image", class: "image-item" %>
+                 <%= image_tag "land.jpeg", alt: "image", class: "image-item" %>
+                 <div class="image-title">
+                    <p>Land</p>
+                 </div>
               </div>
               <div class="image-wrapper mt-4 me-4">
-                 <%= image_tag "tag_scan.jpeg", alt: "image", class: "image-item" %>
+                 <%= image_tag "human_rights.jpeg", alt: "image", class: "image-item" %>
+                 <div class="image-title">
+                    <p>Human Rights</p>
+                 </div>
               </div>
               <div class="image-wrapper mt-4 me-4">
-                 <%= image_tag "tag_scan.jpeg", alt: "image", class: "image-item" %>
+                 <%= image_tag "biodiversity.jpeg", alt: "image", class: "image-item" %>
+                 <div class="image-title">
+                    <p>Biodiversity</p>
+                 </div>
               </div>
               <div class="image-wrapper mt-4 me-4">
-                 <%= image_tag "tag_scan.jpeg", alt: "image", class: "image-item" %>
+                 <%= image_tag "waste.jpeg", alt: "image", class: "image-item" %>
+                 <div class="image-title">
+                    <p>Waste</p>
+                 </div>
               </div>
-
+            </div>
+          </div>
+        </div>
+        <div class="image-slider row mt-3">
+          <div class="col-12">
+            <h6 class="bold">Top sustainable choice</h6>
+            <div class="image-container">
+              <div class="image-wrapper mt-4 me-4">
+                 <%= image_tag "recycle.jpeg", alt: "image", class: "image-item" %>
+                 <div class="image-title">
+                    <p>Recycle</p>
+                 </div>
+              </div>
+              <div class="image-wrapper mt-4 me-4">
+                 <%= image_tag "second_hand.jpeg", alt: "image", class: "image-item" %>
+                 <div class="image-title">
+                    <p>Second hand</p>
+                 </div>
+              </div>
+              <div class="image-wrapper mt-4 me-4">
+                 <%= image_tag "score2.svg", alt: "image", class: "image-item" %>
+              </div>
             </div>
           </div>
         </div>
