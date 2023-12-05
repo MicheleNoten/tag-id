@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   resources :wardrobes, only: [:index, :new, :create, :update, :destroy]
   resources :product_fabrics, only: [:show]
 
-  get "profile" => "pages#profile", as: :profile
+  get "profile", to: "pages#profile", as: :profile
+  get "score", to: "pages#score", as: :score
 
   get 'fibres/seed', to: 'fibres#seed'
 
