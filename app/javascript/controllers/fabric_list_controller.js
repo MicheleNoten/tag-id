@@ -4,6 +4,10 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["fabric", "list", "counter"];
 
+  connect() {
+    console.log("Hello from fabric list controller");
+  }
+
   add() {
     const counter = this.fabricTargets.length + 1;
     console.log(counter);
@@ -16,8 +20,21 @@ export default class extends Controller {
                     <label for="fabric_composition_${counter}" class="form-label">Percentage (%)</label>
                     <input type="text" name="fabric_composition_${counter}" class="form-control" id="fabric_composition_${counter}">
                   </div>
+                  <button type="button" data-action="click->fabric-list#removeFabric" style="background: none; border: none; color: black; cursor: pointer;">X</button>
                   </div>`;
     this.listTarget.insertAdjacentHTML("beforeend", input);
     this.counterTarget.value = counter;
+  }
+
+  removeFabric(event) {
+    const fabricContainers = this.element.querySelectorAll('[data-fabric-list-target="fabric"]');
+    const lastFabricContainer = fabricContainers[fabricContainers.length - 1];
+
+    if (lastFabricContainer) {
+      lastFabricContainer.remove();
+
+      const counter = this.fabricTargets.length;
+      this.counterTarget.value = counter;
+    }
   }
 }

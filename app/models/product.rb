@@ -3,9 +3,11 @@ class Product < ApplicationRecord
   belongs_to :user
   belongs_to :scan, optional: true
 
-  has_many :product_fabrics
+  has_many :product_fabrics, dependent: :destroy
   has_many :fabrics, through: :product_fabrics
-  has_many_attached :photos
+  has_many_attached :photos, dependent: :destroy
+  has_many :wardrobes, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
 
   include PgSearch::Model
   pg_search_scope :global_search,

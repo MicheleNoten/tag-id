@@ -36,10 +36,6 @@ class ProductsController < ApplicationController
     end
   end
 
-      # ProductFabric.create(product: @product, fabric: Fabric.find_by_name(params[:fabric_type_1].downcase), fabric_percent: params[:fabric_composition_1]) if params[:fabric_type_1].present?
-      # ProductFabric.create(product: @product, fabric: Fabric.find_by_name(params[:fabric_type_2].downcase), fabric_percent: params[:fabric_composition_2]) if params[:fabric_type_2].present?
-      # redirect_to product_path(@product), notice: 'Product was successfully created.'
-
   def edit
     @product = Product.find(params[:id])
   end
@@ -47,6 +43,16 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
+      @product.product_fabrics.destroy_all
+      params[:product][:counter].to_i.times do |index|
+        fabric_type_params = params["fabric_type_#{index + 1}"]
+        fabric_composition_params = params["fabric_composition_#{index + 1}"]
+        fabric = Fabric.find_by_name(fabric_type_params.downcase)
+        @product.product_fabrics.create(
+          fabric: fabric,
+          fabric_percent: fabric_composition_params
+        ) unless fabric_type_params.blank? && fabric_composition_params.blank?
+      end
       redirect_to product_path(@product), notice: 'Product was successfully updated.'
     else
       render :edit
