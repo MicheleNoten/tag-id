@@ -139,10 +139,10 @@
     </div>
   </div>
   <% end %>
-  <% if !@product.in_wardrobe? %>
+  <% unless @product.in_wardrobe? %>
     <%= link_to "Add to Wardrobe", product_wardrobes_path(@product.id), data: { turbo_method: :post }, class: "button button-green w-100 m-0 mt-4" %>
     <% end %>
-  <%# <%= link_to "Add to Wardrobe", product_wardrobes_path(@product.id), data: { turbo_method: :post }, class: "button button-green w-100 m-0 mt-4" 
+  <%# <%= link_to "Add to Wardrobe", product_wardrobes_path(@product.id), data: { turbo_method: :post }, class: "button button-green w-100 m-0 mt-4"
   <%= link_to "Delete", root_path(@product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button button-beige m-0 mt-4 w-100' %>
 </div>
 </div>
