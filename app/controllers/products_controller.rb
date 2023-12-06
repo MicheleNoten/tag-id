@@ -19,6 +19,15 @@ class ProductsController < ApplicationController
     @product = Product.new
   end
 
+  def add_to_wardrobe
+    @product = Product.find(params[:id])
+    @wardrobe = Wardrobe.find_by(user_id: current_user.id)
+    unless @wardrobe.products.include?(@product)
+      @wardrobe.products << @product
+  end
+    redirect_to wardrobe_path(@wardrobe)
+  end
+
   def create
     @product = Product.new(product_params)
     @product.user = current_user

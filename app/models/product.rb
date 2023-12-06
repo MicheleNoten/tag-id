@@ -22,6 +22,11 @@ class Product < ApplicationRecord
       fabrics: [:name]
     }
 
+
+    def in_wardrobe?
+      wardrobes.any?
+    end
+
     def photos=(attachables)
       attachables = Array(attachables).compact_blank
 
@@ -30,5 +35,4 @@ class Product < ApplicationRecord
           ActiveStorage::Attached::Changes::CreateMany.new("photos", self, photos.blobs + attachables)
       end
     end
-
 end
