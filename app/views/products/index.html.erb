@@ -11,6 +11,7 @@
       <% @products.each do |product| %>
         <div class="col-12 mx-auto mt-1">
           <%= link_to product_path(product) do %>
+            <% unless product.in_wardrobe? %>
             <div class="card--product">
               <div class="avatar">pwardr
                 <% if product.photos.attached? %>
@@ -37,6 +38,7 @@
                 <% end %>
               </div>
             </div>
+            <% end %>
           <% end %>
         </div>
       <% end %>
