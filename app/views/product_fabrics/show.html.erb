@@ -1,8 +1,6 @@
+<div class="back-button"><%= link_to "Back", :back %></div>
 <div class="image-container">
-<div>
-  <%= link_to "Back", :back %>
-  <%= render "shared/menu" %>
-</div>
+<div class="back-button"><%= link_to "Back", :back %></div>
   <% if @product.photos.attached? %>
     <div class="slider-container">
       <div class="slider-wrapper">
@@ -17,42 +15,51 @@
     <%= image_tag "blank_image.png", class: "w-100" %>
   <% end %>
 </div>
-<div class="container">
-<div class="col-12 mx-auto">
-    <div class="card--score">
-      <div class="card--score-sdg">
-        <% circle_class = "circle circle--medium circle--medium-#{@product_fabric.fabric.weighted_average_score}" %>
-        <div class="<%= circle_class %>">
-          <%= @product_fabric.fabric.weighted_average_score %>
+<div class="container parallax">
+<%# Big Card %>
+<a href="/score">
+  <div class="col-12 mx-auto">
+      <div class="card--score">
+        <div class="card--score-sdg">
+          <% circle_class = "circle circle--medium circle--medium-#{@product_fabric.fabric.weighted_average_score}" %>
+          <div class="<%= circle_class %>"><%= @product_fabric.fabric.weighted_average_score %></div>
         </div>
-    <div class="card--score-content py-3">
-      <h6 class="bold"><%="#{@product.item_name}"%></h6>
-      <p class="small">Pre-defined message based on score.</p>
-      <%= link_to "Back", :back %>
-    </div>
-    </div>
-</div>
+        <div class="card--score-content py-3">
+          <h6 class="bold"><%="#{@product.item_name}"%></h6>
+          <p class="small">Pre-defined message based on score.</p>
+          <%= link_to "Back", :back %>
+        </div>
+      </div>
+  </div>
+</a>
 <H4> <%= @product_fabric.fabric.name.capitalize %> </H4>
 <% @product_fabric.fabric.sdgs.each do |sdg| %>
     <div class="col-12 mx-auto">
       <div class="card--item">
         <div class="card--item-info">
           <div class="info-circle">
-          <p><%=" "%><span class="xs">icon</span></p>
+            <% img_url="#{sdg.name}.svg" %>
+              <p>
+                <%= image_tag img_url, alt: "text" , class: "info-circle--img" %>
+              </p>
           </div>
-          </div>
-          <div class="card--item-content py-3 no-border">
-          <h5><%= sdg.name %></h5>
-          <p><%= sdg.description %>.</p>
-          </div>
+        </div>
+        <div class="card--item-content py-3 no-border">
+          <h5>
+            <%= sdg.name %>
+          </h5>
+          <p>
+            <%= sdg.description %>.
+          </p>
+        </div>
         <div class="card--item-sdg">
-        <% circle_class = "circle circle--small circle--small-#{sdg.score}" %>
-        <div class="<%= circle_class %>">
-          <%= sdg.score %>
+          <% circle_class="circle circle--small circle--small-#{sdg.score}" %>
+            <div class="<%= circle_class %>">
+              <%= sdg.score %>
+            </div>
         </div>
       </div>
     </div>
-  </div>
   <% end %>
 </div>
 </div>

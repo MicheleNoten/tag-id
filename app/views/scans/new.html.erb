@@ -1,6 +1,9 @@
 <div class="container-fluid camera-wrapper p-0">
 
     <div class="scan-container h-100" data-controller="scan">
+      <div class="scan-frame">
+        <%= image_tag "logo.png", alt: "scan", class: "scan-frame-image" %>
+      </div>
       <video class="scan-video h-100" data-scan-target="video" playsinline autoplay>
         Video stream not available.
       </video>
@@ -9,7 +12,7 @@
       <img class="scan-photo" style="display:none;" data-scan-target="photo">
     </div>
     <div class="back-button">
-      <%= link_to 'Back', scans_path, class: "btn btn-green" %>
+      <%= link_to 'Back', :back, class: "btn btn-green" %>
     </div>
     <div class="manual-button">
       <%= link_to 'Manual', new_product_path, class: "btn button-beige" %>
