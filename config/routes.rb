@@ -16,6 +16,14 @@ Rails.application.routes.draw do
   get "profile", to: "pages#profile", as: :profile
   get "score", to: "pages#score", as: :score
   get "climate", to: "pages#climate", as: :climate
+  get "water", to: "pages#water", as: :water
+  get "waste", to: "pages#waste", as: :waste
+  get "land", to: "pages#land", as: :land
+  get "integrity", to: "pages#integrity", as: :integrity
+  get "human_rights", to: "pages#human_rights", as: :human_rights
+  get "chemistry", to: "pages#chemistry", as: :chemistry
+  get "biodiversity", to: "pages#biodiversity", as: :biodiversity
+  get "animal_welfare", to: "pages#animal_welfare", as: :animal_welfare
 
   get 'fibres/seed', to: 'fibres#seed'
 
