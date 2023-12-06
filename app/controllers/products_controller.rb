@@ -14,9 +14,6 @@ class ProductsController < ApplicationController
     else
       redirect_to root_path, alert: 'Product not found'
     end
-
-    # @average = calculate_average(@product)
-    # redirect_to product_fabric_path(@product_fabric, average: @average)
   end
 
   def new
