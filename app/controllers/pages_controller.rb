@@ -55,4 +55,5 @@ class PagesController < ApplicationController
 
   def animal_welfare
   end
+
 end

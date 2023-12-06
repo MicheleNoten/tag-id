@@ -19,6 +19,15 @@ class ProductsController < ApplicationController
     @product = Product.new
   end
 
+  def add_to_wardrobe
+    @product = Product.find(params[:id])
+    @wardrobe = Wardrobe.find_by(user_id: current_user.id)
+    unless @wardrobe.products.include?(@product)
+      @wardrobe.products << @product
+  end
+    redirect_to wardrobe_path(@wardrobe)
+  end
+
   def create
     @product = Product.new(product_params)
     @product.user = current_user
@@ -37,6 +46,7 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    @@refer = request.referer
   end
 
   def update
@@ -60,7 +70,8 @@ class ProductsController < ApplicationController
           ) unless fabric_type_params.blank? && fabric_composition_params.blank?
         end
       end
-      redirect_to product_path(@product), notice: 'Product was successfully updated.'
+      redirect_to @@refer, notice: 'Product was successfully updated.'
+      # redirect_back fallback_location: products_path(@product), notice: 'Product was successfully updated.'
     else
       render :edit
     end
@@ -78,9 +89,8 @@ class ProductsController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
-    redirect_to root_path, notice: 'Product was successfully deleted.'
+    redirect_to products_path, notice: 'Product was successfully deleted.'
   end
-
 
   private
 

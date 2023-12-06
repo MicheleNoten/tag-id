@@ -2,7 +2,7 @@
   <div class="col mt-5">
     <div class="row page-header">
       <div class="back-button">
-        <%= link_to "Back", root_path %>
+        <%= link_to "Back", :back %>
       </div>
       <h3 class="text-center">Profile</h3>
     </div>
@@ -52,13 +52,26 @@
             </div>
           </div>
         <% end %>
-        <%= link_to bookmarks_path do %>
+        <%= link_to products_path do %>
           <div class="profile-action">
             <div class="profile-image">
               <%= image_tag "bookmarks.svg", alt: "text" %>
             </div>
             <div class="profile-content">
-              <p>MY BOOKMARKS</p>
+              <p>MY PRODUCTS</p>
+            </div>
+            <div class="svg-icon">
+              <%= image_tag "Arrow.svg", alt: "text" %>
+            </div>
+          </div>
+        <% end %>
+        <%= link_to scans_path do %>
+          <div class="profile-action">
+            <div class="profile-image">
+              <%= image_tag "Scan-solid.svg", alt: "text" %>
+            </div>
+            <div class="profile-content">
+              <p>MY SCANS</p>
             </div>
             <div class="svg-icon">
               <%= image_tag "Arrow.svg", alt: "text" %>
