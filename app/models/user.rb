@@ -10,4 +10,5 @@ class User < ApplicationRecord
   has_many :wardrobe_products, through: :wardrobes, source: :product
   has_one_attached :avatar, dependent: :destroy
   has_many :scans, dependent: :destroy
+  has_many :products, dependent: :destroy
 end

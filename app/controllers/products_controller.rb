@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
-
   def index
-    @products = Product.all
+    @products = current_user.products
   end
 
   def show
@@ -24,13 +23,13 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.user = current_user
     if @product.save
-      params[:product][:counter].to_i.times do |index|
+      params.require(:product).permit(:counter)[:counter].to_i.times do |index|
         fabric_type_params = params["fabric_type_#{index + 1}"]
         fabric_composition_params = params["fabric_composition_#{index + 1}"]
         fabric = Fabric.find_by_name(fabric_type_params.downcase)
         ProductFabric.create(product: @product, fabric: fabric, fabric_percent: fabric_composition_params)
       end
-      redirect_to product_path(@product), notice: 'Product was successfully created.'
+      redirect_to products_path, notice: 'Product was successfully created.'
     else
       render :new
     end

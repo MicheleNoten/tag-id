@@ -34,8 +34,13 @@ class WardrobesController < ApplicationController
   def create
     @product = Product.find(params[:product_id])
     Wardrobe.create(user: current_user, product: @product)
+
+    # bookmark = Bookmark.find_by_product_id(@product)
+    # bookmark.destroy
+
     bookmark = Bookmark.find_by_product_id(@product)
     bookmark.destroy if bookmark
+
     # current_user.wardrobe_products << @product
     redirect_to wardrobes_path
   end
