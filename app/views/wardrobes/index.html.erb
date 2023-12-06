@@ -82,7 +82,15 @@
         <div class="col-12 mx-auto mt-1">
           <%= link_to product_path(product) do %>
             <div class="card--product">
-              <%= render "shared/product_avatar", product: product %>
+              <div class="avatar">
+                <% if product.photos.attached? %>
+                  <%= cl_image_tag product.photos.first.key, alt: "text", class: "avatar" %>
+                <% elsif product.scan&.photo&.attached? %>
+                  <%= cl_image_tag product.scan.photo.key, alt: "text", class: "avatar" %>
+                <% else %>
+                  <%= image_tag "blank_image", class:"avatar" %>
+                <% end %>
+              </div>
               <div class="card--product-content">
                 <p class="small bold"><%= product.item_name %></p>
                 <p class="xs"><%= product.score %></p>
