@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :bookmarks, only: [:index, :destroy]
-  resources :wardrobes, only: [:index, :new, :create, :update, :destroy]
+  resources :wardrobes, only: [:index, :update, :destroy]
   resources :product_fabrics, only: [:show]
 
   get "profile", to: "pages#profile", as: :profile
