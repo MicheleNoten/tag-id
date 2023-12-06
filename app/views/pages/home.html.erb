@@ -65,10 +65,12 @@
             <h6 class="bold">Common worries</h6>
             <div class="image-container">
               <div class="image-wrapper mt-4 me-4">
-                 <%= image_tag "Climate.jpeg", alt: "image", class: "image-item" %>
-                 <div class="image-title">
-                    <p>Climate</p>
-                 </div>
+              <%= link_to climate_path do %>
+                <%= image_tag "Climate.jpeg", alt: "image", class: "image-item" %>
+                <div class="image-title">
+                  <p>Climate</p>
+                </div>
+              <% end %>
               </div>
               <div class="image-wrapper mt-4 me-4">
                  <%= image_tag "water.jpeg", alt: "image", class: "image-item" %>
