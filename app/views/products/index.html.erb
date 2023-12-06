@@ -12,7 +12,7 @@
         <div class="col-12 mx-auto mt-1">
           <%= link_to product_path(product) do %>
             <div class="card--product">
-              <div class="avatar">pwardr
+              <div class="avatar">
                 <% if product.photos.attached? %>
                   <%= cl_image_tag product.photos.first.key, alt: "text", class: "avatar" %>
                 <% elsif product.scan&.photo&.attached? %>

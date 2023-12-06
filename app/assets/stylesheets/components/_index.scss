@@ -40,12 +40,14 @@ html {
 }
 body {
   margin-bottom: 70px; /* Margin bottom by footer height */
+  min-height: 100vh;
 }
 
 .parallax {
   position: relative;
   top:430px;
   background-color: $body-bg;
+  padding-bottom: 80px;
 }
 
 .slider-container {
