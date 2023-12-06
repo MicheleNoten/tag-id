@@ -1,22 +1,22 @@
-
+<div class="back-button"><%= link_to "Back", :back %></div>
 <div class="image-container">
   <% if @product.photos.attached? %>
     <% if @product.photos.length > 1 %>
       <div class="slider-container">
         <div class="slider-wrapper">
           <% @product.photos.each do |photo| %>
-            <div class="slide"><%= cl_image_tag photo.key, class: "w-100", alt: "Slide" %></div>
+            <div class="slide"><%= cl_image_tag photo.key, class: "w-100 position-fixed", alt: "Slide" %></div>
           <% end %>
         </div>
       </div>
     <% else %>
-      <%= cl_image_tag @product.photos.first.key, class: "w-100" %>
+      <%= cl_image_tag @product.photos.first.key, class: "w-100 position-fixed" %>
     <% end %>
   <% else %>
     <%= image_tag "blank_image.png", class: "w-100 position-fixed" %>
   <% end %>
   </div>
-  <div class="container mt-5">
+  <div class="container pt-5 parallax">
     <div class="col-10 m-auto">
       <div class="form-overlay">
         <%= render "products/form", product: @product%>

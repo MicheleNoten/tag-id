@@ -47,11 +47,11 @@ class ScansController < ApplicationController
           scan_fabric_composition["fabric_composition"].each do |fabric, value|
             puts "#{fabric}: #{value}"
 
-            if Fabric.search_by_name("polyester recycled").first
+            if Fabric.search_by_name(fabric).first
               @fabricComposition = ProductFabric.new
               @fabricComposition.product = @product
               @fabricComposition.fabric_percent = value.gsub('%', '').to_i
-              @fabricComposition.fabric = Fabric.search_by_name("polyester recycled").first
+              @fabricComposition.fabric = Fabric.search_by_name(fabric).first
               p @fabricComposition
               if @fabricComposition.save!
                 puts "Product fabric composition saved!"

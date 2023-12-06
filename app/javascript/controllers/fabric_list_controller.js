@@ -3,6 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="fabric-list"
 export default class extends Controller {
   static targets = ["fabric", "list", "counter", "deletedItems"];
+  static values = { imageUrl: String };
 
   connect() {
     console.log("Hello from fabric list controller");
@@ -20,7 +21,7 @@ export default class extends Controller {
                     <div class="fabric-inputs">
                       <input type="text" class="form-control" name="fabric_type_${counter}" id="fabric_type_${counter}">
                       <input type="text" name="fabric_composition_${counter}" class="form-control ms-2" id="fabric_composition_${counter}">
-                      <button type="button" data-id=${counter} data-action="click->fabric-list#removeFabric" class="form-button"> <img src="/assets/trash.svg" alt="text"></button>
+                      <button type="button" data-id=${counter} data-action="click->fabric-list#removeFabric" class="form-button"> <img src="${this.imageUrlValue}" alt="text"></button>
                     </div>
                   </div>`;
 
