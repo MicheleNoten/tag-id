@@ -25,9 +25,9 @@
           <div class="<%= circle_class %>"><%= weighted_average_rounded %></div>
         </div>
         <div class="card--score-content py-3">
-          <h6 class="bold">Not-good-enough</h6>
-          <p class="small"> <%= @product.comments %> </p>
-          <%= link_to "Edit", edit_product_path(@product)%>
+          <h5 class="bold">Not-good-enough</h5>
+          <h6 class="comment"> <%= @product.comments %> </h6>
+          <%= link_to "✎ Edit", edit_product_path(@product)%>
         </div>
       </div>
   </div>
