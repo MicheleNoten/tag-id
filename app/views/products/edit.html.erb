@@ -1,5 +1,5 @@
 
-<div class="image-container position-fixed">
+<div class="image-container">
   <% if @product.photos.attached? %>
     <% if @product.photos.length > 1 %>
       <div class="slider-container">
@@ -10,16 +10,17 @@
         </div>
       </div>
     <% else %>
-      <%= cl_image_tag @product.photos.first.key, class: "w-100" %>
+      <%= cl_image_tag @product.photos.first.key, class: "w-100 position-fixed" %>
     <% end %>
   <% else %>
     <%= image_tag "blank_image.png", class: "w-100 position-fixed" %>
   <% end %>
   </div>
-  <div class="container mt-5 parallax">
+  <div class="container pt-5 parallax">
     <div class="col-10 m-auto">
       <div class="form-overlay">
         <%= render "products/form", product: @product%>
       </div>
     </div>
   </div>
+<%= console %>
