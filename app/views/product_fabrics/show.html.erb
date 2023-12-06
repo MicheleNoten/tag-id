@@ -1,5 +1,5 @@
 <div class="back-button"><%= link_to "Back", :back %></div>
-<div class="image-container">
+<div class="image-container position-fixed">
 <div class="back-button"><%= link_to "Back", :back %></div>
   <% if @product.photos.attached? %>
     <div class="slider-container">
@@ -12,7 +12,7 @@
       </div>
     </div>
   <% else %>
-    <%= image_tag "blank_image.png", class: "w-100" %>
+    <%= image_tag "blank_image.png", class: "w-100 position-fixed" %>
   <% end %>
 </div>
 <div class="container parallax">
