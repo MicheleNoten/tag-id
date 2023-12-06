@@ -31,5 +31,29 @@ class PagesController < ApplicationController
 
   def climate
   end
-  
+
+  def water
+  end
+
+  def waste
+  end
+
+  def land
+  end
+
+  def integrity
+  end
+
+  def human_rights
+  end
+
+  def chemistry
+  end
+
+  def biodiversity
+  end
+
+  def animal_welfare
+  end
+
 end
