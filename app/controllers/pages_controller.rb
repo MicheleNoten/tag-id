@@ -28,4 +28,8 @@ class PagesController < ApplicationController
 
   def score
   end
+
+  def climate
+  end
+  
 end
