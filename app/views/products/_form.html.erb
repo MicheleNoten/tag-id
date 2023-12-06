@@ -1,4 +1,4 @@
-<%= simple_form_for @product, html: { data: { controller: "fabric-list", fabric_list_image_url_value: "#{asset_path "trash.svg"}"}} do |f| %>
+<%= simple_form_for @product, redirect_to: request.referer, html: { data: { controller: "fabric-list", fabric_list_image_url_value: "#{asset_path "trash.svg"}"}} do |f| %>
   <%= f.input :item_name %>
   <div data-fabric-list-target="list">
     <% if action_name == "new" %>
