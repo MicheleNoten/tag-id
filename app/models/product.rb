@@ -21,4 +21,8 @@ class Product < ApplicationRecord
       category: [:name],
       fabrics: [:name]
     }
+
+    def in_wardrobe?
+      wardrobes.any?
+    end
 end

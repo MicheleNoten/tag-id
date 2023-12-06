@@ -4,5 +4,4 @@ class Wardrobe < ApplicationRecord
 
   validates :user, uniqueness: { scope: :product}
   # has_many :products, dependent: :destroy
-
 end
