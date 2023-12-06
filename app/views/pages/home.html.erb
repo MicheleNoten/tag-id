@@ -3,6 +3,24 @@
     <h3>Welcome back 🌼</h3>
     <p><%= "#{current_user.first_name} #{current_user.last_name}" %></p>
 
+    <div class="col-12 mx-auto d-flex justify-content-center mt-5">
+      <div class="col-12 mx-auto">
+        <div class="card--score">
+          <div class="card--score-sdg">
+            <% wardrobe_average = @average.present? ? @average.ceil : 0 %>
+            <% circle_class = "circle circle--medium circle--medium-#{wardrobe_average}" %>
+            <div class="<%= circle_class %>">
+            <%= wardrobe_average %>
+            </div>
+            <div class="card--score-content py-3">
+              <h6 class="bold">It’s a start </h6>
+              <p class="small">Your wardrobe is showing a combination of sustainable products, but you can do better 😏 </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="row height d-flex justify-content-center align-items-center border-radius">
       <div class="col-md-6 mt-4">
         <%# Search Bar %>

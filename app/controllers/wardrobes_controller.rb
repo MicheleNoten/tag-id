@@ -17,11 +17,30 @@ class WardrobesController < ApplicationController
     @products = Product.all
   end
 
+  def show
+    @wardrobe = Wardrobe.find(params[:id])
+    @products = Product.all
+    @product = Product.find_by_id(params[:id])
+    if @product
+      @average = scores.present? ? (scores.sum / scores.count) : 0
+    else
+      redirect_to root_path, alert: 'Product not found'
+    end
+
+    # @average = calculate_average(@product)
+    # redirect_to product_fabric_path(@product_fabric, average: @average)
+  end
+
   def create
     @product = Product.find(params[:product_id])
     Wardrobe.create(user: current_user, product: @product)
+
+    # bookmark = Bookmark.find_by_product_id(@product)
+    # bookmark.destroy
+
     bookmark = Bookmark.find_by_product_id(@product)
-    bookmark.destroy
+    bookmark.destroy if bookmark
+
     # current_user.wardrobe_products << @product
     redirect_to wardrobes_path
   end
@@ -31,7 +50,5 @@ class WardrobesController < ApplicationController
     Wardrobe.find_by_product_id(@product).destroy
     redirect_to wardrobes_path
   end
-  def show
-    @wardrobe = Wardrobe.find(params[:id])
-  end
+
 end

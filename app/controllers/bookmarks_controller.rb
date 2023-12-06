@@ -1,6 +1,7 @@
 class BookmarksController < ApplicationController
   def index
     @bookmarks = current_user.bookmarks
+    # @scans = current_user.scans
   end
 
   def show

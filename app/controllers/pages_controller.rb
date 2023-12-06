@@ -7,6 +7,20 @@ class PagesController < ApplicationController
     end
   end
 
+  def show
+    @wardrobe = Wardrobe.find(params[:id])
+    @products = Product.all
+    @product = Product.find_by_id(params[:id])
+    if @product
+      @average = scores.present? ? (scores.sum / scores.count) : 0
+    else
+      redirect_to root_path, alert: 'Product not found'
+    end
+
+    # @average = calculate_average(@product)
+    # redirect_to product_fabric_path(@product_fabric, average: @average)
+  end
+
   def profile
     @user = current_user
   end
