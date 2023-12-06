@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   def home
     if user_signed_in?
       @scans = current_user.scans
+      @products = current_user.products
     end
   end
 
