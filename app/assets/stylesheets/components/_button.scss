@@ -15,12 +15,12 @@
 }
 
 .button-green {
-  background: #A4BE7B;
+  background: #9cc161;
   color: white;
 
   &:hover {
-    background: white;
-    color: #A4BE7B;
+    background: #9ec066;
+    color: $beige;
   }
 
   input {

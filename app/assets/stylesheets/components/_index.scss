@@ -40,7 +40,7 @@ html {
 }
 body {
   margin-bottom: 70px; /* Margin bottom by footer height */
-  min-height: 100vh;
+  min-height: calc(100vh - 70px);
 }
 
 .parallax {
