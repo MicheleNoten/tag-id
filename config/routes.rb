@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   get "profile", to: "pages#profile", as: :profile
   get "score", to: "pages#score", as: :score
+  get "climate", to: "pages#climate", as: :climate
 
   get 'fibres/seed', to: 'fibres#seed'
 
