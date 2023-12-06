@@ -21,4 +21,14 @@ class Product < ApplicationRecord
       category: [:name],
       fabrics: [:name]
     }
+
+    def photos=(attachables)
+      attachables = Array(attachables).compact_blank
+
+      if attachables.any?
+        attachment_changes["photos"] =
+          ActiveStorage::Attached::Changes::CreateMany.new("photos", self, photos.blobs + attachables)
+      end
+    end
+
 end
