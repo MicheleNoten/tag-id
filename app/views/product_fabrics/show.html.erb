@@ -29,6 +29,7 @@
     </div>
 </div>
 <% @product_fabric.fabric.sdgs.each do |sdg| %>
+    <% puts sdg %>
     <div class="col-12 mx-auto">
       <div class="card--item">
         <div class="card--item-info">
@@ -38,7 +39,7 @@
           </div>
           <div class="card--item-content py-3 no-border">
           <h5><%= sdg.name %></h5>
-          <p><%= sdg.description %>.</p>
+          <p><%= sdg.description %></p>
           </div>
         <div class="card--item-sdg">
         <% circle_class = "circle circle--small circle--small-#{sdg.score}" %>

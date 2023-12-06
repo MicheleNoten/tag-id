@@ -8,21 +8,9 @@
     </div>
 
     <div class="col-12 mx-auto d-flex justify-content-center mt-5">
-      <div class="col-12 mx-auto">
-        <div class="card--score">
-          <div class="card--score-sdg">
-            <% wardrobe_average = @average.present? ? @average.ceil : 0 %>
-            <% circle_class = "circle circle--large circle--large-#{wardrobe_average}" %>
-            <div class="<%= circle_class %>">
-            <%= wardrobe_average %>
-            </div>
-            <div class="card--score-content py-3">
-              <h6 class="bold">Not-good-enough</h6>
-              <p class="small">Pre-defined message based on score.</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <% wardrobe_average = @average.present? ? @average.ceil : 0 %>
+      <% circle_class = "circle circle--large circle--large-#{wardrobe_average}" %>
+      <div class="<%= circle_class %>"><%= wardrobe_average %></div>
     </div>
 
     <!-- Search bar -->
