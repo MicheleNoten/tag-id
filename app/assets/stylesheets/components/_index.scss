@@ -41,3 +41,13 @@ html {
 body {
   margin-bottom: 60px; /* Margin bottom by footer height */
 }
+
+.parallax {
+  position: relative;
+  top:430px;
+  background-color: $body-bg;
+}
+
+.slider-container {
+  position: fixed;
+}

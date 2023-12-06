@@ -1,4 +1,5 @@
 <%# TODO: verify line 4 re: attached with many photos? %>
+<div class="back-button"><%= link_to "Back", :back %></div>
 <div class="image-container">
   <% if @product.photos.attached? %>
     <% if @product.photos.length > 1 %>

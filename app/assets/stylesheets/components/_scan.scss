@@ -47,3 +47,14 @@
     border-radius: 10px;
   }
 }
+
+.scan-frame {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.scan-frame-image {
+  position: relative;
+  top: 25%;
+}
