@@ -87,11 +87,12 @@
                   <%= link_to product_path(product) do %>
                     <%= cl_image_tag photo.key, class:"w-100 wardrobe-card--image"%>
                   <% end %>
-                  <div class="kebab">
+                  <div class="kebab" data-controller="dropdown" data-action="click->dropdown#toggle">
                     <figure></figure>
-                    <figure class="middle"></figure>
-                    <p class="cross">x</p>
-                    <ul class="dropdown">
+                    <figure class="middle" data-dropdown-target="middle"></figure>
+                    <figure></figure>
+                    <p class="cross" data-dropdown-target="cross">x</p>
+                    <ul class="dropdown" data-dropdown-target="dropdown">
                       <li>
                         <%= link_to edit_product_path(product) do %>
                           <p><i class="fa-solid fa-pencil me-1"></i> Edit</p>

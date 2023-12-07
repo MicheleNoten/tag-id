@@ -1,11 +1,16 @@
 .image-box {
   position: fixed;
-  width: 100dvw;
+  width: 100vw;
 
   img {
     height: 430px;
     object-fit: cover;
+    width: 100%;
   }
+}
+
+.image-text {
+  color: white;
 }
 
 .image-text-overlay {

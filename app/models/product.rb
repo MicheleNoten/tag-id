@@ -4,6 +4,7 @@ class Product < ApplicationRecord
   belongs_to :scan, optional: true
 
   attr_accessor :deleted_items
+  attr_accessor :counter
 
   has_many :product_fabrics, dependent: :destroy
   has_many :fabrics, through: :product_fabrics

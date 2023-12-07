@@ -15,9 +15,9 @@
   position: absolute;
   display: inline-block;
   box-sizing: border-box;
-  padding: 0 16px;
-  top: 8px;
-  right: 0;
+  padding: 24px 14px 24px 36px;
+  top: 0px;
+  right: 0px;
 }
 .kebab figure {
   width: 5px;
@@ -44,8 +44,8 @@
 
 .cross {
   position: absolute;
-  top: 61%;
-  left: 50%;
+  top: 50%;
+  left: 70%;
   transform: translate(-50%, -50%) scale(0);
   margin-top: -1px;
   font-family: "Nunito", sans-serif;
@@ -92,7 +92,7 @@ a, li {
 .dropdown {
   position: absolute;
   right: 0.5rem;
-  top: 1.2rem;
+  top: 45px;
   width: 110px;
   transition: all 0.25s ease-out;
   transform: scale(0);
