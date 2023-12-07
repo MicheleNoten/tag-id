@@ -38,6 +38,28 @@ class ScansController < ApplicationController
           scan_fabric_composition = JSON.parse(@scan.response_chatgpt)
           @product.brand = scan_fabric_composition["brand"]
           @product.made_in = scan_fabric_composition["origin_country"]
+
+          # Fetch brand icon
+          brand_name = scan_fabric_composition["brand"].gsub(' ', '%20')
+          url = URI("https://api.brandfetch.io/v2/search/#{brand_name}")
+
+          http = Net::HTTP.new(url.host, url.port)
+          http.use_ssl = true
+
+          request = Net::HTTP::Get.new(url)
+          request["accept"] = 'application/json'
+          request["Referer"] = 'https://example.com/searchIntegrationPage'
+
+          response = http.request(request)
+
+          # Parse the JSON response
+          response_data = JSON.parse(response.read_body)
+
+          # Extract the icon URL and save it to a variable
+          icon_url = response_data[0]["icon"]
+          puts "Fetched brand URL #{icon_url}"
+          @product.brand_logo = icon_url
+
           @product.save!
           puts "Product saved!"
 
