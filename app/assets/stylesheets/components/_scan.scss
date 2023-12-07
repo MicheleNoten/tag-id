@@ -1,5 +1,6 @@
 .scan-container {
   text-align: center;
+  height: calc(100vh - 70px);
 }
 .scan-video {
   width: 100%;
@@ -8,7 +9,7 @@
   position: absolute;
   height: 90px;
   width: 90px;
-  bottom: 14px;
+  bottom: 25px;
   left: 38%;
   margin: 0;
   padding: 0;
@@ -26,7 +27,7 @@
 }
 
 .camera-wrapper {
-  height: calc(100vh - 130px);
+  // height: calc(100vh - 70px);
 }
 
 .scan-action {

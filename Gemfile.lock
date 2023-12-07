@@ -112,6 +112,8 @@ GEM
       rest-client (>= 2.0.0)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
+    countries (5.7.0)
+      unaccent (~> 0.3)
     crass (1.0.6)
     csv (3.2.8)
     date (3.3.4)
@@ -300,6 +302,7 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    unaccent (0.4.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.1)
@@ -326,6 +329,7 @@ DEPENDENCIES
   bootstrap (~> 5.2)
   capybara
   cloudinary
+  countries
   csv
   debug
   devise
