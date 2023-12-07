@@ -54,8 +54,6 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     remove_deleted_items(@product, params[:product][:deleted_items]) unless params[:product][:deleted_items].nil?
 
-
-
     if @product.update(product_params)
       @product.brand_logo = fetch_brand_logo(@product.brand)
       @product.save!
@@ -75,11 +73,7 @@ class ProductsController < ApplicationController
           ) unless fabric_type_params.blank? && fabric_composition_params.blank?
         end
       end
-      if @@refer.include?("scans/new")
-        redirect_to products_path(@product), notice: 'Product was successfully updated.'
-      else
-        redirect_to @@refer, notice: 'Product was successfully updated.'
-      end
+      redirect_to product_path(@product), notice: 'Product was successfully updated.'
     else
       render :edit
     end
