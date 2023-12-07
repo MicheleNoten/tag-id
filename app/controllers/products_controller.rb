@@ -67,7 +67,7 @@ class ProductsController < ApplicationController
         if @product_fabric
           @product_fabric.update(fabric_percent: fabric_composition_params)
         else
-          @product.product_fabrics.create(
+          @product.product_fabrics.create!(
             fabric: fabric,
             fabric_percent: fabric_composition_params
           ) unless fabric_type_params.blank? && fabric_composition_params.blank?
@@ -122,7 +122,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:item_name, :made_in, :brand, :purchased_in, :certification_label, :comments,
+    params.require(:product).permit(:counter, :deleted_items, :item_name, :made_in, :brand, :purchased_in, :certification_label, :comments,
                                     :description, :score, :category_id, :scan_id, :user_id, :brand_logo, photos: [])
   end
 
