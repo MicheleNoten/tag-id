@@ -1,6 +1,6 @@
 <div class="back-button"><%= link_to "Back", :back %></div>
 <div class="image-container position-fixed">
-  <% if @product.photos.attached? || @product.scan.photo.attached? %>
+  <% if @product.photos.attached? || @product.scan%>
     <% if @product.scan %>
       <% if @product.scan.photo.attached? %>
         <div class="slide">
@@ -87,7 +87,11 @@
     <div class="card--item">
       <div class="card--item-info">
         <div class="info-circle">
-          <p><%="brand"%><span class="xs"></span></p>
+          <% if @product.brand_logo %>
+            <%= image_tag @product.brand_logo, class: "info-circle--brand",alt: "#{@product.brand}" %>
+          <% else %>
+            <p><%="brand"%><span class="xs"></span></p>
+          <% end %>
         </div>
       </div>
       <div class="card--item-content no-border py-3">
