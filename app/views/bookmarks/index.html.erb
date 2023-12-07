@@ -27,13 +27,13 @@
             </div>
             <div class="card--product-icon">
               <%= link_to product_wardrobes_path(product), data: { turbo_method: :post } do %>
-                <%= image_tag "hanger-green", alt: "text" %>
+                <%= image_tag "hanger-green.svg", alt: "text" %>
               <% end %>
               <%= link_to edit_product_path(product) do %>
-                <%= image_tag "pencil-black", alt: "text" %>
+                <%= image_tag "pencil-black.svg", alt: "text" %>
               <% end %>
               <%= link_to bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-                <%= image_tag "trash-red", alt: "text" %>
+                <%= image_tag "trash-red.svg", alt: "text" %>
               <% end %>
             </div>
           </div>
