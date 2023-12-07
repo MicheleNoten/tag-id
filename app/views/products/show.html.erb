@@ -73,10 +73,10 @@
       <div class="card--item-info">
         <div class="info-circle">
           <% c = ISO3166::Country.find_country_by_any_name(@product.made_in) %>
-          <% if c.emoji_flag  %>
-          <p class="info-circle--flag"><%= c.emoji_flag %></p>
+          <% if c %>
+            <p class="info-circle--flag"><%= c.emoji_flag %></p>
           <% else %>
-          <p class="info-circle--flag">🌎</p>
+            <p class="info-circle--flag">🌎</p>
           <% end %>
         </div>
       </div>
@@ -111,7 +111,7 @@
     <div class="card--item">
       <div class="card--item-info">
         <div class="info-circle">
-          <p><%=" "%><span class="xs"></span></p>
+          <p class="info-circle--flag">👕</p>
         </div>
       </div>
       <div class="card--item-content no-border py-3">

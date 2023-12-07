@@ -43,6 +43,7 @@ html {
 }
 body {
   margin-bottom: 70px; /* Margin bottom by footer height */
+  background-image: linear-gradient(180deg, rgba(254, 244, 218, 0.22) 33.85%, rgba(254, 218, 218, 0.22) 84.37%);
 }
 
 .parallax {
@@ -50,6 +51,7 @@ body {
   top:430px;
   background-color: $body-bg;
   padding-bottom: 80px;
+  background-image: linear-gradient(180deg, rgba(254, 244, 218, 0.22) 33.85%, rgba(254, 218, 218, 0.22) 84.37%);
 }
 
 .slider-container {

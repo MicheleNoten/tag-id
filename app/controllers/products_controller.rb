@@ -112,8 +112,11 @@ class ProductsController < ApplicationController
     response_data = JSON.parse(response.read_body)
 
     # Extract the icon URL and save it to a variable
-    puts "Fetched brand URL #{response_data[0]["icon"]}"
-    icon_url = response_data[0]["icon"]
+    if response_data[0]
+      icon_url = response_data[0]["icon"]
+    else
+      icon_url = "https://res.cloudinary.com/dclsbfntj/image/upload/v1701940740/production/rwoqhe6qqed7m21y78ku.png"
+    end
   end
 
   private
