@@ -1,10 +1,12 @@
 <div class="back-button"><%= link_to "Back", :back %></div>
 <div class="image-container position-fixed">
   <% if @product.photos.attached? || @product.scan.photo.attached? %>
-    <% if @product.scan.photo.attached? %>
-      <div class="slide">
-        <%= cl_image_tag @product.scan.photo.key, class: "w-100 position-fixed", alt: "Slide" %>
-      </div>
+    <% if @product.scan %>
+      <% if @product.scan.photo.attached? %>
+        <div class="slide">
+          <%= cl_image_tag @product.scan.photo.key, class: "w-100 position-fixed", alt: "Slide" %>
+        </div>
+      <% end %>
     <% elsif @product.photos.attached? %>
       <div class="slider-container">
         <div class="slider-wrapper">
@@ -64,12 +66,13 @@
   </div>
   <% end %>
   <% end %>
-  <% if @product.made_in.present? %>
+  <% if @product.made_in != "nil" && @product.made_in.present? %>
   <div class="col-12 mx-auto">
     <div class="card--item">
       <div class="card--item-info">
         <div class="info-circle">
-          <p><%="flag"%><span class="xs"></span></p>
+          <% c = ISO3166::Country.find_country_by_any_name(@product.made_in) %>
+          <p><%= c.emoji_flag %><span class="xs"></span></p>
         </div>
       </div>
       <div class="card--item-content no-border py-3">
@@ -79,7 +82,7 @@
     </div>
   </div>
   <% end %>
-  <% if @product.brand.present? %>
+  <% if @product.brand != "nil" && @product.brand.present? %>
     <div class="col-12 mx-auto">
     <div class="card--item">
       <div class="card--item-info">
