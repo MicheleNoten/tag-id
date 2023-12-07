@@ -56,7 +56,7 @@
                         <% elsif product.scan&.photo&.attached? %>
                           <%= cl_image_tag product.scan.photo.key, alt: "text", class: "image-item" %>
                         <% else %>
-                          <%= image_tag "blank_image", class: "image-item" %>
+                          <%= image_tag "blank_image.png", class: "image-item" %>
                         <% end %>
                         <div class="image-title"></div>
                       </div>
