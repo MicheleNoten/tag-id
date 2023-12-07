@@ -5,7 +5,7 @@
       <div class="slider-container">
         <div class="slider-wrapper">
           <% @product.photos.each do |photo| %>
-            <div class="slide"><%= cl_image_tag photo.key, class: "w-100 position-fixed", alt: "Slide" %></div>
+            <div class="slide"><%= cl_image_tag photo.key, class: "w-100 slider-image position-fixed", alt: "Slide" %></div>
           <% end %>
         </div>
       </div>

@@ -57,3 +57,8 @@ body {
 .slider-container {
   position: fixed;
 }
+
+.slider-image {
+  min-height: 430px;
+  object-fit: cover;
+}

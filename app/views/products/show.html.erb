@@ -13,7 +13,7 @@
         <div class="slider-wrapper">
           <% @product.photos.each_with_index do |photo, index| %>
             <div class="slide <%= 'active' if index.zero? %>">
-              <%= cl_image_tag photo.key, class: "w-100 position-fixed", alt: "Slide" %>
+              <%= cl_image_tag photo.key, class: "w-100 slider-image position-fixed", alt: "Slide" %>
             </div>
           <% end %>
         </div>
