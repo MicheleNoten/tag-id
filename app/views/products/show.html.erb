@@ -72,7 +72,7 @@
       <div class="card--item-info">
         <div class="info-circle">
           <% c = ISO3166::Country.find_country_by_any_name(@product.made_in) %>
-          <p><%= c.emoji_flag %><span class="xs"></span></p>
+          <p class="info-circle--flag"><%= c.emoji_flag %><span class="xs"></span></p>
         </div>
       </div>
       <div class="card--item-content no-border py-3">
