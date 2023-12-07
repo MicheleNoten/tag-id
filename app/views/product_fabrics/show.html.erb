@@ -11,6 +11,12 @@
         <% end %>
       </div>
     </div>
+   <% elsif @product.scan %>
+    <% if @product.scan.photo.attached? %>
+      <div class="slide">
+        <%= cl_image_tag @product.scan.photo.key, class: "w-100 position-fixed", alt: "Slide" %>
+      </div>
+    <% end %>
   <% else %>
     <%= image_tag "blank_image.png", class: "w-100 position-fixed" %>
   <% end %>
