@@ -1,7 +1,7 @@
 <div class="back-button"><%= link_to "Back", :back %></div>
 <div class="image-container position-fixed">
   <% if @product.photos.attached? || @product.scan.photo.attached? %>
-    <% if @product.scan.photo.attached? %>
+    <% if @product.scan %>
       <div class="slide">
         <%= cl_image_tag @product.scan.photo.key, class: "w-100 position-fixed", alt: "Slide" %>
       </div>
