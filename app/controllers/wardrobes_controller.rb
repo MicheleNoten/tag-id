@@ -56,6 +56,7 @@ class WardrobesController < ApplicationController
     Wardrobe.find_by_product_id(@product).destroy
     redirect_to wardrobes_path
   end
+<<<<<<< Updated upstream
 
   private
 
@@ -64,4 +65,6 @@ class WardrobesController < ApplicationController
                                     :description, :score, :category_id, :scan_id, :user_id, photos: [])
   end
 
+=======
+>>>>>>> Stashed changes
 end

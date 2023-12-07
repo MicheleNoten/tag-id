@@ -41,13 +41,11 @@
             <div class="col-12">
               <h6 class="bold">Latest products</h6>
               <div class="image-container">
-                <% if @products.nil? %>
                   <div class="image-wrapper mt-4">
                     <%= link_to new_scan_path do %>
-                      <%= image_tag "add_scan2.jpeg", alt: "text", class: "image-item" %>
+                      <%= image_tag "7.svg", alt: "text", class: "image-item" %>
                     <% end %>
                   </div>
-                <% else %>
                   <% @products.each do |product| %>
                     <%= link_to product_path(product) do  %>
                       <div class="image-wrapper mt-4">
@@ -62,7 +60,6 @@
                       </div>
                     <% end %>
                   <% end %>
-                <% end %>
               </div>
             </div>
           </div>
@@ -72,7 +69,7 @@
               <div class="image-container">
                 <div class="image-wrapper mt-4">
                 <%= link_to climate_path do %>
-                  <%= image_tag "Climate.jpeg", alt: "image", class: "image-item" %>
+                  <%= image_tag "climate.jpg", alt: "image", class: "image-item" %>
                   <div class="image-title">
                     <p>Climate</p>
                   </div>
@@ -80,7 +77,7 @@
                 </div>
                 <div class="image-wrapper mt-4">
                   <%= link_to water_path do %>
-                    <%= image_tag "water.jpeg", alt: "image", class: "image-item" %>
+                    <%= image_tag "water_1.webp", alt: "image", class: "image-item" %>
                     <div class="image-title">
                       <p>Water</p>
                     </div>
@@ -88,7 +85,7 @@
                 </div>
                 <div class="image-wrapper mt-4">
                   <%= link_to land_path do %>
-                  <%= image_tag "land.jpeg", alt: "image", class: "image-item" %>
+                  <%= image_tag "land.jpg", alt: "image", class: "image-item" %>
                   <div class="image-title">
                       <p>Land</p>
                   </div>
@@ -96,7 +93,7 @@
                 </div>
                 <div class="image-wrapper mt-4">
                   <%= link_to human_rights_path do %>
-                  <%= image_tag "human_rights.jpeg", alt: "image", class: "image-item" %>
+                  <%= image_tag "human_rights.jpg", alt: "image", class: "image-item" %>
                   <div class="image-title">
                       <p>Human Rights</p>
                   </div>
@@ -104,7 +101,7 @@
                 </div>
                 <div class="image-wrapper mt-4">
                   <%= link_to biodiversity_path do %>
-                  <%= image_tag "biodiversity.jpeg", alt: "image", class: "image-item" %>
+                  <%= image_tag "biodiversity.jpg", alt: "image", class: "image-item" %>
                   <div class="image-title">
                       <p>Biodiversity</p>
                   </div>
@@ -112,7 +109,7 @@
                 </div>
                 <div class="image-wrapper mt-4">
                   <%= link_to integrity_path do %>
-                  <%= image_tag "integrity.jpeg", alt: "image", class: "image-item" %>
+                  <%= image_tag "integrity.jpg", alt: "image", class: "image-item" %>
                   <div class="image-title">
                       <p>Integrity</p>
                   </div>
@@ -120,7 +117,7 @@
                 </div>
                 <div class="image-wrapper mt-4">
                   <%= link_to chemistry_path do %>
-                  <%= image_tag "chemistry.jpeg", alt: "image", class: "image-item" %>
+                  <%= image_tag "chemistry.jpg", alt: "image", class: "image-item" %>
                   <div class="image-title">
                       <p>Chemistry</p>
                   </div>
@@ -128,7 +125,7 @@
                 </div>
                 <div class="image-wrapper mt-4">
                   <%= link_to animal_welfare_path do %>
-                  <%= image_tag "animal_welfare.jpeg", alt: "image", class: "image-item" %>
+                  <%= image_tag "animal_welfare.jpg", alt: "image", class: "image-item" %>
                   <div class="image-title">
                       <p>Animal welfare</p>
                   </div>
@@ -136,7 +133,7 @@
                 </div>
                 <div class="image-wrapper mt-4">
                   <%= link_to waste_path do %>
-                  <%= image_tag "waste.jpeg", alt: "image", class: "image-item" %>
+                  <%= image_tag "waste.jpg", alt: "image", class: "image-item" %>
                   <div class="image-title">
                       <p>Waste</p>
                   </div>
@@ -150,20 +147,20 @@
               <h6 class="bold">Top sustainable choice</h6>
               <div class="image-container">
                 <div class="image-wrapper mt-4">
-                  <%= image_tag "recycle.jpeg", alt: "image", class: "image-item" %>
+                  <%= image_tag "recycle.jpg", alt: "image", class: "image-item" %>
                   <div class="image-title">
                       <p>Recycle</p>
                   </div>
                 </div>
                 <div class="image-wrapper mt-4">
-                  <%= image_tag "second_hand.jpeg", alt: "image", class: "image-item" %>
+                  <%= image_tag "second_hand.jpg", alt: "image", class: "image-item" %>
                   <div class="image-title">
                       <p>Second hand</p>
                   </div>
                 </div>
                 <div class="image-wrapper mt-4">
                   <%= link_to score_path do %>
-                    <%= image_tag "score2.svg", alt: "image", class: "image-item" %>
+                    <%= image_tag "score.jpg", alt: "image", class: "image-item" %>
                   <% end %>
                 </div>
               </div>
