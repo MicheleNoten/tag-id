@@ -31,6 +31,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.user = current_user
+    @product.brand_logo = fetch_brand_logo(@product.brand)
     if @product.save
       params.require(:product).permit(:counter)[:counter].to_i.times do |index|
         fabric_type_params = params["fabric_type_#{index + 1}"]
@@ -51,9 +52,11 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-
     remove_deleted_items(@product, params[:product][:deleted_items]) unless params[:product][:deleted_items].nil?
+
     if @product.update(product_params)
+      @product.brand_logo = fetch_brand_logo(@product.brand)
+      @product.save!
       # @product.product_fabrics.destroy_all
       params[:product][:counter].to_i.times do |index|
         fabric_type_params = params["fabric_type_#{index + 1}"]
@@ -70,8 +73,7 @@ class ProductsController < ApplicationController
           ) unless fabric_type_params.blank? && fabric_composition_params.blank?
         end
       end
-      redirect_to @@refer, notice: 'Product was successfully updated.'
-      # redirect_back fallback_location: products_path(@product), notice: 'Product was successfully updated.'
+      redirect_to product_path(@product), notice: 'Product was successfully updated.'
     else
       render :edit
     end
@@ -92,11 +94,33 @@ class ProductsController < ApplicationController
     redirect_to products_path, notice: 'Product was successfully deleted.'
   end
 
+  def fetch_brand_logo(brand_name)
+    brand_name = brand_name.gsub(' ', '%20')
+    # Fetch brand icon
+    url = URI("https://api.brandfetch.io/v2/search/#{brand_name}")
+
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+
+    request = Net::HTTP::Get.new(url)
+    request["accept"] = 'application/json'
+    request["Referer"] = 'https://example.com/searchIntegrationPage'
+
+    response = http.request(request)
+
+    # Parse the JSON response
+    response_data = JSON.parse(response.read_body)
+
+    # Extract the icon URL and save it to a variable
+    puts "Fetched brand URL #{response_data[0]["icon"]}"
+    icon_url = response_data[0]["icon"]
+  end
+
   private
 
   def product_params
     params.require(:product).permit(:item_name, :made_in, :brand, :purchased_in, :certification_label, :comments,
-                                    :description, :score, :category_id, :scan_id, :user_id, photos: [])
+                                    :description, :score, :category_id, :scan_id, :user_id, :brand_logo, photos: [])
   end
 
   def fabric_types

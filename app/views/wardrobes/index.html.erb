@@ -110,30 +110,5 @@
           <% end %>
         <% end %>
     </div>
-    <%# <h3 class="text-center">Wardrobe images</h3> %>
-    <!--
-    <div class="card-wrapper">
-      <% @products.each do |product| %>
-          <% if product.photos.attached? %>
-            <% product.photos.each do |photo| %>
-              <div>
-                <%= link_to product_path(product) do %>
-                  <%= cl_image_tag photo.key, width: 177, crop: :fill %>
-                <% end %>
-              </div>
-            <% end %>
-          <% else %>
-            <div class="card-wrapper">
-              <div class="card-photo">
-                <%= image_tag 'blank_image.png', crop: :fill %>
-                <div>
-                  <h5><%= product.item_name %></h5>
-                  <p><%= product.comments %></p>
-                </div>
-              </div>
-            </div>
-          <% end %>
-      <% end %>
-    </div>-->
   </div>
 </div>

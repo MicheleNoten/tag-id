@@ -45,6 +45,12 @@
     align-items: center;
   }
 
+  img {
+    width: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+  }
+
   p {
     margin: 0;
   }
@@ -73,6 +79,15 @@
   margin-top: auto 0;
   width: 20vw;
 }
+
+.info-circle--flag {
+  font-size: 36px;
+}
+
+// .info-circle--brand {
+//   height: 32px;
+//   width: 32px;
+// }
 
 /* -------*** Card Score  *** -----------
 -------------------------------------------

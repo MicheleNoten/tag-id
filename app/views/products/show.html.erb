@@ -1,10 +1,13 @@
 <div class="back-button"><%= link_to "Back", :back %></div>
 <div class="image-container position-fixed">
-  <% if @product.photos.attached? || @product.scan.photo.attached? %>
+
+  <% if @product.photos.attached? || @product.scan%>
     <% if @product.scan %>
-      <div class="slide">
-        <%= cl_image_tag @product.scan.photo.key, class: "w-100 position-fixed", alt: "Slide" %>
-      </div>
+      <% if @product.scan.photo.attached? %>
+        <div class="slide">
+          <%= cl_image_tag @product.scan.photo.key, class: "w-100 position-fixed", alt: "Slide" %>
+        </div>
+      <% end %>
     <% elsif @product.photos.attached? %>
       <div class="slider-container">
         <div class="slider-wrapper">
@@ -64,12 +67,17 @@
   </div>
   <% end %>
   <% end %>
-  <% if @product.made_in.present? %>
+  <% if @product.made_in != "nil" && @product.made_in.present? %>
   <div class="col-12 mx-auto">
     <div class="card--item">
       <div class="card--item-info">
         <div class="info-circle">
-          <p><%="flag"%><span class="xs"></span></p>
+          <% c = ISO3166::Country.find_country_by_any_name(@product.made_in) %>
+          <% if c.emoji_flag  %>
+          <p class="info-circle--flag"><%= c.emoji_flag %></p>
+          <% else %>
+          <p class="info-circle--flag">🌎</p>
+          <% end %>
         </div>
       </div>
       <div class="card--item-content no-border py-3">
@@ -79,12 +87,16 @@
     </div>
   </div>
   <% end %>
-  <% if @product.brand.present? %>
+  <% if @product.brand != "nil" && @product.brand.present? %>
     <div class="col-12 mx-auto">
     <div class="card--item">
       <div class="card--item-info">
         <div class="info-circle">
-          <p><%="brand"%><span class="xs"></span></p>
+          <% if @product.brand_logo %>
+            <%= image_tag @product.brand_logo, class: "info-circle--brand",alt: "#{@product.brand}" %>
+          <% else %>
+            <p><%="brand"%><span class="xs"></span></p>
+          <% end %>
         </div>
       </div>
       <div class="card--item-content no-border py-3">
