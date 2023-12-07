@@ -4,13 +4,14 @@ body {
   font-family: 'Inter', sans-serif;
   font-size: 16px;
   line-height: 1.414;
-  color: #121212;
+  color: $gray;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
   margin: 0;
+  color: $darker-green;
 }
 
 h1 {

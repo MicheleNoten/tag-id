@@ -1,6 +1,8 @@
 class WardrobesController < ApplicationController
   def index
     @products = current_user.wardrobe_products
+    @product = Product.all
+    @product = Product.find_by_id(params[:id])
     @fabrics = Fabric.all
     @categories = Category.all
     if params[:category] && params[:category].length > 1
@@ -31,6 +33,10 @@ class WardrobesController < ApplicationController
     # redirect_to product_fabric_path(@product_fabric, average: @average)
   end
 
+  def edit
+    @product = Product.find_by_id(params[:id])
+  end
+
   def create
     @product = Product.find(params[:product_id])
     Wardrobe.create(user: current_user, product: @product)
@@ -49,6 +55,13 @@ class WardrobesController < ApplicationController
     @product = Product.find(params[:id])
     Wardrobe.find_by_product_id(@product).destroy
     redirect_to wardrobes_path
+  end
+
+  private
+
+  def product_params
+    params.require(:product).permit(:item_name, :made_in, :brand, :purchased_in, :certification_label, :comments,
+                                    :description, :score, :category_id, :scan_id, :user_id, photos: [])
   end
 
 end

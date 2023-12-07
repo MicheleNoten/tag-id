@@ -1,5 +1,6 @@
 <div class="back-button"><%= link_to "Back", :back %></div>
 <div class="image-container position-fixed">
+
   <% if @product.photos.attached? || @product.scan%>
     <% if @product.scan %>
       <% if @product.scan.photo.attached? %>

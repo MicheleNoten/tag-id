@@ -1,165 +1,171 @@
-<div class="container">
-  <div class="col mt-5 mx-auto">
-    <h3>Welcome back 🌼</h3>
-    <p><%= "#{current_user.first_name} #{current_user.last_name}" %></p>
-    <%# Wardrobe Score card %>
-    <div class="col-12 mx-auto d-flex justify-content-center mt-3">
-      <div class="col-12 mx-auto">
-        <div class="card--score">
-          <div class="card--score-sdg">
-            <% wardrobe_average = @average.present? ? @average.ceil : 0 %>
-            <% circle_class = "circle circle--medium circle--medium-#{wardrobe_average}" %>
-            <div class="<%= circle_class %>"><%= wardrobe_average %></div>
-          </div>
-          <div class="card--score-content py-3">
-            <h6 class="bold">It’s a start </h6>
-            <p class="small">Your wardrobe is showing a combination of sustainable products, but you can do better 😏 </p>
-          </div>
+<div class="background">
+  <div class="container">
+    <div class="col pt-5 mx-auto">
+      <div class="title mb-2">
+        <h3>Welcome back 🌿</h3>
+      </div>
+      <div class="name">
+        <p><%= "#{current_user.first_name} #{current_user.last_name}" %></p>
+      </div>
+      <%# Wardrobe Score card %>
+      <div class="col-12 mx-auto d-flex justify-content-center mt-3">
+        <div class="col-12 mx-auto">
+          <div class="card--score">
+            <div class="card--score-sdg">
+              <% wardrobe_average = @average.present? ? @average.ceil : 0 %>
+              <% circle_class = "circle circle--medium circle--medium-#{wardrobe_average}" %>
+              <div class="<%= circle_class %>"><%= wardrobe_average %></div>
+            </div>
+            <div class="card--score-content py-3">
+              <h6 class="bold">It’s a start 😉 </h6>
+              <p class="small">Your wardrobe is showing a combination of sustainable products, but you can do better</p>
+            </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="row height d-flex justify-content-center align-items-center border-radius">
-      <div class="col-md-6 ">
-        <%# Search Bar %>
-        <%= form_with url: wardrobes_path, method: :get, class: "d-flex" do %>
-          <%= text_field_tag :query,
-                params[:query],
-                class: "form-control me-2",
-                placeholder: "Type a keyword"
-            %>
-          <%= submit_tag "Search", name: "", class: "btn btn-outline-primary" %>
-        <% end %>
-        <%# Image Slider %>
-        <div class="image-slider row mt-3">
-          <div class="col-12">
-            <h6 class="bold">Latest products</h6>
-            <div class="image-container">
-              <% if @products.nil? %>
-                <div class="image-wrapper mt-4 me-4">
-                  <%= link_to new_scan_path do %>
-                    <%= image_tag "add_scan2.jpeg", alt: "text", class: "image-item" %>
-                  <% end %>
-                </div>
-              <% else %>
-                <% @products.each do |product| %>
-                  <%= link_to product_path(product) do  %>
-                    <div class="image-wrapper mt-4 me-4">
-                      <% if product.photos.attached? %>
-                        <%= cl_image_tag product.photos.first.key, alt: "text", class: "image-item" %>
-                      <% elsif product.scan&.photo&.attached? %>
-                        <%= cl_image_tag product.scan.photo.key, alt: "text", class: "image-item" %>
-                      <% else %>
-                        <%= image_tag "blank_image.png", class: "image-item" %>
-                      <% end %>
-                      <div class="image-title"></div>
-                    </div>
+      <div class="row height d-flex justify-content-center align-items-center border-radius">
+        <div class="col-md-6 ">
+          <%# Search Bar %>
+          <%= form_with url: wardrobes_path, method: :get, class: "d-flex d-none" do %>
+            <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control me-2",
+                  placeholder: "Type a keyword"
+              %>
+            <%= submit_tag "Search", name: "", class: "btn btn-outline-primary" %>
+          <% end %>
+          <%# Image Slider %>
+          <div class="image-slider row mt-3">
+            <div class="col-12">
+              <h6 class="bold">Latest products</h6>
+              <div class="image-container">
+                <% if @products.nil? %>
+                  <div class="image-wrapper mt-4">
+                    <%= link_to new_scan_path do %>
+                      <%= image_tag "add_scan2.jpeg", alt: "text", class: "image-item" %>
+                    <% end %>
+                  </div>
+                <% else %>
+                  <% @products.each do |product| %>
+                    <%= link_to product_path(product) do  %>
+                      <div class="image-wrapper mt-4">
+                        <% if product.photos.attached? %>
+                          <%= cl_image_tag product.photos.first.key, alt: "text", class: "image-item" %>
+                        <% elsif product.scan&.photo&.attached? %>
+                          <%= cl_image_tag product.scan.photo.key, alt: "text", class: "image-item" %>
+                        <% else %>
+                          <%= image_tag "blank_image", class: "image-item" %>
+                        <% end %>
+                        <div class="image-title"></div>
+                      </div>
+                    <% end %>
                   <% end %>
                 <% end %>
-              <% end %>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="image-slider row mt-3">
-          <div class="col-12">
-            <h6 class="bold">Common worries</h6>
-            <div class="image-container">
-              <div class="image-wrapper mt-4 me-4">
-              <%= link_to climate_path do %>
-                <%= image_tag "Climate.jpeg", alt: "image", class: "image-item" %>
-                <div class="image-title">
-                  <p>Climate</p>
-                </div>
-              <% end %>
-              </div>
-              <div class="image-wrapper mt-4 me-4">
-                <%= link_to water_path do %>
-                  <%= image_tag "water.jpeg", alt: "image", class: "image-item" %>
+          <div class="image-slider row mt-3">
+            <div class="col-12">
+              <h6 class="bold">Common worries</h6>
+              <div class="image-container">
+                <div class="image-wrapper mt-4">
+                <%= link_to climate_path do %>
+                  <%= image_tag "Climate.jpeg", alt: "image", class: "image-item" %>
                   <div class="image-title">
-                    <p>Water</p>
+                    <p>Climate</p>
                   </div>
                 <% end %>
-              </div>
-              <div class="image-wrapper mt-4 me-4">
-                <%= link_to land_path do %>
-                 <%= image_tag "land.jpeg", alt: "image", class: "image-item" %>
-                 <div class="image-title">
-                    <p>Land</p>
-                 </div>
-                <% end %>
-              </div>
-              <div class="image-wrapper mt-4 me-4">
-                <%= link_to human_rights_path do %>
-                 <%= image_tag "human_rights.jpeg", alt: "image", class: "image-item" %>
-                 <div class="image-title">
-                    <p>Human Rights</p>
-                 </div>
-                <% end %>
-              </div>
-              <div class="image-wrapper mt-4 me-4">
-                <%= link_to biodiversity_path do %>
-                 <%= image_tag "biodiversity.jpeg", alt: "image", class: "image-item" %>
-                 <div class="image-title">
-                    <p>Biodiversity</p>
-                 </div>
-                <% end %>
-              </div>
-              <div class="image-wrapper mt-4 me-4">
-                <%= link_to integrity_path do %>
-                 <%= image_tag "integrity.jpeg", alt: "image", class: "image-item" %>
-                 <div class="image-title">
-                    <p>Integrity</p>
-                 </div>
-                <% end %>
-              </div>
-              <div class="image-wrapper mt-4 me-4">
-                <%= link_to chemistry_path do %>
-                 <%= image_tag "chemistry.jpeg", alt: "image", class: "image-item" %>
-                 <div class="image-title">
-                    <p>Chemistry</p>
-                 </div>
-                <% end %>
-              </div>
-              <div class="image-wrapper mt-4 me-4">
-                <%= link_to animal_welfare_path do %>
-                 <%= image_tag "animal_welfare.jpeg", alt: "image", class: "image-item" %>
-                 <div class="image-title">
-                    <p>Animal welfare</p>
-                 </div>
-                <% end %>
-              </div>
-              <div class="image-wrapper mt-4 me-4">
-                <%= link_to waste_path do %>
-                 <%= image_tag "waste.jpeg", alt: "image", class: "image-item" %>
-                 <div class="image-title">
-                    <p>Waste</p>
-                 </div>
-                <% end %>
+                </div>
+                <div class="image-wrapper mt-4">
+                  <%= link_to water_path do %>
+                    <%= image_tag "water.jpeg", alt: "image", class: "image-item" %>
+                    <div class="image-title">
+                      <p>Water</p>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="image-wrapper mt-4">
+                  <%= link_to land_path do %>
+                  <%= image_tag "land.jpeg", alt: "image", class: "image-item" %>
+                  <div class="image-title">
+                      <p>Land</p>
+                  </div>
+                  <% end %>
+                </div>
+                <div class="image-wrapper mt-4">
+                  <%= link_to human_rights_path do %>
+                  <%= image_tag "human_rights.jpeg", alt: "image", class: "image-item" %>
+                  <div class="image-title">
+                      <p>Human Rights</p>
+                  </div>
+                  <% end %>
+                </div>
+                <div class="image-wrapper mt-4">
+                  <%= link_to biodiversity_path do %>
+                  <%= image_tag "biodiversity.jpeg", alt: "image", class: "image-item" %>
+                  <div class="image-title">
+                      <p>Biodiversity</p>
+                  </div>
+                  <% end %>
+                </div>
+                <div class="image-wrapper mt-4">
+                  <%= link_to integrity_path do %>
+                  <%= image_tag "integrity.jpeg", alt: "image", class: "image-item" %>
+                  <div class="image-title">
+                      <p>Integrity</p>
+                  </div>
+                  <% end %>
+                </div>
+                <div class="image-wrapper mt-4">
+                  <%= link_to chemistry_path do %>
+                  <%= image_tag "chemistry.jpeg", alt: "image", class: "image-item" %>
+                  <div class="image-title">
+                      <p>Chemistry</p>
+                  </div>
+                  <% end %>
+                </div>
+                <div class="image-wrapper mt-4">
+                  <%= link_to animal_welfare_path do %>
+                  <%= image_tag "animal_welfare.jpeg", alt: "image", class: "image-item" %>
+                  <div class="image-title">
+                      <p>Animal welfare</p>
+                  </div>
+                  <% end %>
+                </div>
+                <div class="image-wrapper mt-4">
+                  <%= link_to waste_path do %>
+                  <%= image_tag "waste.jpeg", alt: "image", class: "image-item" %>
+                  <div class="image-title">
+                      <p>Waste</p>
+                  </div>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="image-slider row mt-3">
-          <div class="col-12">
-            <h6 class="bold">Top sustainable choice</h6>
-            <div class="image-container">
-              <div class="image-wrapper mt-4 me-4">
-                 <%= image_tag "recycle.jpeg", alt: "image", class: "image-item" %>
-                 <div class="image-title">
-                    <p>Recycle</p>
-                 </div>
-              </div>
-              <div class="image-wrapper mt-4 me-4">
-                 <%= image_tag "second_hand.jpeg", alt: "image", class: "image-item" %>
-                 <div class="image-title">
-                    <p>Second hand</p>
-                 </div>
-              </div>
-              <div class="image-wrapper mt-4 me-4">
-                <%= link_to score_path do %>
-                  <%= image_tag "score2.svg", alt: "image", class: "image-item" %>
-                <% end %>
+          <div class="image-slider row mt-3">
+            <div class="col-12">
+              <h6 class="bold">Top sustainable choice</h6>
+              <div class="image-container">
+                <div class="image-wrapper mt-4">
+                  <%= image_tag "recycle.jpeg", alt: "image", class: "image-item" %>
+                  <div class="image-title">
+                      <p>Recycle</p>
+                  </div>
+                </div>
+                <div class="image-wrapper mt-4">
+                  <%= image_tag "second_hand.jpeg", alt: "image", class: "image-item" %>
+                  <div class="image-title">
+                      <p>Second hand</p>
+                  </div>
+                </div>
+                <div class="image-wrapper mt-4">
+                  <%= link_to score_path do %>
+                    <%= image_tag "score2.svg", alt: "image", class: "image-item" %>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>

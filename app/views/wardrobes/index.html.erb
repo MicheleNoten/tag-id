@@ -1,113 +1,114 @@
-<div class="container">
-  <div class="col mt-5">
-    <div class="row profile-header">
-      <div class="back-button">
-        <%= link_to "Back", :back %>
-      </div>
-      <h3 class="text-center">Wardrobe</h3>
-    </div>
-
-    <div class="col-12 mx-auto d-flex justify-content-center mt-5">
-      <% wardrobe_average = @average.present? ? @average.ceil : 0 %>
-      <% circle_class = "circle circle--large circle--large-#{wardrobe_average}" %>
-      <div class="<%= circle_class %>"><%= wardrobe_average %></div>
-    </div>
-
-    <!-- Search bar -->
-
-    <%= form_with url: wardrobes_path, method: :get, class: "mt-4 mb-5 px-3" do %>
-      <div class="input-group mt-5 mb-3">
-        <%= text_field_tag :query,
-              params[:query],
-              class: "form-control",
-              placeholder: "Type a keyword"
-          %>
-        <div class="input-group-append">
-          <%= submit_tag "Search", name: "", class: "btn btn-outline-primary" %>
+<div class="background_all">
+  <div class="container">
+    <div class="col mt-5">
+      <div class="row profile-header">
+        <div class="back-button">
+          <%= link_to "Back", :back %>
         </div>
-      </div>
-    <% end %>
-
-    <!-- Button trigger modal -->
-    <%# <p class="" data-bs-toggle="modal" data-bs-target="#exampleModal"> %>
-      <div class="header-wrapper d-flex justify-content-between px-3 mt-3">
-        <div>
-          <%= link_to "All", wardrobes_path  %>
-        </div>
-        <%= image_tag "Vector.svg", data: { bs_toggle: "modal", bs_target: "#exampleModal" } %>
-        <%# </p> %>
+        <h3 class="text-center">Wardrobe</h3>
       </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Filter by</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="col-12 mx-auto d-flex justify-content-center mt-5">
+        <% wardrobe_average = @average.present? ? @average.ceil : 0 %>
+        <% circle_class = "circle circle--large circle--large-#{wardrobe_average}" %>
+        <div class="<%= circle_class %>"><%= wardrobe_average %></div>
+      </div>
+
+      <!-- Search bar -->
+
+      <%= form_with url: wardrobes_path, method: :get, class: "mt-4 mb-5 px-3" do %>
+        <div class="input-group mt-5 mb-3">
+          <%= text_field_tag :query,
+                params[:query],
+                class: "form-control",
+                placeholder: "Type a keyword"
+            %>
+          <div class="input-group-append">
+            <%= submit_tag "Search", name: "", class: "btn btn-outline-primary" %>
           </div>
-          <%= form_with url: wardrobes_path, method: :get do |f| %>
-            <div class="modal-body">
-              <h6>Categories</h6>
-              <ul class="text-decoration-none" style="list-style-type: none">
-                <%= f.collection_check_boxes(:category, @categories, :id, :name)  do |b| %>
-                  <li>
-                    <%= b.check_box %>
-                    <%= b.label %>
-                  </li>
-                <% end %>
-              </ul>
-              <h6>Fabrics</h6>
-              <ul class="text-decoration-none" style="list-style-type: none" >
-                <%= f.collection_check_boxes(:fabric, @fabrics, :id, :name) do |b| %>
-                  <li>
-                    <%= b.check_box %>
-                    <%= b.label %>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <%= submit_tag "Search", class: "btn btn-primary" %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-
-    <div class="row mt-5 px-3">
-      <% @products.each do |product| %>
-        <div class="col-12 mx-auto mt-1">
-          <%= link_to product_path(product) do %>
-            <div class="card--product">
-              <div class="avatar">
-                <% if product.photos.attached? %>
-                  <%= cl_image_tag product.photos.first.key, alt: "text", class: "avatar" %>
-                <% elsif product.scan&.photo&.attached? %>
-                  <%= cl_image_tag product.scan.photo.key, alt: "text", class: "avatar" %>
-                <% else %>
-                  <%= image_tag "blank_image.png", class:"avatar" %>
-                <% end %>
-              </div>
-              <div class="card--product-content">
-                <p class="small bold"><%= product.item_name %></p>
-                <p class="xs"><%= product.score %></p>
-              </div>
-              <div class="card--product-icon justify-content-evenly">
-                <%= link_to edit_product_path(product) do %>
-                  <%= image_tag "pencil-black.svg", alt: "text" %>
-                <% end %>
-                <%= link_to wardrobe_path(product), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-                  <%= image_tag "trash-red.svg", alt: "text" %>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
         </div>
       <% end %>
+
+      <!-- Button trigger modal -->
+      <%# <p class="" data-bs-toggle="modal" data-bs-target="#exampleModal"> %>
+        <div class="header-wrapper d-flex justify-content-between px-3 mt-3">
+          <div>
+            <%= link_to "All", wardrobes_path  %>
+          </div>
+          <%= image_tag "Vector.svg", data: { bs_toggle: "modal", bs_target: "#exampleModal" } %>
+          <%# </p> %>
+        </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Filter by</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <%= form_with url: wardrobes_path, method: :get do |f| %>
+              <div class="modal-body">
+                <h6>Categories</h6>
+                <ul class="text-decoration-none" style="list-style-type: none">
+                  <%= f.collection_check_boxes(:category, @categories, :id, :name)  do |b| %>
+                    <li>
+                      <%= b.check_box %>
+                      <%= b.label %>
+                    </li>
+                  <% end %>
+                </ul>
+                <h6>Fabrics</h6>
+                <ul class="text-decoration-none" style="list-style-type: none" >
+                  <%= f.collection_check_boxes(:fabric, @fabrics, :id, :name) do |b| %>
+                    <li>
+                      <%= b.check_box %>
+                      <%= b.label %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+
+              <div class="modal-footer mb-5">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <%= submit_tag "Search", class: "btn btn-primary" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <!-- This is where past code came from -->
+    <div class="row mt-5">
+        <% @products.each do |product| %>
+          <% if product.photos.attached? %>
+            <% product.photos.each do |photo| %>
+              <div class="col-6 mb-3 px-2 p-0">
+                <div class="wardrobe-card">
+                  <%= link_to product_path(product) do %>
+                    <%= cl_image_tag photo.key, class:"w-100 wardrobe-card--image"%>
+                  <% end %>
+                  <div class="kebab">
+                    <figure></figure>
+                    <figure class="middle"></figure>
+                    <p class="cross">x</p>
+                    <ul class="dropdown">
+                      <li>
+                        <%= link_to edit_product_path(product) do %>
+                          <p><i class="fa-solid fa-pencil me-1"></i> Edit</p>
+                        <% end %>
+                      </li>
+                      <li>
+                        <%= link_to wardrobe_path(product), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+                          <p><i class="fa-solid fa-trash-can me-1"></i>Delete</p>
+                        <% end %>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
     </div>
   </div>
-  <%# <h3 class="text-center">Wardrobe</h3> %>
 </div>

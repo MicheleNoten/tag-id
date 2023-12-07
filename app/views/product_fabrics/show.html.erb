@@ -33,27 +33,20 @@
     </div>
   </a>
   <H4> <%= @product_fabric.fabric.name.capitalize %> </H4>
-  <% @product_fabric.fabric.sdgs.each do |sdg| %>
-      <div class="col-12 mx-auto">
-        <div class="card--item">
-          <div class="card--item-info">
-            <div class="info-circle">
-              <% img_url = "#{sdg.name}.svg" %>
-              <p><%= image_tag img_url, alt: "text", class: "info-circle--img" %></p>
-            </div>
-          </div>
-          <div class="card--item-content py-3 no-border">
-            <h5><%= sdg.name %></h5>
-            <p><%= sdg.description %>.</p>
-          </div>
-          <div class="card--item-sdg">
-            <% circle_class = "circle circle--small circle--small-#{sdg.score}" %>
-            <div class="<%= circle_class %>">
-              <%= sdg.score %>
-            </div>
-          </div>
+  <% @product_fabric.fabric.sdgs.each_with_index do |sdg, index| %>
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-<%=index%>">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%=index%>" aria-expanded="false" aria-controls="flush-collapse<%=index%>">
+            <div class="<%= "circle circle--small circle--small-#{sdg.score}" %>">
+                  <%= sdg.score %>
+                </div>
+                <%= sdg.name %>
+          </button>
+        </h2>
+        <div id="flush-collapse<%=index%>" class="accordion-collapse collapse" aria-labelledby="flush-<%=index%>" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body"><%= sdg.description %></div>
+        </div>
       </div>
     </div>
-   <% end %>
-  </div>
-</div>
+  <% end %>
