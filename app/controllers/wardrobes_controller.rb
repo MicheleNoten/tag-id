@@ -56,7 +56,6 @@ class WardrobesController < ApplicationController
     Wardrobe.find_by_product_id(@product).destroy
     redirect_to wardrobes_path
   end
-<<<<<<< Updated upstream
 
   private
 
@@ -64,7 +63,4 @@ class WardrobesController < ApplicationController
     params.require(:product).permit(:item_name, :made_in, :brand, :purchased_in, :certification_label, :comments,
                                     :description, :score, :category_id, :scan_id, :user_id, photos: [])
   end
-
-=======
->>>>>>> Stashed changes
 end
