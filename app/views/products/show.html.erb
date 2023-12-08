@@ -2,13 +2,7 @@
 <div class="image-container position-fixed">
 
   <% if @product.photos.attached? || @product.scan%>
-    <% if @product.scan %>
-      <% if @product.scan.photo.attached? %>
-        <div class="slide">
-          <%= cl_image_tag @product.scan.photo.key, class: "w-100 position-fixed", alt: "Slide" %>
-        </div>
-      <% end %>
-    <% elsif @product.photos.attached? %>
+    <% if @product.photos.attached?  %>
       <div class="slider-container">
         <div class="slider-wrapper">
           <% @product.photos.each_with_index do |photo, index| %>
@@ -18,6 +12,12 @@
           <% end %>
         </div>
       </div>
+    <% elsif @product.scan  %>
+      <% if @product.scan.photo.attached? %>
+          <div class="slide">
+            <%= cl_image_tag @product.scan.photo.key, class: "w-100 position-fixed", alt: "Slide" %>
+          </div>
+      <% end %>
     <% end %>
   <% else %>
     <%= image_tag "blank_image.png", class: "w-100 position-fixed" %>

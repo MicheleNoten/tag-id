@@ -5,6 +5,14 @@ class PagesController < ApplicationController
     if user_signed_in?
       @scans = current_user.scans
       @products = current_user.products
+      # Hot fix : To fix the bug of the average score
+      scores = []
+      @products.each do |product|
+        product_fabrics_score = product.product_fabrics.map { |product_fabric| product_fabric.fabric_percent/100.0 * product_fabric.fabric.weighted_average_score }
+        scores << (product_fabrics_score.sum / product.product_fabrics.count)
+      end
+      @average = scores.empty? ? 0 : (scores.sum / scores.count)
+      # End of code for Hot fix
     end
   end
 
