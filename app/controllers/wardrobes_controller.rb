@@ -12,7 +12,7 @@ class WardrobesController < ApplicationController
       scores << (product_fabrics_score.sum / product.product_fabrics.count)
     end
 
-    @average = scores.empty? ? 0 : (scores.sum / scores.count)
+    @average = (scores.empty? || scores.count == 0) ? 0 : (scores.sum / scores.count)
 
     # End of code for Hot fix
 
