@@ -7,9 +7,9 @@ class PagesController < ApplicationController
       @products = current_user.products
       # Hot fix : To fix the bug of the average score
       scores = []
-      @products.each do |product|
+      current_user.wardrobe_products.each do |product|
         product_fabrics_score = product.product_fabrics.map { |product_fabric| product_fabric.fabric_percent/100.0 * product_fabric.fabric.weighted_average_score }
-        scores << product.product_fabrics.empty? ? 0 : (product_fabrics_score.sum / product.product_fabrics.count)
+        scores << ((product.product_fabrics.empty?) ? 0 : (product_fabrics_score.sum / product.product_fabrics.count))
       end
       @average = (scores.empty? || scores.count == 0) ? 0 : (scores.sum / scores.count)
       # End of code for Hot fix
