@@ -1,6 +1,11 @@
 <div class="container">
   <div class="col-10 mt-5 m-auto">
-    <h2  class="text-center mb-5">Log in</h2>
+    <h2>Welcome</h2>
+    <h2>to tag-id</h2>
+    <div class="logo-image-wrapper mx-auto d-flex justify-content-center my-5" style="height: 25vh">
+      <%= image_tag "logo.png", alt: "logo", class: "mx-auto" %>
+    </div>
+    <h4  class="text-center">Log in</h4>
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs">
         <%= f.input :email,
@@ -21,3 +26,16 @@
     <%= render "devise/shared/links" %>
   </div>
 </div>
+<style>
+@media screen and (max-width: 768px) {
+  body {
+    background-image: linear-gradient(0deg, rgba(164,190,123,1) 0%, rgba(0,0,0,0.1) 47%), url(<%= asset_path "sign-up.png" %>)!important;
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+label, h4 {
+  color: white;
+}
+</style>

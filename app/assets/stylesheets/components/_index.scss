@@ -62,3 +62,7 @@ body {
   min-height: 430px;
   object-fit: cover;
 }
+
+input[type=text], input[type=number], input[type=password], input[type=email], input[type=tel], select, textarea {
+  border-radius: 0.3rem !important;
+}
